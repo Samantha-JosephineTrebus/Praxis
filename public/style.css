@@ -1,0 +1,503 @@
+/* ======== Basis-Styling ======== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f5f7fb;
+}
+
+/* ===== Login-Formular Styling ===== */
+h2 {
+  color: #004a7f;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 3rem;
+  font-weight: 600;
+}
+
+form {
+  max-width: 400px;
+  margin: 2rem auto 4rem auto;
+  background: rgba(255, 255, 255, 0.85); /* leichtes Glas */
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form label {
+  font-weight: 500;
+  color: #004a7f;
+  margin-bottom: 0.5rem;
+}
+
+form input {
+  padding: 0.75rem 1rem;
+  border: 2px solid #cde7ff;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  border-color: #0071c2;
+  box-shadow: 0 0 8px rgba(0, 113, 194, 0.4);
+}
+
+form button {
+  background: linear-gradient(135deg, #004a7f, #0071c2);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 74, 127, 0.25);
+  transition: all 0.3s ease;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #005c9a, #0088e0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 74, 127, 0.35);
+}
+
+form br {
+  display: none; /* br wird hier nicht gebraucht, Flex-Gap übernimmt Abstände */
+}
+
+header {
+  background: #004a7f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin-right: 2rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative; /* für den Underline-Effekt */
+  padding-bottom: 0.5rem ;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover-Effekt: sanfte Farbe + kleine Bewegung */
+nav a:hover {
+  transform: translateY(-3px);
+}
+
+/* Animierte Unterstreichung */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #b3dbff; /* gleiche Akzentfarbe */
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Aktiver Link */
+nav a.active {
+  font-weight: 600;
+}
+
+.container {
+  padding: 2rem;
+}
+
+/* ===== Neues Layout: Willkommen + Haftnotiz links, Öffnungszeiten rechts ===== */
+.intro-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.intro-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-section .welcome { flex: 2; color: #004a7f; } 
+.intro-section .welcome h1 { font-size: 2.2rem; margin-bottom: 1rem; } 
+.intro-section .welcome p { font-size: 1.1rem; line-height: 1.7; color: #333; } 
+.intro-section .oeffnungszeiten { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; } 
+.intro-section .oeffnungszeiten h1 { color: #004a7f; margin-bottom: 1rem; } 
+.intro-section .hours-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(8px); border-radius: 16px; border: 2px solid rgba(0, 74, 127, 0.2); padding: 1.5rem 2rem; box-shadow: 0 6px 20px rgba(0, 74, 127, 0.1); text-align: center; }
+
+/* Haftnotiz bleibt wie bisher */
+.haftnotiz {
+  color: #002a4d; /* dunkles Marineblau für Text */
+  background: linear-gradient(135deg, #cde7ff 0%, #b3dbff 100%); /* helle, post-it-blaue Töne */
+  border-left: 6px solid #004a7f; /* Praxis-Blau */
+  box-shadow: 0 8px 20px rgba(0, 74, 127, 0.15);
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  max-width: 420px;
+  position: relative;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.haftnotiz::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 42%;
+  width: 40px;
+  height: 20px;
+  background: rgba(0, 74, 127, 0.2);
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  border-radius: 2px;
+}
+
+.haftnotiz:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 74, 127, 0.25);
+}
+
+a.doctolib-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #004a7f, #0071c2);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.9rem 1.6rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 74, 127, 0.25);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+a.doctolib-link:hover {
+  background: linear-gradient(135deg, #005c9a, #0088e0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 74, 127, 0.35);
+}
+
+
+
+/* Hintergrundbild für die ganze Ärzte-Sektion */
+.doctors {
+  position: relative;
+  padding: 4rem 2rem;
+  margin-top: 100px;
+  background: url('praxis.jpg') no-repeat center center/cover;
+}
+
+/* Leicht abgedunkeltes Overlay für bessere Lesbarkeit */
+.doctors::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+}
+
+/* Ärzte-List Container */
+.doctor-list {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2; /* über Overlay */
+}
+
+/* Glassmorphism-Card */
+.doctor-card {
+  position: relative;
+  flex: 1 1 280px;
+  background: rgba(255, 255, 255, 0.15); /* milchiges Glas */
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(12px) saturate(150%); /* Glas-Effekt */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.doctor-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid rgba(255,255,255,0.4); /* feiner Glas-Rahmen */
+}
+
+.doctors h2 {
+  color: #ffffff !important; /* grelles, reines Weiß erzwingen */
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* leichte Leuchtwirkung */
+  position: relative;
+  z-index: 2; /* sicherstellen, dass es über dem Overlay liegt */
+}
+
+.doctor-card h3, .doctor-card p {
+  color: #fff; /* Weißer Text auf Glas */
+  margin: 0.5rem 0;
+}
+
+/* Leistungen */
+/* Services Section */
+.services {
+  padding: 4rem 2rem;
+  background: none;
+  
+}
+
+.services h2 {
+  text-align: center;
+  color: #004a7f;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+
+/* Impressumsseite */
+/* Card Grid */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* genau 3 pro Reihe */
+  gap: 2rem;
+}
+
+.container {
+  padding: 2rem;
+}
+
+h2 {
+  color: #004a7f;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+/* Grid für alle Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* immer 2 Spalten */
+  gap: 2rem;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 74, 127, 0.2);
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h3 {
+  color: #004a7f;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.card p, .card ul {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.card ul {
+  padding-left: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Responsive Anpassung */
+@media (max-width: 1024px) {
+  .service-cards {
+    grid-template-columns: repeat(2, 1fr); /* 2 pro Reihe auf Tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .service-cards {
+    grid-template-columns: 1fr; /* 1 pro Reihe auf Mobile */
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Einzelne Card */
+.service-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 74, 127, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 74, 127, 0.15);
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  color: #004a7f;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Footer */
+footer {
+  background: #004a7f;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+}
+
+/* ======== Hamburger Menü Styling ======== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ======== Mobile Ansicht ======== */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #004a7f;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: flex;
+    text-align: center;
+  }
+
+  nav li {
+    margin: 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* ======== Tablet Ansicht ======== */
+@media (max-width: 1025px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: #004a7f;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 1;
+  }
+
+  nav ul.show {
+    display: flex;
+    width: 50%;
+  }
+
+  .menu-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+  nav li {
+    margin: 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+  }
+}
+

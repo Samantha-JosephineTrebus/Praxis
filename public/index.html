@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home – Praxis am Schloss</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <nav>
+      <ul id="main-nav">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a 
+              href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+            Onlinetermine
+        </a></li>
+        <li><a href="leistung.html">Leistung</a></li>
+        <li><a href="aerzte.html">Ärzte</a></li>
+        <li><a href="kontakt.html">Kontakt & Rezeptanfragen</a></li>
+        <li><a href="finden.html">So finden Sie uns</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+  
+<section class="login-section">
+  <button id="login-btn" class="login-btn">🔐 Anmelden</button>
+</section>
+
+
+ <!-- Willkommenstext -->
+   <section class="intro-section">
+  <div class="intro-left">
+    <div class="welcome">
+      <h1>Willkommen in unserer Praxis</h1>
+      <p>Liebe Patientinnen und Patienten, wir freuen uns, Sie in unserer pneumologischen Praxis am Schloss Charlottenburg begrüßen zu dürfen. 
+      Unsere erfahrenen Ärzte bieten Ihnen umfassende Diagnostik und Therapie auf höchstem Niveau.</p>
+
+      <div class="haftnotiz">
+        <h3 id="note-title-display">Aktuelle Information</h3>
+        <p id="note-text-display"> Am <strong>31. Oktober</strong> bleibt unsere Praxis wegen des Feiertags geschlossen.</p>
+      </div>
+      <script>
+  // Haftnotiz dynamisch laden
+  const noteTitle = localStorage.getItem('haftnotiz-title');
+  const noteText = localStorage.getItem('haftnotiz-text');
+
+  if (noteTitle) document.getElementById('note-title-display').innerText = noteTitle;
+  if (noteText) document.getElementById('note-text-display').innerHTML = noteText;
+</script>
+    </div>
+  </div>
+
+  <div class="intro-right">
+    <div class="oeffnungszeiten">
+      <h1>Unsere Öffnungszeiten</h1> 
+      <div class="hours-card">
+        <p><span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="6" x2="12" y2="12"></line>
+            <line x1="12" y1="12" x2="16" y2="14"></line>
+          </svg>
+        </span> Mo–Do: 08:30–12:30</p>
+        <p><span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="6" x2="12" y2="12"></line>
+            <line x1="12" y1="12" x2="16" y2="14"></line>
+          </svg>
+        </span> Mo–Do: 14:00–18:00</p>
+         <p><span class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="6" x2="12" y2="12"></line>
+            <line x1="12" y1="12" x2="16" y2="14"></line>
+          </svg>
+        </span> Freitag nach Vereinbarung</p>
+        <p><a 
+                href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="doctolib-link"
+              >
+              Buche deinen Termin ganz einfach Online über Doctolib!
+          </a></p>
+          
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Ärzte-Vorstellung -->
+   <section class="doctors">
+  <h2>Unsere Ärzte</h2>
+  <div class="doctor-list">
+    <div class="doctor-card">
+      <img src="AndresDeRoux.webp" alt="Dr. med. Andres de Roux">
+      <h3>Dr. med. Andres de Roux</h3>
+      <p>Spezialist für Pneumologie und Schlafmedizin, mit langjähriger Erfahrung.</p>
+    </div>
+    <div class="doctor-card">
+      <img src="TimoWeiß.jpg" alt="Dr. med. Timo Weiss">
+      <h3>Dr. med. Timo Weiss</h3>
+      <p>Spezialist für Pneumologie, engagiert für individuelle Patientenbetreuung.</p>
+    </div>
+  </div>
+</section>
+
+    <!-- Leistungen -->
+    <section class="services">
+  <h2>Unsere Leistungen</h2>
+  <div class="service-cards">
+    <div class="service-card">
+      <h3>Lungenfunktionsdiagnostik</h3>
+      <p>Präzise Messungen zur Beurteilung Ihrer Lungenfunktion.</p>
+    </div>
+    <div class="service-card">
+      <h3>Allergietests & Immuntherapie</h3>
+      <p>Individuelle Tests und Therapiepläne für Allergien.</p>
+    </div>
+    <div class="service-card">
+      <h3>Schlafmedizinische Diagnostik</h3>
+      <p>Untersuchungen und Lösungen bei Schlafapnoe & Co.</p>
+    </div>
+    <div class="service-card">
+      <h3>Atemtherapie & Rehabilitation</h3>
+      <p>Therapien zur Stärkung und Wiederherstellung der Atemwege.</p>
+    </div>
+    <div class="service-card">
+      <h3>Infektions- & Entzündungserkrankungen</h3>
+      <p>Behandlung von akuten und chronischen Atemwegserkrankungen.</p>
+    </div>
+    <div class="service-card">
+      <h3>Beratung & Prävention</h3>
+      <p>Individuelle Vorsorge und Beratung für Ihre Gesundheit.</p>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    &copy; 2025 Praxis am Schloss Charlottenburg
+  </footer>
+
+  <script>
+  document.getElementById('login-btn').addEventListener('click', () => {
+    window.location.href = '/login';
+  });
+</script>
+  <script src="main.js"></script>
+</body>
+</html>

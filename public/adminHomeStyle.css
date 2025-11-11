@@ -1,0 +1,205 @@
+/* ======== Basis-Styling ======== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ======== Header ======== */
+header {
+  background: #004a7f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin-right: 2rem;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative; /* für animierte Unterstreichung */
+  padding-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+  transform: translateY(-3px);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #b3dbff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+nav a.active {
+  font-weight: 600;
+}
+
+/* ======== Main & Artikel ======== */
+main {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#user-info {
+    max-width: 900px;
+    margin: 1.5rem auto;
+    padding: 0.75rem 1.5rem;
+    background: #ffffff;
+    border-left: 5px solid #004a7f; /* grüne Akzentfarbe */
+    border-radius: 12px;
+    font-weight: 600;
+    color: #004a7f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* leichter Schatten */
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#user-info strong {
+    font-weight: 700;
+    color: #2eb4f1;
+}
+
+#user-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+article {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+/* ======== Form Styling ======== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form input, form textarea {
+  padding: 0.7rem 1rem;
+  border: 2px solid #cde7ff;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #0071c2;
+}
+
+/* Buttons */
+form button,
+#save-schedule {
+  background: linear-gradient(135deg, #004a7f, #0071c2);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+form button:hover,
+#save-schedule:hover {
+  background: linear-gradient(135deg, #005c9a, #0088e0);
+  transform: translateY(-2px);
+}
+
+/* ======== Schichtplan Styling ======== */
+#schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+#schedule-table th, #schedule-table td {
+  border: 1px solid rgba(0, 74, 127, 0.2);
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border-radius: 8px;
+}
+
+#schedule-table th {
+  background: rgba(0, 74, 127, 0.15);
+  color: #004a7f;
+}
+
+#schedule-table td[contenteditable="true"] {
+  background: rgba(255, 255, 255, 0.6);
+  cursor: text;
+  transition: background 0.3s ease;
+}
+
+#schedule-table td[contenteditable="true"]:focus {
+  background: #cde7ff;
+  outline: 2px solid #0071c2;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  #schedule-table th, #schedule-table td {
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Praxis</title>
+  <link rel="stylesheet" href="adminHomeStyle.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+  <nav>
+    <ul id="nav-list">
+        <li><a href="#schichtplan">Dienstplan</a></li>
+        <li><a href="#info-anpassen">Aktuelle Informationen Anpassen</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<div id="user-info">
+  <!-- wird per JS gesetzt -->
+</div>
+
+<script>
+  // Erkennen, auf welcher Seite wir sind
+  const page = window.location.pathname.split("/").pop(); // z.B. "adminHome.html"
+  const role = page === "adminHome.html" ? "Admin" : "Mitarbeiter";
+  document.getElementById("user-info").innerHTML = `Eingeloggt als: <strong>${role}</strong>`;
+</script>
+
+    <!-- SCHICHTPLAN SECTION -->
+  <article id="schichtplan">
+    <h2>Dienstplan</h2>
+    <p>Hier können die Schichten der Ärzte pro Woche eingetragen werden.</p>
+    
+    <table id="schedule-table">
+      <thead>
+        <tr>
+          <th>Tag</th>
+          <th>Arzt 1</th>
+          <th>Arzt 2</th>
+          <th>Arzt 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Montag</td>
+          <td contenteditable="true">08:00–16:00</td>
+          <td contenteditable="true">12:00–20:00</td>
+          <td contenteditable="true">frei</td>
+        </tr>
+        <tr>
+          <td>Dienstag</td>
+          <td contenteditable="true">08:00–16:00</td>
+          <td contenteditable="true">12:00–20:00</td>
+          <td contenteditable="true">frei</td>
+        </tr>
+        <tr>
+          <td>Mittwoch</td>
+          <td contenteditable="true">08:00–16:00</td>
+          <td contenteditable="true">12:00–20:00</td>
+          <td contenteditable="true">frei</td>
+        </tr>
+        <tr>
+          <td>Donnerstag</td>
+          <td contenteditable="true">08:00–16:00</td>
+          <td contenteditable="true">12:00–20:00</td>
+          <td contenteditable="true">frei</td>
+        </tr>
+        <tr>
+          <td>Freitag</td>
+          <td contenteditable="true">08:00–16:00</td>
+          <td contenteditable="true">12:00–20:00</td>
+          <td contenteditable="true">frei</td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="save-schedule">Dienstplan speichern</button>
+    <p id="schedule-msg" style="color:green; display:none;">Dienstplan gespeichert!</p>
+  </article>
+
+  
+  <!-- INFO ANPASSEN SECTION -->
+  <article id="info-anpassen">
+    <h2>Info Anpassen</h2>
+    <p>Hier können die Inhalte der Haftnotiz auf der Startseite bearbeitet werden.</p>
+    <form id="note-form">
+      <label>Titel:</label>
+      <input type="text" id="note-title" placeholder="Titel der Haftnotiz">
+      <label>Text:</label>
+      <textarea id="note-text" rows="4" placeholder="Inhalt der Haftnotiz"></textarea>
+      <button type="submit">Speichern</button>
+    </form>
+    <p id="save-msg" style="color:green; display:none;">Änderungen gespeichert!</p>
+  </article>
+</main>
+
+<script src="adminHomeJava.js"></script>
+</body>
+</html>
