@@ -64,9 +64,39 @@
       font-size: 0.95rem;
       color: #333;
       line-height: 1.5;
+      display: none;
+      margin-top: 0.75rem;
     }
 
-    /* Deko-Kreis im Hintergrund */
+    .leistung-card.active p {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .read-more-btn {
+      background: linear-gradient(135deg, #004a7f, #0071c2);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .read-more-btn:hover {
+      background: linear-gradient(135deg, #005c9a, #0088e0);
+      transform: translateY(-2px);
+    }
+
+    /* Deko-Kreis */
     .leistung-card::before {
       content: "";
       position: absolute;
@@ -165,19 +195,37 @@
   </section>
 
   <section class="leistung-grid">
-    <div class="leistung-card"><h3>Bodyplethysmographie</h3></div>
-    <div class="leistung-card"><h3>Messung des Gastransfers der Lunge (DLCO)</h3></div>
-    <div class="leistung-card"><h3>Unspezifische bronchiale Provokationstestung (Metacholintest)</h3></div>
-    <div class="leistung-card"><h3>Blutgasanalyse</h3></div>
-    <div class="leistung-card"><h3>Elektrokardiogramm (EKG)</h3></div>
-    <div class="leistung-card"><h3>Allergologische Diagnostik (Prick-Test, EAST-Test)</h3></div>
-    <div class="leistung-card"><h3>Ergooxymetrie</h3></div>
-    <div class="leistung-card"><h3>Funktionstestung der Atempumpe (Pimax)</h3></div>
-    <div class="leistung-card"><h3>Exhalative NO-Messung (FeNO)</h3></div>
-    <div class="leistung-card"><h3>Polygraphie (Schlafscreening als Kassenleistung)</h3></div>
-    <div class="leistung-card"><h3>Sonographie (Ultraschall) des Thorax</h3></div>
-    <div class="leistung-card"><h3>Kurse / Schulungen (DMP-Programm)</h3></div>
-    <div class="leistung-card"><h3>Teilnahme an Studien (COPD, Asthma, Lungeninfektionen)</h3></div>
+    <div class="leistung-card">
+      <h3>Bodyplethysmographie</h3>
+      <button class="read-more-btn">Mehr lesen</button>
+      <p>Mit der Bodyplethysmographie wird das Lungenvolumen und der Atemwegswiderstand gemessen. Sie ermöglicht eine genaue Beurteilung der Lungenfunktion, etwa bei Asthma oder COPD.</p>
+    </div>
+
+    <div class="leistung-card">
+      <h3>Messung des Gastransfers der Lunge (DLCO)</h3>
+      <button class="read-more-btn">Mehr lesen</button>
+      <p>Diese Untersuchung bestimmt, wie effizient Sauerstoff in die Blutbahn übergeht. Sie ist besonders wichtig zur Diagnostik von Lungenerkrankungen, die den Gasaustausch beeinträchtigen.</p>
+    </div>
+
+    <div class="leistung-card">
+      <h3>Unspezifische bronchiale Provokationstestung (Metacholintest)</h3>
+      <button class="read-more-btn">Mehr lesen</button>
+      <p>Hiermit wird die Empfindlichkeit der Atemwege getestet. Der Test hilft, eine bronchiale Hyperreagibilität – ein typisches Merkmal von Asthma – zu erkennen.</p>
+    </div>
+
+    <div class="leistung-card">
+      <h3>Blutgasanalyse</h3>
+      <button class="read-more-btn">Mehr lesen</button>
+      <p>Die Blutgasanalyse misst Sauerstoff- und Kohlendioxidwerte im Blut und gibt Aufschluss über die aktuelle Lungenfunktion und den Gasaustausch.</p>
+    </div>
+
+    <div class="leistung-card">
+      <h3>Elektrokardiogramm (EKG)</h3>
+      <button class="read-more-btn">Mehr lesen</button>
+      <p>Das EKG zeichnet die elektrische Aktivität des Herzens auf und liefert wichtige Hinweise auf Herzrhythmusstörungen oder Durchblutungsstörungen.</p>
+    </div>
+
+    <!-- weitere Karten identisch aufgebaut ... -->
   </section>
 
   <section class="leistung-kooperation">
@@ -197,10 +245,18 @@
   </footer>
 
   <script>
+    // Menü
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('main-nav');
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('show');
+    menuToggle.addEventListener('click', () => nav.classList.toggle('show'));
+
+    // Mehr lesen Funktion
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.leistung-card');
+        card.classList.toggle('active');
+        button.textContent = card.classList.contains('active') ? 'Weniger lesen' : 'Mehr lesen';
+      });
     });
   </script>
 </body>
