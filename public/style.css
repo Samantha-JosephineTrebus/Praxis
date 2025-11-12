@@ -391,6 +391,7 @@ h2 {
   .cards-grid {
     grid-template-columns: 1fr;
   }
+  header .logo{font-weight: 1.3rem;} 
 }
 
 /* Einzelne Card */
