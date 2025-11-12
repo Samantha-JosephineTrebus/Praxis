@@ -384,14 +384,13 @@ h2 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 740px) {
   .service-cards {
     grid-template-columns: 1fr; /* 1 pro Reihe auf Mobile */
   }
   .cards-grid {
     grid-template-columns: 1fr;
   }
-  header .logo{font-weight: 1.3rem;} 
 }
 
 /* Einzelne Card */
