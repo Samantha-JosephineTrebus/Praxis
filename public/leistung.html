@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leistungsspektrum – Praxis am Schloss</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leistungsspektrum – Praxis am Schloss Charlottenburg</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-  <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
-  <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
-  <nav>
-    <ul id="main-nav">
-      <li><a href="index.html" class="active">Home</a></li>
-     <li><a 
+    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <nav>
+      <ul id="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a 
             href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
             target="_blank" 
             rel="noopener noreferrer"
-          >
-          Onlinetermine
-      </a></li>
-      <li><a href="leistung.html">Leistung</a></li>
-      <li><a href="aerzte.html">Ärzte</a></li>
-      <li><a href="kontakt.html">Kontakt & Rezeptanfragen</a></li>
-      <li><a href="finden.html">So finden Sie uns</a></li>
-      <li><a href="impressum.html">Impressum</a></li>
-    </ul>
-  </nav>
-</header>
+          >Onlinetermine</a>
+        </li>
+        <li><a href="leistung.html" class="active">Leistung</a></li>
+        <li><a href="aerzte.html">Ärzte</a></li>
+        <li><a href="kontakt.html">Kontakt & Rezeptanfragen</a></li>
+        <li><a href="finden.html">So finden Sie uns</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <main class="container">
-    <h2>Unsere Leistungen</h2>
-    <p>Hier sehen Sie unser Leistungsspektrum …</p>
+  <main class="container services">
+    <h2>Leistungsspektrum</h2>
+    <p style="text-align:center; max-width:800px; margin: 0 auto 3rem;">
+      Folgende Untersuchungen können in unserer Praxis vor Ort durchgeführt werden:
+    </p>
+
+    <div class="cards-grid">
+      <div class="card"><h3>Bodyplethysmographie</h3></div>
+      <div class="card"><h3>Messung des Gastransfers der Lunge (DLCO)</h3></div>
+      <div class="card"><h3>Unspezifische bronchiale Provokationstestung (Metacholintest)</h3></div>
+      <div class="card"><h3>Blutgasanalyse</h3></div>
+      <div class="card"><h3>Elektrokardiogramm (EKG)</h3></div>
+      <div class="card"><h3>Allergologische Diagnostik<br>(Prick-Test, EAST-Test)</h3></div>
+      <div class="card"><h3>Ergooxymetrie</h3></div>
+      <div class="card"><h3>Funktionstestung der Atempumpe (Pimax)</h3></div>
+      <div class="card"><h3>Exhalative NO-Messung (FeNO)</h3></div>
+      <div class="card"><h3>Polygraphie (Schlafscreening als Kassenleistung)</h3></div>
+      <div class="card"><h3>Sonographie (Ultraschall) des Thorax</h3></div>
+      <div class="card"><h3>Kurse / Schulungen (DMP-Programm)</h3></div>
+      <div class="card"><h3>Teilnahme an Studien<br>(COPD, Asthma, Lungeninfektionen)</h3></div>
+    </div>
+
+    <section style="margin-top:4rem;">
+      <h2>Untersuchungen in Kooperation</h2>
+      <div class="card" style="max-width:600px; margin: 2rem auto;">
+        <p>
+          In einer unserer kooperierenden Einrichtungen 
+          (<strong>ZSL Schlaflabor</strong> in der Paderborner Str.) 
+          durch einen Arzt unserer Praxis:
+        </p>
+        <ul>
+          <li>Kardiorespiratorische Polysomnographie im Schlaflabor (als Kassenleistung)</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
   <footer>
     &copy; 2025 Praxis am Schloss Charlottenburg
   </footer>
-  <script src="main.js"></script>
+
+  <script>
+    // Mobiles Menü (Hamburger)
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
