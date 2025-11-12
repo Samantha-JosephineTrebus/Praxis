@@ -1,10 +1,138 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leistungsspektrum – Praxis am Schloss Charlottenburg</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ==== Eigenes Design für Leistungsspektrum ==== */
+    .leistung-hero {
+      background: linear-gradient(135deg, #e6f2ff, #ffffff);
+      padding: 4rem 2rem;
+      text-align: center;
+      border-bottom: 2px solid rgba(0,74,127,0.1);
+    }
+
+    .leistung-hero h1 {
+      color: #004a7f;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .leistung-hero p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .leistung-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    }
+
+    .leistung-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(0, 74, 127, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .leistung-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 74, 127, 0.2);
+    }
+
+    .leistung-card h3 {
+      color: #004a7f;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .leistung-card p {
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* Deko-Kreis im Hintergrund */
+    .leistung-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 74, 127, 0.08);
+      border-radius: 50%;
+      z-index: 0;
+      transition: transform 0.4s ease;
+    }
+
+    .leistung-card:hover::before {
+      transform: scale(1.3);
+    }
+
+    .leistung-card * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .leistung-kooperation {
+      background: #ffffff;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 2px solid rgba(0,74,127,0.1);
+    }
+
+    .leistung-kooperation h2 {
+      color: #004a7f;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .leistung-kooperation p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .leistung-kooperation ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .leistung-kooperation li {
+      background: #f0f7ff;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #004a7f;
+      font-weight: 500;
+    }
+
+    @media (max-width: 600px) {
+      .leistung-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -29,49 +157,46 @@
     </nav>
   </header>
 
-  <main class="container services">
-    <h2>Leistungsspektrum</h2>
-    <p style="text-align:center; max-width:800px; margin: 0 auto 3rem;">
-      Folgende Untersuchungen können in unserer Praxis vor Ort durchgeführt werden:
+  <section class="leistung-hero">
+    <h1>Unser Leistungsspektrum</h1>
+    <p>
+      In unserer Praxis bieten wir ein breites Spektrum pneumologischer und schlafmedizinischer Untersuchungen und Behandlungen an.
     </p>
+  </section>
 
-    <div class="cards-grid">
-      <div class="card"><h3>Bodyplethysmographie</h3></div>
-      <div class="card"><h3>Messung des Gastransfers der Lunge (DLCO)</h3></div>
-      <div class="card"><h3>Unspezifische bronchiale Provokationstestung (Metacholintest)</h3></div>
-      <div class="card"><h3>Blutgasanalyse</h3></div>
-      <div class="card"><h3>Elektrokardiogramm (EKG)</h3></div>
-      <div class="card"><h3>Allergologische Diagnostik<br>(Prick-Test, EAST-Test)</h3></div>
-      <div class="card"><h3>Ergooxymetrie</h3></div>
-      <div class="card"><h3>Funktionstestung der Atempumpe (Pimax)</h3></div>
-      <div class="card"><h3>Exhalative NO-Messung (FeNO)</h3></div>
-      <div class="card"><h3>Polygraphie (Schlafscreening als Kassenleistung)</h3></div>
-      <div class="card"><h3>Sonographie (Ultraschall) des Thorax</h3></div>
-      <div class="card"><h3>Kurse / Schulungen (DMP-Programm)</h3></div>
-      <div class="card"><h3>Teilnahme an Studien<br>(COPD, Asthma, Lungeninfektionen)</h3></div>
-    </div>
+  <section class="leistung-grid">
+    <div class="leistung-card"><h3>Bodyplethysmographie</h3></div>
+    <div class="leistung-card"><h3>Messung des Gastransfers der Lunge (DLCO)</h3></div>
+    <div class="leistung-card"><h3>Unspezifische bronchiale Provokationstestung (Metacholintest)</h3></div>
+    <div class="leistung-card"><h3>Blutgasanalyse</h3></div>
+    <div class="leistung-card"><h3>Elektrokardiogramm (EKG)</h3></div>
+    <div class="leistung-card"><h3>Allergologische Diagnostik (Prick-Test, EAST-Test)</h3></div>
+    <div class="leistung-card"><h3>Ergooxymetrie</h3></div>
+    <div class="leistung-card"><h3>Funktionstestung der Atempumpe (Pimax)</h3></div>
+    <div class="leistung-card"><h3>Exhalative NO-Messung (FeNO)</h3></div>
+    <div class="leistung-card"><h3>Polygraphie (Schlafscreening als Kassenleistung)</h3></div>
+    <div class="leistung-card"><h3>Sonographie (Ultraschall) des Thorax</h3></div>
+    <div class="leistung-card"><h3>Kurse / Schulungen (DMP-Programm)</h3></div>
+    <div class="leistung-card"><h3>Teilnahme an Studien (COPD, Asthma, Lungeninfektionen)</h3></div>
+  </section>
 
-    <section style="margin-top:4rem;">
-      <h2>Untersuchungen in Kooperation</h2>
-      <div class="card" style="max-width:600px; margin: 2rem auto;">
-        <p>
-          In einer unserer kooperierenden Einrichtungen 
-          (<strong>ZSL Schlaflabor</strong> in der Paderborner Str.) 
-          durch einen Arzt unserer Praxis:
-        </p>
-        <ul>
-          <li>Kardiorespiratorische Polysomnographie im Schlaflabor (als Kassenleistung)</li>
-        </ul>
-      </div>
-    </section>
-  </main>
+  <section class="leistung-kooperation">
+    <h2>Untersuchungen in Kooperation</h2>
+    <p>
+      In einer unserer kooperierenden Einrichtungen 
+      (<strong>ZSL Schlaflabor</strong> in der Paderborner Straße) 
+      durch einen Arzt unserer Praxis:
+    </p>
+    <ul>
+      <li>Kardiorespiratorische Polysomnographie im Schlaflabor (als Kassenleistung)</li>
+    </ul>
+  </section>
 
   <footer>
     &copy; 2025 Praxis am Schloss Charlottenburg
   </footer>
 
   <script>
-    // Mobiles Menü (Hamburger)
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('main-nav');
     menuToggle.addEventListener('click', () => {
