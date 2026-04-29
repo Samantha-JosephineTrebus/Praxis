@@ -5,6 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ärzte – Praxis am Schloss</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 2rem;
+      padding: 2rem 0;
+    }
+
+    .doctor-card {
+      background: #fff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 74, 127, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      border-radius: 18px;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 74, 127, 0.2);
+    }
+
+    .doctor-card img {
+      width: 40%;
+      height: 50%;
+      object-fit: cover;
+      display: block;
+      border-radius: 0;
+      margin: 0 auto;
+    }
+
+    .doctor-card-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .doctor-card h3 {
+      color: #004a7f;
+      font-size: 1.4rem;
+      margin: 1rem 0 0.5rem;
+      font-weight: 600;
+    }
+
+    .doctor-card a {
+      color: #004a7f;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .doctor-card a:hover {
+      color: #0071c2;
+    }
+
+    .doctor-card p {
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.6;
+      margin: 0.75rem 0 0;
+    }
+
+    .doctor-title {
+      display: none;
+    }
+
+    .doctor-card {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -12,7 +81,7 @@
   <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
   <nav>
     <ul id="main-nav">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a 
             href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
             target="_blank" 
@@ -21,8 +90,8 @@
           Onlinetermine
       </a></li>
       <li><a href="leistung.html">Leistung</a></li>
-      <li><a href="aerzte.html">Ärzte</a></li>
-      <li><a href="kontakt.html">Kontakt & Rezeptanfragen</a></li>
+      <li><a href="aerzte.html" class="active">Ärzte</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
       <li><a href="finden.html">So finden Sie uns</a></li>
       <li><a href="impressum.html">Impressum</a></li>
     </ul>
@@ -31,7 +100,26 @@
 
   <main class="container">
     <h2>Unser Ärzteteam</h2>
-    <p>Dr. med. …</p>
+    
+    <div class="doctors-grid">
+      <div class="doctor-card" onclick="window.location.href='weiss.html'">
+        <img src="TimoWeiß.jpg" alt="Dr. med. Timo Weiß">
+        <div class="doctor-card-content">
+          <div class="doctor-title">Facharzt für Pneumologie</div>
+          <h3><a href="weiss.html">Dr. med. Timo Weiß</a></h3>
+          <p>Spezialist für Atemwegserkrankungen und allergologische Diagnostik. Engagiert sich für innovative Therapieansätze und patientenorientierte Medizin.</p>
+        </div>
+      </div>
+
+      <div class="doctor-card" onclick="window.location.href='deRoux.html'">
+        <img src="AndresDeRoux.webp" alt="Dr. med. Andrés de Roux">
+        <div class="doctor-card-content">
+          <div class="doctor-title">Facharzt für Pneumologie</div>
+          <h3><a href="deRoux.html">Dr. med. Andrés de Roux</a></h3>
+          <p>Spezialisiert auf Lungenfunktionsprüfungen und Schlafmedizin. Mit großer klinischer Erfahrung und Leidenschaft für eine ganzheitliche Patientenversorgung.</p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>

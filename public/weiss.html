@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. med. Timo Weiß – Praxis am Schloss</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .back-link {
+      display: inline-block;
+      color: #0071c2;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #004a7f;
+      transform: translateX(-4px);
+    }
+
+    .doctor-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .doctor-detail img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 74, 127, 0.1);
+    }
+
+    .doctor-info h3 {
+      color: #0071c2;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .doctor-info p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .qualifications {
+      background: #f8fbff;
+      border-left: 4px solid #004a7f;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-top: 2rem;
+    }
+
+    .qualifications h4 {
+      color: #004a7f;
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .qualifications ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .qualifications li {
+      padding: 0.5rem 0;
+      color: #333;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .qualifications li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0071c2;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .doctor-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .doctor-detail img {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <nav>
+      <ul id="main-nav">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a 
+            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >Onlinetermine</a>
+        </li>
+        <li><a href="leistung.html">Leistung</a></li>
+        <li><a href="aerzte.html">Ärzte</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="finden.html">So finden Sie uns</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <a href="aerzte.html" class="back-link">← Zurück zu den Ärzten</a>
+    <h2>Dr. med. Timo Weiß</h2>
+    
+    <div class="doctor-detail">
+      <img src="weiss.jpg" alt="Dr. med. Timo Weiß">
+      
+      <div class="doctor-info">
+        <h3>Facharzt für Pneumologie und Allergologie</h3>
+        
+        <p>
+          Dr. med. Timo Weiß ist Facharzt für Pneumologie mit Spezialisierung auf Atemwegserkrankungen und allergologische Diagnostik. Er engagiert sich leidenschaftlich für innovative Therapieansätze und eine patientenorientierte Medizin, die moderne Erkenntnisse mit individuellem Eingehen auf die Bedürfnisse jedes einzelnen Patienten verbindet.
+        </p>
+
+        <p>
+          Mit seiner Expertise im Bereich Allergien und Asthma-Management hilft Dr. Weiß seinen Patienten, ihre Atemwegserkrankungen optimal zu kontrollieren und ihre Lebensqualität nachhaltig zu verbessern. Sein Interesse für neue therapeutische Entwicklungen ermöglicht es ihm, seinen Patienten die besten verfügbaren Behandlungsoptionen anzubieten.
+        </p>
+
+        <div class="qualifications">
+          <h4>Qualifikationen & Schwerpunkte</h4>
+          <ul>
+            <li>Facharzt für Pneumologie</li>
+            <li>Zusatzbezeichnung Allergologie</li>
+            <li>Spezialisierung auf Asthma und allergische Erkrankungen</li>
+            <li>Atemwegsdiagnostik und -therapie</li>
+            <li>Immunologische Funktionsprüfungen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Praxis am Schloss Charlottenburg
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -7,33 +7,25 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* ==== Eigenes Design für Leistungsspektrum ==== */
-    .leistung-hero {
-      background: linear-gradient(135deg, #e6f2ff, #ffffff);
-      padding: 4rem 2rem;
-      text-align: center;
-      border-bottom: 2px solid rgba(0,74,127,0.1);
+    .leistung-section {
+      padding: 0;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
     }
 
-    .leistung-hero h1 {
+    .leistung-section h2 {
       color: #004a7f;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .leistung-hero p {
-      font-size: 1.1rem;
-      color: #333;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.7;
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 3rem 2rem 1rem;
+      margin: 0;
     }
 
     .leistung-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
-      padding: 4rem 2rem;
+      padding: 2rem 2rem 4rem 2rem;
       background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
     }
 
@@ -104,7 +96,7 @@
       right: -40px;
       width: 100px;
       height: 100px;
-      background: rgba(0, 74, 127, 0.08);
+      background: rgba(0, 84, 153, 0.507);
       border-radius: 50%;
       z-index: 0;
       transition: transform 0.4s ease;
@@ -157,6 +149,15 @@
       font-weight: 500;
     }
 
+    .container p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
     @media (max-width: 600px) {
       .leistung-hero h1 {
         font-size: 2rem;
@@ -180,21 +181,23 @@
         </li>
         <li><a href="leistung.html" class="active">Leistung</a></li>
         <li><a href="aerzte.html">Ärzte</a></li>
-        <li><a href="kontakt.html">Kontakt & Rezeptanfragen</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="finden.html">So finden Sie uns</a></li>
         <li><a href="impressum.html">Impressum</a></li>
       </ul>
     </nav>
   </header>
 
-  <section class="leistung-hero">
-    <h1>Unser Leistungsspektrum</h1>
+  <main class="container">
+    <h2>Unser Leistungsspektrum</h2>
     <p>
-      In unserer Praxis bieten wir ein breites Spektrum pneumologischer und schlafmedizinischer Untersuchungen und Behandlungen an.
+      In unserer Praxis bieten wir ein breites Spektrum pneumologischer und schlafmedizinischer Untersuchungen und Behandlungen an. Von modernen Diagnostikverfahren zur genauen Erfassung Ihrer Lungenfunktion über spezialisierte Schlafmedizin bis hin zu individuellen Schulungs- und Beratungsprogrammen – wir sind Ihre kompetenten Partner für die Gesundheit Ihrer Atemwege.
     </p>
-  </section>
+  </main>
 
-  <section class="leistung-grid">
+  <section class="leistung-section">
+    <h2>Diagnostik</h2>
+    <div class="leistung-grid">
     <div class="leistung-card">
       <h3>Bodyplethysmographie</h3>
       <button class="read-more-btn">Mehr lesen</button>
@@ -235,11 +238,10 @@
 </div>
 
 <div class="leistung-card">
-  <h3>Ergooxymetrie</h3>
+  <h3>Spiroergometrie</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
-    Bei der Ergooxymetrie wird während einer körperlichen Belastung (z. B. Gehen auf dem Laufband) die Sauerstoffsättigung im Blut gemessen. 
-    Diese Untersuchung hilft, die körperliche Belastbarkeit und den Schweregrad einer Atemwegserkrankung zu beurteilen.
+    Bei der Spiroergometrie wird während einer körperlichen Belastung (z. B. Fahrradfahren oder Gehen auf dem Laufband) die Atemgasanalyse durchgeführt, also die Aufnahme von Sauerstoff und die Abgabe von Kohlendioxid gemessen. Diese Untersuchung hilft, die körperliche Leistungsfähigkeit sowie das Zusammenspiel von Herz, Lunge und Stoffwechsel genau zu beurteilen.
   </p>
 </div>
 
@@ -262,11 +264,27 @@
 </div>
 
 <div class="leistung-card">
-  <h3>Polygraphie (Schlafscreening als Kassenleistung)</h3>
+  <h3>Polygraphie & Polysomnografie (Schlafscreening als Kassenleistung)</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
     Die ambulante Polygraphie ist ein Screeningverfahren zur Untersuchung von Schlafapnoe. 
-    Dabei werden während des Schlafs Atmung, Sauerstoffsättigung und Herzfrequenz gemessen – bequem zu Hause mit einem kleinen Messgerät.
+    Dabei werden während des Schlafs Atmung, Sauerstoffsättigung und Herzfrequenz gemessen.</br> Bei der Polysomnografie werden während des Schlafs zusätzlich zur Atmung auch Gehirnaktivität, Augenbewegungen und Muskelspannung aufgezeichnet.
+  </p>
+</div>
+
+<div class="leistung-card">
+  <h3>Onera Schlaflabor für zu Hause</h3>
+  <button class="read-more-btn">Mehr lesen</button>
+  <p>
+   Diese erweiterte Schlafuntersuchung erfolgt bequem in der häuslichen Umgebung und erfasst zusätzlich zu Atmung und Sauerstoffsättigung auch weitere Parameter wie Schlafphasen. Sie ermöglicht eine genauere Beurteilung von Schlafstörungen.
+  </p>
+</div>
+
+<div class="leistung-card">
+  <h3>Blutuntersuchungen & Sputumuntersuchungen</h3>
+  <button class="read-more-btn">Mehr lesen</button>
+  <p>
+    Bei der Blutuntersuchung werden Entzündungswerte, Allergiemarker und ggf. Blutgase bestimmt. Sie geben Hinweise auf Infektionen, allergische Reaktionen oder eine eingeschränkte Sauerstoffversorgung. </br> Bei der Sputumuntersuchung wird abgehusteter Schleim aus den Atemwegen auf Bakterien, Entzündungszeichen oder andere Erreger untersucht. Dies hilft insbesondere bei der Diagnose von Atemwegsinfektionen.
   </p>
 </div>
 
@@ -278,7 +296,12 @@
     Diese Methode ist schmerzfrei, ohne Strahlenbelastung und sehr aussagekräftig.
   </p>
 </div>
+    </div>
+  </section>
 
+  <section class="leistung-section">
+    <h2>Spezialleistungen & Zusatzangebote</h2>
+    <div class="leistung-grid">
 <div class="leistung-card">
   <h3>Kurse / Schulungen (DMP-Programm)</h3>
   <button class="read-more-btn">Mehr lesen</button>
@@ -297,6 +320,14 @@
   </p>
 </div>
 
+<div class="leistung-card">
+  <h3>Berufsgenossenschaftliche Gutachten</h3>
+  <button class="read-more-btn">Mehr lesen</button>
+  <p>
+    Im Rahmen eines BG-Gutachtens erfolgt eine spezialisierte medizinische Beurteilung von Erkrankungen der Lunge und Atemwege im Hinblick auf mögliche berufliche Ursachen. Dabei werden die Lungenfunktion, Befunde und die berufliche Exposition umfassend bewertet.
+  </p>
+</div>
+    </div>
   </section>
 
   <section class="leistung-kooperation">
