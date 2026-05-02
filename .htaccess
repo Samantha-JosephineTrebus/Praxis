@@ -1,0 +1,29 @@
+# Aktiviere PHP Verarbeitung
+<IfModule mod_php.c>
+  AddType application/x-httpd-php .php
+</IfModule>
+
+# Redirect index.html to index.php
+DirectoryIndex index.php index.html
+
+# Sicherheit: Verstecke .json Dateien
+<FilesMatch "\.json$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Sicherheit: Verstecke config.php
+<FilesMatch "config\.php$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

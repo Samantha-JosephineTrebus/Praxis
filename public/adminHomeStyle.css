@@ -139,8 +139,7 @@ form input:focus, form textarea:focus {
 }
 
 /* Buttons */
-form button,
-#save-schedule {
+form button {
   background: linear-gradient(135deg, #004a7f, #0071c2);
   color: #fff;
   border: none;
@@ -151,41 +150,9 @@ form button,
   transition: transform 0.2s ease, background 0.3s ease;
 }
 
-form button:hover,
-#save-schedule:hover {
+form button:hover {
   background: linear-gradient(135deg, #005c9a, #0088e0);
   transform: translateY(-2px);
-}
-
-/* ======== Schichtplan Styling ======== */
-#schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.95rem;
-}
-
-#schedule-table th, #schedule-table td {
-  border: 1px solid rgba(0, 74, 127, 0.2);
-  padding: 0.8rem 1rem;
-  text-align: center;
-  border-radius: 8px;
-}
-
-#schedule-table th {
-  background: rgba(0, 74, 127, 0.15);
-  color: #004a7f;
-}
-
-#schedule-table td[contenteditable="true"] {
-  background: rgba(255, 255, 255, 0.6);
-  cursor: text;
-  transition: background 0.3s ease;
-}
-
-#schedule-table td[contenteditable="true"]:focus {
-  background: #cde7ff;
-  outline: 2px solid #0071c2;
 }
 
 /* ======== Responsive ======== */

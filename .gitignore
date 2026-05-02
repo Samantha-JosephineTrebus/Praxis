@@ -1,0 +1,22 @@
+# Node.js (alte Struktur - nicht mehr nötig)
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Nicht versionieren
+.env
+.env.local
