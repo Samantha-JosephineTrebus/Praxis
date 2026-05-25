@@ -74,96 +74,36 @@ $note = getNote();
         </div>
       <?php endif; ?>
       <div class="hours-card">
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Mo: <?php echo htmlspecialchars($hours['monday_morning']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Mo: <?php echo htmlspecialchars($hours['monday_afternoon']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Di: <?php echo htmlspecialchars($hours['tuesday_morning']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Di: <?php echo htmlspecialchars($hours['tuesday_afternoon']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Mi: <?php echo htmlspecialchars($hours['wednesday_morning']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Mi: <?php echo htmlspecialchars($hours['wednesday_afternoon']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Do: <?php echo htmlspecialchars($hours['thursday_morning']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Do: <?php echo htmlspecialchars($hours['thursday_afternoon']); ?></p>
-        
-        <p><span class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" 
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="6" x2="12" y2="12"></line>
-            <line x1="12" y1="12" x2="16" y2="14"></line>
-          </svg>
-        </span> Fr: <?php echo htmlspecialchars($hours['friday']); ?></p>
-        
+        <?php
+        // Neue Öffnungszeiten-Logik: Jeder Tag einzeln, beide Felder, "und" nur wenn beide befüllt
+        $tage = [
+          'monday' => 'Montag',
+          'tuesday' => 'Dienstag',
+          'wednesday' => 'Mittwoch',
+          'thursday' => 'Donnerstag',
+          'friday' => 'Freitag'
+        ];
+        foreach ($tage as $key => $label) {
+          if ($key === 'friday' && isset($hours['friday']) && trim($hours['friday']) !== '') {
+            // Spezialfall: Freitag nur ein Feld
+            echo '<p><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="12"></line><line x1="12" y1="12" x2="16" y2="14"></line></svg></span> '.$label.': '.htmlspecialchars($hours['friday']).'</p>';
+            continue;
+          }
+          $morgens = trim($hours[$key.'_morning'] ?? '');
+          $nachm = trim($hours[$key.'_afternoon'] ?? '');
+          if ($morgens !== '' || $nachm !== '') {
+            echo '<p><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#004a7f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="6" x2="12" y2="12"></line><line x1="12" y1="12" x2="16" y2="14"></line></svg></span> '.$label.': ';
+            if ($morgens !== '' && $nachm !== '') {
+              echo htmlspecialchars($morgens).' und '.htmlspecialchars($nachm);
+            } elseif ($morgens !== '') {
+              echo htmlspecialchars($morgens);
+            } elseif ($nachm !== '') {
+              echo htmlspecialchars($nachm);
+            }
+            echo '</p>';
+          }
+        }
+        ?>
         <p><a 
                 href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
                 target="_blank" 
@@ -172,13 +112,9 @@ $note = getNote();
               >
               Buche deinen Termin ganz einfach Online über Doctolib!
           </a></p>
-          
-      </div>
     </div>
   </div>
 </section>
-
-
 <!-- Ärzte-Vorstellung -->
    <section class="doctors">
   <h2>Unsere Ärzte</h2>

@@ -83,20 +83,48 @@
     }
 
     .doc-link {
-      display: inline-block;
-      background: linear-gradient(135deg, #004a7f, #0071c2);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 
-    .doc-link:hover {
-      background: linear-gradient(135deg, #005c9a, #0088e0);
-      transform: translateY(-2px);
-    }
+  color: #005c9a;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: color 0.3s ease;
+}
+
+/* animierte Linie */
+.doc-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+
+  width: 0%;
+  height: 2px;
+
+  background: linear-gradient(90deg, #0071c2, #00a6ff);
+  transition: width 0.3s ease;
+}
+
+/* kleiner Pfeil */
+.doc-link span {
+  transition: transform 0.3s ease;
+}
+
+.doc-link:hover {
+  color: #0088e0;
+}
+
+.doc-link:hover::after {
+  width: 100%;
+}
+
+.doc-link:hover span {
+  transform: translateX(4px);
+}
 
     .aktuelle-info {
       background: linear-gradient(135deg, #cde7ff 0%, #b3dbff 100%);
@@ -200,12 +228,10 @@
           <li><strong>Atemwegsinfektionen bei pulmonalen Grunderkrankungen:</strong> Pneumonie, chronische Atemwegsinfekte, Bronchiektasen, Tuberkulose, Lungeninfektionen durch atypische Mykobakterien</li>
           <li><strong>Impfprävention beim Erwachsenen / Senioren:</strong> Insbesondere Influenza, Pneumokokken, Pertussis</li>
           <li><strong>Schlafmedizinische Erkrankungen:</strong> Vor allem aus dem lungenfachärztlichen Bereich (Schnarchen, Tagesmüdigkeit, nächtliche Atemaussetzer), Einleitung und Überprüfung von nächtlichen Beatmungstherapien (CPAP, BIPAP, NIV)</li>
-        </ul>
-
-        <div class="links-section">
-          <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed Publikationen</a>
-          <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ Berlin</a>
-        </div>
+          <li><strong>Publikationen:</strong> Wissenschaftliche Veröffentlichungen und Fachartikel von Dr. de Roux 
+  finden Sie auf <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed</a></li>
+        <li><strong>Engagement:</strong> Dr. de Roux organisiert den Berliner      <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ</a> und fördert damit regelmäßig den fachlichen Austausch und die pneumologische Fortbildung in Berlin.</li>
+</ul>
 
         <div id="aktuelle-info-container" class="aktuelle-info">
           <h4>Aktuelles</h4>
