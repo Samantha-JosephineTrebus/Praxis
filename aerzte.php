@@ -81,7 +81,7 @@
   <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
   <nav>
     <ul id="main-nav">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.php">Home</a></li>
       <li><a 
             href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
             target="_blank" 
@@ -89,12 +89,12 @@
           >
           Onlinetermine
       </a></li>
-      <li><a href="leistung.html">Leistung</a></li>
-      <li><a href="vorbereitung.html">Vor Ihrem Besuch</a></li>
-      <li><a href="aerzte.html" class="active">Ärzte</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-      <li><a href="finden.html">So finden Sie uns</a></li>
-      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="leistung.php">Leistung</a></li>
+      <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
+      <li><a href="aerzte.php" class="active">Ärzte</a></li>
+      <li><a href="kontakt.php">Kontakt</a></li>
+      <li><a href="finden.php">So finden Sie uns</a></li>
+      <li><a href="impressum.php">Impressum</a></li>
     </ul>
   </nav>
 </header>
@@ -103,20 +103,20 @@
     <h2>Unser Ärzteteam</h2>
     
     <div class="doctors-grid">
-      <div class="doctor-card" onclick="window.location.href='weiss.html'">
+      <div class="doctor-card" onclick="window.location.href='weiss.php'">
         <img src="public/TimoWeiß.jpg" alt="Timo Weiß">
         <div class="doctor-card-content">
           <div class="doctor-title">Facharzt für Pneumologie</div>
-          <h3><a href="weiss.html">Timo Weiß</a></h3>
+          <h3><a href="weiss.php">Timo Weiß</a></h3>
           <p>Spezialist für Atemwegserkrankungen und allergologische Diagnostik. Engagiert sich für innovative Therapieansätze und patientenorientierte Medizin.</p>
         </div>
       </div>
 
-      <div class="doctor-card" onclick="window.location.href='deRoux.html'">
+      <div class="doctor-card" onclick="window.location.href='deRoux.php'">
         <img src="public/AndresDeRoux.webp" alt="Dr. med. Andrés de Roux">
         <div class="doctor-card-content">
           <div class="doctor-title">Facharzt für Pneumologie</div>
-          <h3><a href="deRoux.html">Dr. med. Andrés de Roux</a></h3>
+          <h3><a href="deRoux.php">Dr. med. Andrés de Roux</a></h3>
           <p>Spezialisiert auf Lungenfunktionsprüfungen und Schlafmedizin. Mit großer klinischer Erfahrung und Leidenschaft für eine ganzheitliche Patientenversorgung.</p>
         </div>
       </div>

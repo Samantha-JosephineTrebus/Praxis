@@ -27,12 +27,12 @@ $note = getNote();
             >
             Onlinetermine
         </a></li>
-        <li><a href="leistung.html">Leistung</a></li>
-        <li><a href="vorbereitung.html">Vor Ihrem Besuch</a></li>
-        <li><a href="aerzte.html">Ärzte</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="finden.html">So finden Sie uns</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="leistung.php">Leistung</a></li>
+        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
+        <li><a href="aerzte.php">Ärzte</a></li>
+        <li><a href="kontakt.php">Kontakt</a></li>
+        <li><a href="finden.php">So finden Sie uns</a></li>
+        <li><a href="impressum.php">Impressum</a></li>
       </ul>
     </nav>
   </header>
@@ -226,15 +226,11 @@ $note = getNote();
     </div>
   </div>
 </section>
-
-  <footer>
-    <p>&copy; 2024 Pneumologische Praxis am Schloss Charlottenburg. Alle Rechte vorbehalten.</p>
-    <p>
-      <a href="impressum.html">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
-    </p>
-  </footer>
-
 </main>
+
+ <footer>
+    &copy; 2025 Praxis am Schloss Charlottenburg
+  </footer>
 
 <script src="main.js"></script>
 

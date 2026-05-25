@@ -103,7 +103,7 @@
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
     <nav>
       <ul id="main-nav">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li>
           <a 
             href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
@@ -111,18 +111,18 @@
             rel="noopener noreferrer"
           >Onlinetermine</a>
         </li>
-        <li><a href="leistung.html">Leistung</a></li>
-        <li><a href="vorbereitung.html">Vor Ihrem Besuch</a></li>
-        <li><a href="aerzte.html">Ärzte</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="finden.html">So finden Sie uns</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="leistung.php">Leistung</a></li>
+        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
+        <li><a href="aerzte.php">Ärzte</a></li>
+        <li><a href="kontakt.php">Kontakt</a></li>
+        <li><a href="finden.php">So finden Sie uns</a></li>
+        <li><a href="impressum.php">Impressum</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <a href="aerzte.html" class="back-link">← Zurück zu den Ärzten</a>
+    <a href="aerzte.php" class="back-link">← Zurück zu den Ärzten</a>
     <h2>Timo Weiß</h2>
     
     <div class="doctor-detail">

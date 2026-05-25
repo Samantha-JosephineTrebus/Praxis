@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     <ul id="nav-list">
         <li><a href="#info-anpassen">Aktuelle Informationen</a></li>
         <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+         <li><a href="index.php" class="active">Home</a></li>
         <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </nav>
