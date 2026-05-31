@@ -182,16 +182,37 @@ $deroux_data = getDerouxText();
       width: 100%;
     }
 
-    /* ===== Aktuelles Kasten modernisiert ===== */
+   /* ===== Aktuelles Kasten im Haftnotiz-Look ===== */
     .aktuelle-info {
-      background: linear-gradient(135deg, #f0f7ff 0%, #e2efff 100%);
-      border: 1px solid rgba(0, 74, 127, 0.15);
-      border-left: 6px solid #004a7f;
-      padding: 2rem;
-      border-radius: 14px;
-      margin-top: 3rem;
-      color: #002a4d;
-      box-shadow: 0 4px 15px rgba(0, 74, 127, 0.04);
+    color: #002a4d;
+  background: linear-gradient(135deg, #cde7ff 0%, #b3dbff 100%);
+  border-left: 6px solid #004a7f;
+  box-shadow: 0 8px 20px rgba(0, 74, 127, 0.15);
+  padding: 1.2rem 1.5rem;
+  border-radius: 10px;
+  max-width: 420px;
+  position: relative;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .aktuelle-info:hover {
+        transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 74, 127, 0.25);
+    }
+
+    /* Das Tesafilm-Element */
+    .aktuelle-info::after {
+        content: "";
+  position: absolute;
+  top: -12px;
+  left: 42%;
+  width: 40px;
+  height: 20px;
+  background: rgba(0, 74, 127, 0.2);
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  border-radius: 2px;
+}
     }
 
 /* ===== Moderner, animierter Zurück-Button ===== */
@@ -274,9 +295,40 @@ $deroux_data = getDerouxText();
       box-shadow: 0 5px 15px rgba(0, 113, 194, 0.25);
     }
 
-    /* Responsive Anpassung für Mobilgeräte */
+/* ===== Responsive Anpassung ===== */
+    
+    /* 1. Basis-Struktur (Mobil zuerst) */
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 3rem;
+    }
+
+    /* 2. Desktop-Anpassung (ab 1024px) */
+    @media (min-width: 1024px) {
+      .content-wrapper {
+        flex-direction: row; /* Jetzt erst werden sie nebeneinander gesetzt */
+        align-items: flex-start;
+      }
+
+      .doctor-info-body {
+        flex: 2;
+        padding: 0; 
+      }
+      
+      .aktuelle-info {
+        flex: 1;
+        margin-top: 0 !important;
+      }
+    }
+
+    /* 3. Anpassungen für kleinere Screens */
     @media (max-width: 768px) {
       .doctor-info-body {
+        padding: 1.5rem;
+      }
+      .content-wrapper {
         padding: 1.5rem;
       }
       .doctor-profile-header h2 {
@@ -342,7 +394,7 @@ $deroux_data = getDerouxText();
         <div class="doctor-subtitle">Facharzt für Innere Medizin, Schwerpunkt Pneumologie</div>
       </div>
       
-      <div class="doctor-info-body">
+      <div class="content-wrapper"> <div class="doctor-info-body">
         <p><strong>Zusatzbezeichnungen:</strong> Infektiologie und Somnologie</p>
 
         <h4>Tätigkeitsschwerpunkte</h4>
@@ -353,7 +405,7 @@ $deroux_data = getDerouxText();
           <li><strong>Publikationen:</strong> Wissenschaftliche Veröffentlichungen und Fachartikel von Dr. de Roux finden Sie auf <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed</a></li>
           <li><strong>Engagement:</strong> Dr. de Roux organisiert den Berliner <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ</a> und fördert damit regelmäßig den fachlichen Austausch und die pneumologische Fortbildung in Berlin.</li>
         </ul>
-
+</div>
         <div id="aktuelle-info-container" class="aktuelle-info">
           <h4>Aktuelles</h4>
           <p id="aktuelle-info-text"><?php echo nl2br(htmlspecialchars($deroux_data['text'])); ?></p>
@@ -362,7 +414,7 @@ $deroux_data = getDerouxText();
             <a href="admin.php#deroux-anpassen" class="edit-btn">Bearbeiten</a>
           <?php endif; ?>
         </div>
-      </div>
+      
     </div>
   </main>
 
