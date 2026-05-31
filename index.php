@@ -114,7 +114,7 @@ $note = getNote();
     /* ===== Custom Styles für die Ärzte-Sektion im Glass-Look mit Custom-Hintergrund ===== */
     .doctors {
       margin: 4rem 0;
-      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('public/test.jpg') no-repeat center center;
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('public/praxis.jpg') no-repeat center center;
       background-size: cover;
       background-attachment: scroll;
       padding: 4rem 2rem;
@@ -326,18 +326,20 @@ $note = getNote();
 </header>
 
   <main class="container">
-  
+ 
+  <?php if (isLoggedIn()): ?>
     <section class="admin-dashboard-bar">
-    <div class="admin-info">
-        <span>✅ Eingeloggt als <strong>Administrator</strong></span>
-    </div>
-    <div class="admin-actions">
-        <a href="admin.php" class="admin-btn panel">⚙️ Admin-Panel</a>
-        <a href="logout.php" class="admin-btn logout">🚪 Logout</a>
-    </div>
-</section>
+      <div class="admin-info">
+          <span>✅ Eingeloggt als <strong>Administrator</strong></span>
+      </div>
+      <div class="admin-actions">
+          <a href="admin.php" class="admin-btn panel">⚙️ Admin-Panel</a>
+          <a href="logout.php" class="admin-btn logout">🚪 Logout</a>
+      </div>
+    </section>
+  <?php endif; ?>
 
-    <section class="intro-section">
+  <section class="intro-section">
       <div class="intro-left">
         <div class="welcome">
           <h1>Willkommen in unserer Praxis</h1>

@@ -119,10 +119,24 @@ function saveJSONData($fileKey, $data) {
     }
     return false;
 }
-// Logout
 function logout() {
-    session_destroy();
-    header('Location: index.php');
-    exit;
+    // Da session_start() in der config.php bereits gelaufen ist, 
+    // müssen wir es hier NICHT erneut aufrufen.
+    
+    $_SESSION = array(); // Session-Variablen löschen
+    
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 3600,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+    
+    session_destroy(); // Session zerstören
+    
+    // Weiterleitung
+    header("Location: http://" . $_SERVER['HTTP_HOST'] . "/index.php");
+exit();
 }
 ?>
