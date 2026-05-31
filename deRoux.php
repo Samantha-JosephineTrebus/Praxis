@@ -6,12 +6,33 @@
   <title>Dr. med. Andrés de Roux – Praxis am Schloss</title>
   <link rel="stylesheet" href="public/style.css">
   <style>
+    /* ===== KORREKTUR: Footer immer unten halten ===== */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    main.container {
+      flex: 1 0 auto; /* Schiebt den Footer bei wenig Inhalt nach ganz unten */
+      padding-bottom: 4rem;
+    }
+
+    footer {
+      flex-shrink: 0;
+    }
+
+    /* ===== Zurück-Link Styling ===== */
     .back-link {
       display: inline-block;
       color: #0071c2;
       text-decoration: none;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
@@ -20,168 +41,240 @@
       transform: translateX(-4px);
     }
 
-    .doctor-detail {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-      margin-top: 2rem;
+    /* ===== Einspaltiges Fokus-Layout ohne Bild ===== */
+    .doctor-detail-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 2px solid rgba(0, 74, 127, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 74, 127, 0.06);
+      overflow: hidden;
     }
 
-    .doctor-detail img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0, 74, 127, 0.1);
+    /* Personalisierter Profil-Header mit Monogramm */
+    .doctor-profile-header {
+      background: linear-gradient(135deg, #f3f8ff 0%, #e6f2ff 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 74, 127, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
     }
 
-    .doctor-info {
-      padding-right: 1rem;
-    }
-
-    .doctor-info h3 {
-      color: #0071c2;
-      font-size: 0.95rem;
-      font-weight: 600;
+    .doctor-large-initials {
+      width: 90px;
+      height: 90px;
+      background: #ffffff;
+      border: 3px solid #004a7f;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 74, 127, 0.1);
+      color: #004a7f;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
       margin-bottom: 0.5rem;
     }
 
-    .doctor-info p {
-      font-size: 1rem;
-      color: #333;
-      line-height: 1.8;
-      margin-bottom: 1rem;
+    .doctor-profile-header h2 {
+      margin: 0 !important;
+      font-size: 2.2rem;
+      color: #004a7f;
     }
 
-    .doctor-info ul {
+    .doctor-subtitle {
+      background: rgba(0, 74, 127, 0.08);
+      color: #004a7f;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 0.5rem;
+    }
+
+    /* Inhaltsbereich */
+    .doctor-info-body {
+      padding: 3rem;
+    }
+
+    .doctor-info-body p {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .doctor-info-body h4 {
+      color: #004a7f;
+      font-size: 1.3rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      border-bottom: 2px solid #e6f2ff;
+      padding-bottom: 0.5rem;
+    }
+
+    .doctor-info-body ul {
       list-style: none;
       padding: 0;
       margin: 1.5rem 0;
     }
 
-    .doctor-info li {
+    .doctor-info-body li {
       color: #333;
+      font-size: 1.05rem;
       line-height: 1.8;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       position: relative;
-      padding-left: 1.5rem;
+      padding-left: 1.8rem;
     }
 
-    .doctor-info li::before {
+    .doctor-info-body li::before {
       content: "•";
       position: absolute;
       left: 0;
       color: #0071c2;
       font-weight: bold;
+      font-size: 1.3rem;
+      top: -2px;
     }
 
-    .links-section {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
+    /* Links im Fließtext */
     .doc-link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      color: #005c9a;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
 
-  color: #005c9a;
-  text-decoration: none;
-  font-weight: 600;
+    .doc-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #0071c2, #00a6ff);
+      transition: width 0.3s ease;
+    }
 
-  transition: color 0.3s ease;
-}
+    .doc-link:hover {
+      color: #0088e0;
+    }
 
-/* animierte Linie */
-.doc-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
+    .doc-link:hover::after {
+      width: 100%;
+    }
 
-  width: 0%;
-  height: 2px;
-
-  background: linear-gradient(90deg, #0071c2, #00a6ff);
-  transition: width 0.3s ease;
-}
-
-/* kleiner Pfeil */
-.doc-link span {
-  transition: transform 0.3s ease;
-}
-
-.doc-link:hover {
-  color: #0088e0;
-}
-
-.doc-link:hover::after {
-  width: 100%;
-}
-
-.doc-link:hover span {
-  transform: translateX(4px);
-}
-
+    /* ===== Aktuelles Kasten modernisiert ===== */
     .aktuelle-info {
-      background: linear-gradient(135deg, #cde7ff 0%, #b3dbff 100%);
+      background: linear-gradient(135deg, #f0f7ff 0%, #e2efff 100%);
+      border: 1px solid rgba(0, 74, 127, 0.15);
       border-left: 6px solid #004a7f;
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-top: 2rem;
+      padding: 2rem;
+      border-radius: 14px;
+      margin-top: 3rem;
       color: #002a4d;
+      box-shadow: 0 4px 15px rgba(0, 74, 127, 0.04);
+    }
+
+/* ===== Moderner, animierter Zurück-Button ===== */
+    .back-link-wrapper {
+      margin-bottom: 2rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #004a7f;
+      background: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(0, 74, 127, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 74, 127, 0.04);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .back-link svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      background: #004a7f;
+      border-color: #004a7f;
+      box-shadow: 0 6px 15px rgba(0, 74, 127, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .back-link:hover svg {
+      transform: translateX(-4px);
     }
 
     .aktuelle-info h4 {
-      margin-top: 0;
+      margin-top: 0 !important;
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
       color: #004a7f;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem !important;
     }
 
     .aktuelle-info p {
       margin-bottom: 0;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      color: #222;
+      line-height: 1.6;
     }
 
     .edit-btn {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       background: #004a7f;
       color: #fff;
       border: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 0.75rem;
-      transition: background 0.3s ease;
+      margin-top: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(0, 74, 127, 0.15);
+      transition: all 0.3s ease;
     }
 
     .edit-btn:hover {
       background: #0071c2;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(0, 113, 194, 0.25);
     }
 
+    /* Responsive Anpassung für Mobilgeräte */
     @media (max-width: 768px) {
-      .doctor-detail {
-        grid-template-columns: 1fr;
+      .doctor-info-body {
+        padding: 1.5rem;
       }
-
-      .doctor-detail img {
-        max-width: 100%;
-      }
-
-      .doctor-info {
-        padding-right: 0;
-      }
-
-      .links-section {
-        flex-direction: column;
-      }
-
-      .doc-link {
-        text-align: center;
+      .doctor-profile-header h2 {
+        font-size: 1.8rem;
       }
     }
   </style>
@@ -212,26 +305,26 @@
 
   <main class="container">
     <a href="aerzte.php" class="back-link">← Zurück zu den Ärzten</a>
-    <h2>Dr. med. Andrés de Roux</h2>
     
-    <div class="doctor-detail">
-      <img src="public/AndresDeRoux.webp" alt="Dr. med. Andrés de Roux">
+    <div class="doctor-detail-container">
+      <div class="doctor-profile-header">
+        <div class="doctor-large-initials">AR</div>
+        <h2>Dr. med. Andrés de Roux</h2>
+        <div class="doctor-subtitle">Facharzt für Innere Medizin, Schwerpunkt Pneumologie</div>
+      </div>
       
-      <div class="doctor-info">
-        <h3>Facharzt für Innere Medizin, Schwerpunkt Pneumologie</h3>
-        
+      <div class="doctor-info-body">
         <p><strong>Zusatzbezeichnungen:</strong> Infektiologie und Somnologie</p>
 
-        <h4 style="color: #004a7f; font-size: 1.1rem; margin-top: 1.5rem;">Tätigkeitsschwerpunkte</h4>
+        <h4>Tätigkeitsschwerpunkte</h4>
         
         <ul>
           <li><strong>Atemwegsinfektionen bei pulmonalen Grunderkrankungen:</strong> Pneumonie, chronische Atemwegsinfekte, Bronchiektasen, Tuberkulose, Lungeninfektionen durch atypische Mykobakterien</li>
           <li><strong>Impfprävention beim Erwachsenen / Senioren:</strong> Insbesondere Influenza, Pneumokokken, Pertussis</li>
           <li><strong>Schlafmedizinische Erkrankungen:</strong> Vor allem aus dem lungenfachärztlichen Bereich (Schnarchen, Tagesmüdigkeit, nächtliche Atemaussetzer), Einleitung und Überprüfung von nächtlichen Beatmungstherapien (CPAP, BIPAP, NIV)</li>
-          <li><strong>Publikationen:</strong> Wissenschaftliche Veröffentlichungen und Fachartikel von Dr. de Roux 
-  finden Sie auf <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed</a></li>
-        <li><strong>Engagement:</strong> Dr. de Roux organisiert den Berliner      <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ</a> und fördert damit regelmäßig den fachlichen Austausch und die pneumologische Fortbildung in Berlin.</li>
-</ul>
+          <li><strong>Publikationen:</strong> Wissenschaftliche Veröffentlichungen und Fachartikel von Dr. de Roux finden Sie auf <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed</a></li>
+          <li><strong>Engagement:</strong> Dr. de Roux organisiert den Berliner <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ</a> und fördert damit regelmäßig den fachlichen Austausch und die pneumologische Fortbildung in Berlin.</li>
+        </ul>
 
         <div id="aktuelle-info-container" class="aktuelle-info">
           <h4>Aktuelles</h4>
@@ -243,7 +336,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Praxis am Schloss Charlottenburg
+    &copy; 2026 Praxis am Schloss Charlottenburg
   </footer>
   <script src="main.js"></script>
   <script>
