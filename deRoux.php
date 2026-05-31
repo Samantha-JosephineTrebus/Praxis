@@ -1,3 +1,8 @@
+<?php
+// 1. PHP MUSS GANZ OBEN STEHEN
+require_once 'config.php';
+$deroux_data = getDerouxText();
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -246,6 +251,7 @@
       font-size: 1rem;
       color: #222;
       line-height: 1.6;
+      padding-bottom: 1rem;
     }
 
     .edit-btn {
@@ -256,7 +262,7 @@
       padding: 0.5rem 1rem;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 1.2rem;
+      margin-top: 2.2rem;
       font-weight: 600;
       box-shadow: 0 3px 10px rgba(0, 74, 127, 0.15);
       transition: all 0.3s ease;
@@ -281,27 +287,50 @@
 </head>
 <body>
   <header>
+
     <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+
     <nav>
+
       <ul id="main-nav">
+
         <li><a href="index.php">Home</a></li>
+
         <li>
-          <a 
-            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
-            target="_blank" 
+
+          <a
+
+            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral"
+
+            target="_blank"
+
             rel="noopener noreferrer"
+
           >Onlinetermine</a>
+
         </li>
+
         <li><a href="leistung.php">Leistung</a></li>
+
         <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
+
         <li><a href="aerzte.php">Ärzte</a></li>
+
         <li><a href="kontakt.php">Kontakt</a></li>
+
         <li><a href="finden.php">So finden Sie uns</a></li>
+
         <li><a href="impressum.php">Impressum</a></li>
+
       </ul>
+
     </nav>
+
   </header>
+
+
 
   <main class="container">
     <a href="aerzte.php" class="back-link">← Zurück zu den Ärzten</a>
@@ -317,7 +346,6 @@
         <p><strong>Zusatzbezeichnungen:</strong> Infektiologie und Somnologie</p>
 
         <h4>Tätigkeitsschwerpunkte</h4>
-        
         <ul>
           <li><strong>Atemwegsinfektionen bei pulmonalen Grunderkrankungen:</strong> Pneumonie, chronische Atemwegsinfekte, Bronchiektasen, Tuberkulose, Lungeninfektionen durch atypische Mykobakterien</li>
           <li><strong>Impfprävention beim Erwachsenen / Senioren:</strong> Insbesondere Influenza, Pneumokokken, Pertussis</li>
@@ -328,8 +356,11 @@
 
         <div id="aktuelle-info-container" class="aktuelle-info">
           <h4>Aktuelles</h4>
-          <p id="aktuelle-info-text">Keine aktuellen Informationen verfügbar.</p>
-          <button class="edit-btn" onclick="editAktuelleInfo()">Bearbeiten</button>
+          <p id="aktuelle-info-text"><?php echo nl2br(htmlspecialchars($deroux_data['text'])); ?></p>
+          
+          <?php if (isAdminLoggedIn()): ?>
+            <a href="admin.php#deroux-anpassen" class="edit-btn">Bearbeiten</a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -339,26 +370,5 @@
     &copy; 2026 Praxis am Schloss Charlottenburg
   </footer>
   <script src="main.js"></script>
-  <script>
-    // Laden der aktuellen Informationen beim Seitenaufruf
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedInfo = localStorage.getItem('deRoux-aktuelle-info');
-      if (savedInfo) {
-        document.getElementById('aktuelle-info-text').innerText = savedInfo;
-      }
-    });
-
-    // Funktion zum Bearbeiten der aktuellen Informationen
-    function editAktuelleInfo() {
-      const currentText = document.getElementById('aktuelle-info-text').innerText;
-      const newText = prompt('Aktuelle Informationen bearbeiten:', currentText);
-      
-      if (newText !== null) {
-        document.getElementById('aktuelle-info-text').innerText = newText;
-        localStorage.setItem('deRoux-aktuelle-info', newText);
-        alert('Informationen gespeichert!');
-      }
-    }
-  </script>
 </body>
 </html>

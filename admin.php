@@ -10,7 +10,18 @@ if (!isAdminLoggedIn()) {
 // Öffnungszeiten und Haftnotiz laden
 $hours = getHours();
 $note = getNote();
+$deroux_data = getDerouxText();
 
+// Speichern von Dr. de Roux Text
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_deroux_text') {
+    $newData = ['text' => $_POST['deroux_text']];
+    if (saveDerouxText($newData)) {
+        $success_deroux = 'Profiltext erfolgreich gespeichert!';
+        $deroux_data = $newData; // Aktualisiert anzeigen
+    } else {
+        $error_deroux = 'Fehler beim Speichern!';
+    }
+}
 // Speichern von Öffnungszeiten
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_hours') {
     $hours = [
@@ -45,6 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $error_note = 'Fehler beim Speichern!';
     }
 }
+// Speichern von Dr. de Roux Text
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_deroux_text') {
+    // Da deine anderen Daten auch in einer JSON liegen, 
+    // nehmen wir an, du hast eine Funktion wie saveJSONData('deroux', $text)
+    $newData = $_POST['deroux_text']; 
+    
+    if (saveJSONData('deroux_content', ['text' => $newData])) {
+        $success_deroux = 'Text erfolgreich gespeichert!';
+    } else {
+        $error_deroux = 'Fehler beim Speichern!';
+    }
+}
+
+// Daten vor dem Laden der Seite abrufen (für das Textarea-Feld)
+$deroux_data = getJSONData('deroux_content'); // Deine Funktion zum Auslesen der JSON
+$current_deroux_text = $deroux_data['text'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -63,7 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     <ul id="nav-list">
         <li><a href="#info-anpassen">Aktuelle Informationen</a></li>
         <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-         <li><a href="index.php" class="active">Home</a></li>
+        <li><a href="#deroux-text">Dr. de Roux Text</a></li>
+        <li><a href="index.php" class="active">Home</a></li>
         <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </nav>
@@ -149,7 +177,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
       <?php endif; ?>
     </form>
   </article>
-
+<article id="deroux-anpassen">
+    <h2>Dr. de Roux Profiltext</h2>
+    <p>Bearbeiten Sie hier den Text für das Profil von Dr. de Roux.</p>
+    
+    <form method="POST" action="admin.php#deroux-anpassen">
+      <input type="hidden" name="action" value="save_deroux_text">
+      
+      <label>Profiltext:</label>
+      <textarea name="deroux_text" rows="8" required><?php echo htmlspecialchars($current_deroux_text); ?></textarea>
+      
+      <button type="submit">Profiltext speichern</button>
+      
+      <?php if (isset($success_deroux)): ?>
+        <p style="color: #4caf50; font-weight: bold; margin-top: 1rem;">✓ <?php echo $success_deroux; ?></p>
+      <?php elseif (isset($error_deroux)): ?>
+        <p style="color: #d32f2f; font-weight: bold; margin-top: 1rem;">✗ <?php echo $error_deroux; ?></p>
+      <?php endif; ?>
+    </form>
+  </article>
 </main>
 
 </body>

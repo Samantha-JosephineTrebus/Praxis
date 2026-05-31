@@ -13,6 +13,7 @@ define('SECRET_KEY', 'geheimer_schluessel_praxis');
 define('DATA_DIR', __DIR__ . '/data/');
 define('HOURS_FILE', DATA_DIR . 'hours.json');
 define('NOTE_FILE', DATA_DIR . 'note.json');
+define('DEROUX_FILE', DATA_DIR . 'deroux.json');
 
 // Stelle sicher, dass data Ordner existiert
 if (!is_dir(DATA_DIR)) {
@@ -73,6 +74,51 @@ function isLoggedIn() {
     return isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true;
 }
 
+// Standardtext für Dr. de Roux (falls Datei nicht existiert)
+$DEFAULT_DEROUX = [
+    'text' => 'Spezialist für Pneumologie und Schlafmedizin, mit langjähriger Erfahrung.'
+];
+
+// Text für Dr. de Roux laden
+function getDerouxText() {
+    if (file_exists(DEROUX_FILE)) {
+        return json_decode(file_get_contents(DEROUX_FILE), true);
+    }
+    return $GLOBALS['DEFAULT_DEROUX'];
+}
+
+// Text für Dr. de Roux speichern
+function saveDerouxText($data) {
+    return file_put_contents(DEROUX_FILE, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+}
+// Allgemeine Funktion zum Laden beliebiger JSON-Dateien
+function getJSONData($fileKey) {
+    // Definiere hier, wo die Dateien liegen
+    $files = [
+        'hours' => HOURS_FILE,
+        'note' => NOTE_FILE,
+        'deroux_content' => DEROUX_FILE
+    ];
+
+    if (isset($files[$fileKey]) && file_exists($files[$fileKey])) {
+        return json_decode(file_get_contents($files[$fileKey]), true);
+    }
+    return []; // Gibt ein leeres Array zurück, wenn nichts gefunden wurde
+}
+
+// Allgemeine Funktion zum Speichern beliebiger JSON-Dateien
+function saveJSONData($fileKey, $data) {
+    $files = [
+        'hours' => HOURS_FILE,
+        'note' => NOTE_FILE,
+        'deroux_content' => DEROUX_FILE
+    ];
+
+    if (isset($files[$fileKey])) {
+        return file_put_contents($files[$fileKey], json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    }
+    return false;
+}
 // Logout
 function logout() {
     session_destroy();

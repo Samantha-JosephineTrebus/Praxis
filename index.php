@@ -228,7 +228,66 @@ $note = getNote();
       color: #0071c2;
       gap: 0.6rem;
     }
+/* Unsichtbarer Login-Bereich */
+.login-trigger-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px; /* Trefferfläche von 50x50px oben rechts */
+    height: 50px;
+    z-index: 9999;
+    opacity: 0; /* Komplett unsichtbar */
+    cursor: default; /* Kein Cursor-Wechsel */
+}
+.admin-dashboard-bar {
+    background: #ffffff;
+    border-bottom: 2px solid #004a7f;
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
 
+.admin-info {
+    color: #004a7f;
+    font-size: 0.9rem;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.admin-btn {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.admin-btn.panel {
+    background: #004a7f;
+    color: white;
+}
+
+.admin-btn.panel:hover {
+    background: #0071c2;
+}
+
+.admin-btn.logout {
+    background: #f8f9fa;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+}
+
+.admin-btn.logout:hover {
+    background: #d32f2f;
+    color: white;
+}
     /* Responsive Anpassung für Mobile */
     @media (max-width: 768px) {
       header .logo {
@@ -243,6 +302,8 @@ $note = getNote();
 </head>
 <body>
  <header>
+  <a href="login.php" class="login-trigger-area" title="Login"></a>
+
     <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
     <nav id="nav-container">
@@ -266,15 +327,15 @@ $note = getNote();
 
   <main class="container">
   
-    <section class="login-section">
-      <?php if (isAdminLoggedIn()): ?>
-        <span style="color: #004a7f; font-weight: 600; margin-right: 1rem;">Admin</span>
-        <a href="admin.php" class="login-btn">⚙️ Admin-Panel</a>
-        <a href="logout.php" class="login-btn" style="background: #ff6b6b;">🚪 Logout</a>
-      <?php else: ?>
-        <a href="login.php" class="login-btn">🔐 Anmelden</a>
-      <?php endif; ?>
-    </section>
+    <section class="admin-dashboard-bar">
+    <div class="admin-info">
+        <span>✅ Eingeloggt als <strong>Administrator</strong></span>
+    </div>
+    <div class="admin-actions">
+        <a href="admin.php" class="admin-btn panel">⚙️ Admin-Panel</a>
+        <a href="logout.php" class="admin-btn logout">🚪 Logout</a>
+    </div>
+</section>
 
     <section class="intro-section">
       <div class="intro-left">
