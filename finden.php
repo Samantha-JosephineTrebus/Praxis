@@ -8,27 +8,26 @@
 </head>
 <body>
   <header>
-  <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
-  <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
-  <nav>
-    <ul id="main-nav">
-      <li><a href="index.php" class="active">Home</a></li>
-      <li><a 
-            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-          Onlinetermine
-      </a></li>
-      <li><a href="leistung.php">Leistung</a></li>
-      <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
-      <li><a href="aerzte.php">Ärzte</a></li>
-      <li><a href="kontakt.php">Kontakt</a></li>
-      <li><a href="finden.php">So finden Sie uns</a></li>
-      <li><a href="impressum.php">Impressum</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <nav>
+      <ul id="main-nav">
+        <li><a href="index.php">Startseite</a></li>
+        <li><a 
+              href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+            Onlinetermine
+        </a></li>
+        <li><a href="leistung.php">Leistung</a></li>
+        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
+        <li><a href="aerzte.php" class="active">Ärzte</a></li>
+        <li><a href="kontakt.php">Kontakt</a></li>
+        <li><a href="finden.php">Anfahrt</a></li>
+      </ul>
+    </nav>
+  </header>
   
 <main class="container">
   <h2 style="margin-bottom: 4rem">Anfahrt</h2>

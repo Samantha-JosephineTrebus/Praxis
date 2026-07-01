@@ -339,53 +339,31 @@ $deroux_data = getDerouxText();
 </head>
 <body>
   <header>
-
     <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
-
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
-
     <nav>
-
       <ul id="main-nav">
-
-        <li><a href="index.php">Home</a></li>
-
-        <li>
-
-          <a
-
-            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral"
-
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-          >Onlinetermine</a>
-
-        </li>
-
+        <li><a href="index.php">Startseite</a></li>
+        <li><a 
+              href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+            Onlinetermine
+        </a></li>
         <li><a href="leistung.php">Leistung</a></li>
-
         <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
-
-        <li><a href="aerzte.php">Ärzte</a></li>
-
+        <li><a href="aerzte.php" class="active">Ärzte</a></li>
         <li><a href="kontakt.php">Kontakt</a></li>
-
-        <li><a href="finden.php">So finden Sie uns</a></li>
-
-        <li><a href="impressum.php">Impressum</a></li>
-
+        <li><a href="finden.php">Anfahrt</a></li>
       </ul>
-
     </nav>
-
   </header>
 
 
 
   <main class="container">
-    <a href="aerzte.php" class="back-link">← Zurück zu den Ärzten</a>
+    <a href="aerzte.php" class="back-link"><svg viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/></svg>Zurück zu den Ärzten</a>
     
     <div class="doctor-detail-container">
       <div class="doctor-profile-header">
