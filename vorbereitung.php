@@ -6,10 +6,27 @@
   <title>Vor Ihrem Besuch – Praxis am Schloss Charlottenburg</title>
   <link rel="stylesheet" href="public/style.css">
   <style>
+    :root {
+      --primary: #004a7f;          /* Petrol/Blau-Grün Akzent */
+      --foreground: #0b1f2a;
+      --muted: #5b6574;
+      --bg: #ffffff;
+      --secondary: #eef6ff;
+      --primary-soft-1: rgba(15, 72, 118, 0.1);
+      --primary-soft-2: rgba(15, 39, 118, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      color: var(--foreground);
+      background: var(--bg);
+    }
+
+  
     /* ==== Eigenes Design für Vorbereitung ==== */
     .vorbereitung-section {
       padding: 0;
-      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+      background: #ffffff;
     }
 
     .vorbereitung-section h2 {
@@ -26,7 +43,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       padding: 2rem 2rem 4rem 2rem;
-      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+      background: #ffffff;
     }
 
     .vorbereitung-card {
@@ -181,14 +198,6 @@
       left: 0;
     }
 
-    .container p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #333;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
 
     @media (max-width: 600px) {
       .vorbereitung-card {
@@ -203,12 +212,17 @@
   </style>
 </head>
 <body>
- <header>
-    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+  <header>
+    <a href="login.php" class="login-trigger-area" title="Login"></a>
+    <a href="/" class="logo praxis-logo">
+  <span class="praxis-logo__title">Pneumologische Praxis</span>
+  <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+</a>
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <?php $current = basename($_SERVER['PHP_SELF']); ?>
     <nav>
       <ul id="main-nav">
-        <li><a href="index.php">Startseite</a></li>
+        <li><a href="index.php" <?php if ($current === 'index.php') echo 'class="active"'; ?>>Startseite</a></li>
         <li><a 
               href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
               target="_blank" 
@@ -216,20 +230,27 @@
             >
             Onlinetermine
         </a></li>
-        <li><a href="leistung.php">Leistung</a></li>
-        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
-        <li><a href="aerzte.php" class="active">Ärzte</a></li>
-        <li><a href="kontakt.php">Kontakt</a></li>
-        <li><a href="finden.php">Anfahrt</a></li>
+        <li><a href="leistung.php" <?php if ($current === 'leistung.php') echo 'class="active"'; ?>>Leistungen</a></li>
+        <li><a href="vorbereitung.php" <?php if ($current === 'vorbereitung.php') echo 'class="active"'; ?>>Vor Ihrem Besuch</a></li>
+        <li><a href="aerzte.php" <?php if ($current === 'aerzte.php') echo 'class="active"'; ?>>Ärzte</a></li>
+        <li><a href="kontakt.php" <?php if ($current === 'kontakt.php') echo 'class="active"'; ?>>Kontakt</a></li>
+        <li><a href="finden.php" <?php if ($current === 'finden.php') echo 'class="active"'; ?>>Anfahrt</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <h2>Vor Ihrem Besuch</h2>
-    <p>
+     <section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Vor Ihrem Besuch</p>
+    <h1 class="hero__title">
+      Schreiben Sie uns – <span class="hero__title-accent">wir hören zu.</span>
+    </h1>
+    <p class="hero__lead">
       Um Ihren Besuch in unserer Praxis optimal vorzubereiten und Zeit zu sparen, möchten wir Ihnen hier wichtige Informationen und hilfreiche Formulare zur Verfügung stellen. Laden Sie gerne die notwendigen Dokumente herunter, füllen Sie diese zuhause aus und bringen Sie diese zu Ihrem Termin mit.
     </p>
+  </div>
+</section>
   </main>
 
   <section class="vorbereitung-section">

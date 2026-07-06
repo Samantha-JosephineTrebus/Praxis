@@ -96,7 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <header>
-    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+     <a href="/" class="logo praxis-logo">
+  <span class="praxis-logo__title">Pneumologische Praxis</span>
+  <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+</a>
   </header>
 
   <main>

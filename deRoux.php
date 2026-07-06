@@ -323,13 +323,21 @@ $deroux_data = getDerouxText();
       }
     }
 
-    /* 3. Anpassungen für kleinere Screens */
-    @media (max-width: 768px) {
+    /* 3. Anpassungen für kleinere Screens (inkl. Tablets) */
+    @media (max-width: 1023px) {
       .doctor-info-body {
         padding: 1.5rem;
       }
       .content-wrapper {
         padding: 1.5rem;
+        /* Auf mobilen Geräten: poste-it (aktuelle-info) oben anzeigen */
+        flex-direction: column-reverse;
+      }
+      /* Auf Tablets und Handys: Aktuelle-Info zentrieren */
+      .aktuelle-info {
+        align-self: center;
+        margin: 0 auto;
+        max-width: 92%;
       }
       .doctor-profile-header h2 {
         font-size: 1.8rem;
@@ -339,11 +347,15 @@ $deroux_data = getDerouxText();
 </head>
 <body>
   <header>
-    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+    <a href="/" class="logo praxis-logo">
+  <span class="praxis-logo__title">Pneumologische Praxis</span>
+  <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+</a>
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <?php $current = basename($_SERVER['PHP_SELF']); ?>
     <nav>
       <ul id="main-nav">
-        <li><a href="index.php">Startseite</a></li>
+        <li><a href="index.php" <?php if ($current === 'index.php') echo 'class="active"'; ?>>Startseite</a></li>
         <li><a 
               href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
               target="_blank" 
@@ -351,11 +363,11 @@ $deroux_data = getDerouxText();
             >
             Onlinetermine
         </a></li>
-        <li><a href="leistung.php">Leistung</a></li>
-        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
-        <li><a href="aerzte.php" class="active">Ärzte</a></li>
-        <li><a href="kontakt.php">Kontakt</a></li>
-        <li><a href="finden.php">Anfahrt</a></li>
+        <li><a href="leistung.php" <?php if ($current === 'leistung.php') echo 'class="active"'; ?>>Leistungen</a></li>
+        <li><a href="vorbereitung.php" <?php if ($current === 'vorbereitung.php') echo 'class="active"'; ?>>Vor Ihrem Besuch</a></li>
+        <li><a href="aerzte.php" <?php if ($current === 'aerzte.php') echo 'class="active"'; ?>>Ärzte</a></li>
+        <li><a href="kontakt.php" <?php if ($current === 'kontakt.php') echo 'class="active"'; ?>>Kontakt</a></li>
+        <li><a href="finden.php" <?php if ($current === 'finden.php') echo 'class="active"'; ?>>Anfahrt</a></li>
       </ul>
     </nav>
   </header>

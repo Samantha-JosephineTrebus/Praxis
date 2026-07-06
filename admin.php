@@ -1,77 +1,54 @@
 <?php
 require_once 'config.php';
 
-// Nur Admin darf hier rein
-if (!isAdminLoggedIn()) {
-    header('Location: login.php');
-    exit;
-}
-
-// Öffnungszeiten und Haftnotiz laden
-$hours = getHours();
-$note = getNote();
-$deroux_data = getDerouxText();
-
-// Speichern von Dr. de Roux Text
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_deroux_text') {
-    $newData = ['text' => $_POST['deroux_text']];
-    if (saveDerouxText($newData)) {
-        $success_deroux = 'Profiltext erfolgreich gespeichert!';
-        $deroux_data = $newData; // Aktualisiert anzeigen
-    } else {
-        $error_deroux = 'Fehler beim Speichern!';
-    }
-}
-// Speichern von Öffnungszeiten
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_hours') {
-    $hours = [
-        'monday_morning' => $_POST['monday_morning'] ?? '',
-        'monday_afternoon' => $_POST['monday_afternoon'] ?? '',
-        'tuesday_morning' => $_POST['tuesday_morning'] ?? '',
-        'tuesday_afternoon' => $_POST['tuesday_afternoon'] ?? '',
-        'wednesday_morning' => $_POST['wednesday_morning'] ?? '',
-        'wednesday_afternoon' => $_POST['wednesday_afternoon'] ?? '',
-        'thursday_morning' => $_POST['thursday_morning'] ?? '',
-        'thursday_afternoon' => $_POST['thursday_afternoon'] ?? '',
-        'friday' => $_POST['friday'] ?? ''
+// Handle POST actions
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $action = $_POST['action'] ?? '';
+  if ($action === 'save_hours') {
+    $hours_input = [
+      'monday_morning' => $_POST['monday_morning'] ?? '',
+      'monday_afternoon' => $_POST['monday_afternoon'] ?? '',
+      'tuesday_morning' => $_POST['tuesday_morning'] ?? '',
+      'tuesday_afternoon' => $_POST['tuesday_afternoon'] ?? '',
+      'wednesday_morning' => $_POST['wednesday_morning'] ?? '',
+      'wednesday_afternoon' => $_POST['wednesday_afternoon'] ?? '',
+      'thursday_morning' => $_POST['thursday_morning'] ?? '',
+      'thursday_afternoon' => $_POST['thursday_afternoon'] ?? '',
+      'friday' => $_POST['friday'] ?? ''
     ];
-    
-    if (saveHours($hours)) {
-        $success_hours = 'Öffnungszeiten erfolgreich gespeichert!';
+    if (function_exists('saveHours') && saveHours($hours_input)) {
+      $success_hours = 'Öffnungszeiten erfolgreich gespeichert!';
     } else {
-        $error_hours = 'Fehler beim Speichern!';
+      $error_hours = 'Fehler beim Speichern!';
     }
-}
-
-// Speichern von Haftnotiz
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_note') {
-    $note = [
-        'title' => $_POST['note_title'] ?? '',
-        'text' => $_POST['note_text'] ?? ''
+  } elseif ($action === 'save_note') {
+    $note_input = [
+      'title' => $_POST['note_title'] ?? '',
+      'text' => $_POST['note_text'] ?? ''
     ];
-    
-    if (saveNote($note)) {
-        $success_note = 'Haftnotiz erfolgreich gespeichert!';
+    if (function_exists('saveNote') && saveNote($note_input)) {
+      $success_note = 'Haftnotiz erfolgreich gespeichert!';
     } else {
-        $error_note = 'Fehler beim Speichern!';
+      $error_note = 'Fehler beim Speichern!';
     }
-}
-// Speichern von Dr. de Roux Text
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_deroux_text') {
-    // Da deine anderen Daten auch in einer JSON liegen, 
-    // nehmen wir an, du hast eine Funktion wie saveJSONData('deroux', $text)
-    $newData = $_POST['deroux_text']; 
-    
-    if (saveJSONData('deroux_content', ['text' => $newData])) {
-        $success_deroux = 'Text erfolgreich gespeichert!';
+  } elseif ($action === 'save_deroux_text') {
+    $newData = $_POST['deroux_text'] ?? '';
+    if (function_exists('saveJSONData') && saveJSONData('deroux_content', ['text' => $newData])) {
+      $success_deroux = 'Text erfolgreich gespeichert!';
     } else {
-        $error_deroux = 'Fehler beim Speichern!';
+      $error_deroux = 'Fehler beim Speichern!';
     }
+  }
 }
 
-// Daten vor dem Laden der Seite abrufen (für das Textarea-Feld)
-$deroux_data = getJSONData('deroux_content'); // Deine Funktion zum Auslesen der JSON
+// Load data for forms
+$hours = function_exists('getHours') ? getHours() : [];
+$note = function_exists('getNote') ? getNote() : ['title' => '', 'text' => ''];
+$deroux_data = function_exists('getJSONData') ? getJSONData('deroux_content') : [];
 $current_deroux_text = $deroux_data['text'] ?? '';
+
+// Current script name for nav highlighting
+$current = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -85,14 +62,19 @@ $current_deroux_text = $deroux_data['text'] ?? '';
 <body>
 
 <header>
-  <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+  <a href="login.php" class="login-trigger-area" title="Login"></a>
+  <a href="/" class="logo praxis-logo">
+    <span class="praxis-logo__title">Pneumologische Praxis</span>
+    <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+  </a>
+  <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
   <nav>
     <ul id="nav-list">
-        <li><a href="#info-anpassen">Aktuelle Informationen</a></li>
-        <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
-        <li><a href="#deroux-text">Dr. de Roux Text</a></li>
-        <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
+      <li><a href="index.php">Startseite</a></li>
+      <li><a href="#oeffnungszeiten">Öffnungszeiten</a></li>
+      <li><a href="#info-anpassen">Aktuelle Informationen</a></li>
+      <li><a href="#deroux-anpassen">Dr. de Roux</a></li>
+      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
     </ul>
   </nav>
 </header>

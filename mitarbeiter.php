@@ -23,7 +23,10 @@ $note = getNote();
 <body>
 
 <header>
-  <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+  <a href="/" class="logo praxis-logo">
+  <span class="praxis-logo__title">Pneumologische Praxis</span>
+  <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+</a>
   <nav>
     <ul id="nav-list">
         <li><a href="index.php">← Zurück zur Startseite</a></li>

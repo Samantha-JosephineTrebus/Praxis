@@ -14,100 +14,6 @@ $note = getNote();
   <link rel="stylesheet" href="public/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
-  /* ===== DURCHGEHENDER BLAUER HEADER (Responsive) ===== */
-    header {
-      background: linear-gradient(135deg, #004a7f 0%, #0071c2 100%);
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
-    header .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      max-width: 90%;
-    }
-
-    /* Menü-Toggle für Mobile */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: 1px solid white;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    nav { width: 100%; }
-
-    header #main-nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    header #main-nav a {
-      color: rgba(255, 255, 255, 0.9);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-
-    /* RESPONSIVE ANPASSUNG */
- /* RESPONSIVE ANPASSUNG (unter 1024px) */
-@media (max-width: 1024px) {
-  header {
-    /* Erzwingt eine Zeile: Logo links, Button rechts */
-    flex-direction: row; 
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-  }
-
-  header .logo {
-    font-size: 1.2rem; /* Etwas kleiner für schmale Bildschirme */
-    margin-bottom: 0;   /* Kein Platz unter dem Logo mehr */
-    text-align: left;
-    max-width: 70%;     /* Platz für den Button lassen */
-  }
-
-  .menu-toggle {
-    display: block;
-    margin-bottom: 0;
-  }
-
-  nav { 
-    display: none; 
-    position: absolute;
-    top: 100%; /* Klappt direkt unter den Header aus */
-    left: 0;
-    width: 100%;
-    background: #004a7f;
-    padding: 1rem 0;
-    z-index: 1000;
-  }
-
-  nav.active { display: block; }
-
-  header #main-nav { 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 1rem; 
-  }
-}
-
     /* ===== Custom Styles für die Ärzte-Sektion im Glass-Look mit Custom-Hintergrund ===== */
     .doctors {
       margin: 4rem 0;
@@ -311,11 +217,14 @@ $note = getNote();
     color: #255994;
 }
 
-.services {
-  margin-top: 2rem; /* vorher wahrscheinlich 4rem oder mehr */
-  padding-top: 2rem;
-  background-color: #ecf5ff
-}
+  .services {
+      margin-top: 2rem;
+      /* full-bleed trick to let the section span the entire viewport width */
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: 2rem 2rem 4rem;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+    }
 
 .intro-modern {
   max-width: 1200px;
@@ -575,13 +484,16 @@ $note = getNote();
 </head>
 <body>
  <header>
-  <a href="login.php" class="login-trigger-area" title="Login"></a>
-
-    <div class="logo">Pneumologische Praxis am Schloss Charlottenburg</div>
+   <a href="login.php" class="login-trigger-area" title="Login"></a>
+   <a href="/" class="logo praxis-logo">
+  <span class="praxis-logo__title">Pneumologische Praxis</span>
+  <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
+</a>
     <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+    <?php $current = basename($_SERVER['PHP_SELF']); ?>
     <nav id="nav-container">
       <ul id="main-nav">
-        <li><a href="index.php" class="active">Startseite</a></li>
+        <li><a href="index.php" <?php if ($current === 'index.php') echo 'class="active"'; ?>>Startseite</a></li>
        <li>
           <a 
             href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
@@ -779,8 +691,7 @@ $note = getNote();
       <p class="intro-description">
         Direkt gegenüber dem Schloss Charlottenburg betreuen Dr. med.
         Andrés de Roux und Timo Weiß ihre Patientinnen und Patienten mit
-        modernster Diagnostik und persönlicher Zuwendung. Wir nehmen uns
-        Zeit — für eine sorgfältige Untersuchung und Ihre Fragen.
+        modernster Diagnostik und persönlicher Zuwendung. Dabei nehmen wir uns ausreichend Zeit für eine sorgfältige Untersuchung sowie für die Beantwortung Ihrer Fragen.
       </p>
 
       <div class="intro-stats">
