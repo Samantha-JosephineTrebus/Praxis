@@ -182,18 +182,19 @@
   </header>
 
   <main class="container">
-    <h2>Unser Ärzteteam</h2>
-    
-    <div class="intro-text-block" style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center; line-height: 1.8;">
-      <p style="font-size: 1.15rem; color: #004a7f; font-weight: 600; margin-bottom: 0.5rem;">
-        Höchste Fachkompetenz für Ihre Lungengesundheit
-      </p>
-      <p style="font-size: 1.05rem; color: #444; margin: 0;">
-        In unserer Praxis am Schloss verbinden wir langjährige klinische Erfahrung mit modernster Diagnostik. 
+    <section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Unser Ärzteteam</p>
+    <h1 class="hero__title">
+      Höchste  <span class="hero__title-accent">Fachkompetenz</span> für Ihre Lungengesundheit <span class="hero__title-accent"></span>
+    </h1>
+    <p class="hero__lead">
+      In unserer Praxis am Schloss verbinden wir langjährige klinische Erfahrung mit modernster Diagnostik. 
         Unser Anspruch ist es, Sie nicht nur medizinisch auf höchstem Niveau zu behandeln, sondern Sie auch 
         menschlich und individuell zu betreuen. Gemeinsam setzen wir uns täglich dafür ein, Ihnen die bestmögliche 
-        Versorgung und spürbare Erleichterung im Alltag zu bieten.
-      </p>
+        Versorgung und spürbare Erleichterung im Alltag zu bieten.</p>
+  </div>
+</section>
     </div>
 
     <div class="doctors-grid">

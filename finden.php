@@ -36,7 +36,17 @@
   </header>
   
 <main class="container">
-  <h2 style="margin-bottom: 4rem">Anfahrt</h2>
+   <section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Anfahrt</p>
+    <h1 class="hero__title">
+      Ihr Weg zu uns in die <span class="hero__title-accent">Praxis</span>
+    </h1>
+    <p class="hero__lead">
+      Unsere Praxis ist bequem mit dem Auto sowie mit öffentlichen Verkehrsmitteln erreichbar. Hier finden Sie alle wichtigen Informationen zur Anfahrt, Parkmöglichkeiten und den nächstgelegenen Haltestellen, damit Sie Ihren Termin entspannt und pünktlich wahrnehmen können.
+    </p>
+  </div>
+</section>
 
   <div class="anfahrts-container" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
     

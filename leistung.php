@@ -149,15 +149,6 @@
       font-weight: 500;
     }
 
-    .container p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
     @media (max-width: 600px) {
       .leistung-hero h1 {
         font-size: 2rem;
@@ -194,10 +185,17 @@
   </header>
 
   <main class="container">
-    <h2>Unser Leistungsspektrum</h2>
-    <p>
+    <section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Unser Leistungsspektrum</p>
+    <h1 class="hero__title">
+      Medizinische Versorgung auf <span class="hero__title-accent">höchstem Niveau</span>
+    </h1>
+    <p class="hero__lead">
       In unserer Praxis bieten wir ein breites Spektrum pneumologischer und schlafmedizinischer Untersuchungen und Behandlungen an. Von modernen Diagnostikverfahren zur genauen Erfassung Ihrer Lungenfunktion über spezialisierte Schlafmedizin bis hin zu individuellen Schulungs- und Beratungsprogrammen – wir sind Ihre kompetenten Partner für die Gesundheit Ihrer Atemwege.
     </p>
+  </div>
+</section>
   </main>
 
   <section class="leistung-section">

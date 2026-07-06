@@ -115,6 +115,7 @@ body {
 
 /* ===== Login-Formular Styling ===== */
 h2 {
+  font-family: Georgia, "Times New Roman", serif;
   color: #004a7f;
   text-align: center;
   font-size: 2rem;
@@ -330,10 +331,10 @@ nav a.active {
 }
 
 .intro-section .welcome { flex: 2; color: #004a7f; } 
-.intro-section .welcome h1 { font-size: 2.2rem; margin-bottom: 1rem; } 
+.intro-section .welcome h1 { font-size: 2.2rem; margin-bottom: 1rem;font-family: Georgia, "Times New Roman", serif; } 
 .intro-section .welcome p { font-size: 1.1rem; line-height: 1.7; color: #333; } 
 .intro-section .oeffnungszeiten { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; } 
-.intro-section .oeffnungszeiten h1 { color: #004a7f; margin-bottom: 1rem; } 
+.intro-section .oeffnungszeiten h1 { color: #004a7f; margin-bottom: 1rem; font-family: Georgia, "Times New Roman", serif;} 
 
 .intro-section .hours-card {
   background: rgba(255, 255, 255, 0.7);
@@ -492,6 +493,7 @@ a.doctolib-link:hover {
 }
 
 .doctors h2 {
+  font-family: Georgia, "Times New Roman", serif;
   color: #ffffff !important;
   text-align: center;
   margin-bottom: 4rem;
@@ -502,7 +504,13 @@ a.doctolib-link:hover {
   z-index: 2;
 }
 
-.doctor-card h3, .doctor-card p {
+.doctor-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.doctor-card p {
   color: #fff;
   margin: 0.5rem 0;
 }
@@ -514,6 +522,7 @@ a.doctolib-link:hover {
 }
 
 .services h2 {
+  font-family: Georgia, "Times New Roman", serif;
   text-align: center;
   color: #004a7f;
   font-size: 2rem;
@@ -542,6 +551,7 @@ a.doctolib-link:hover {
 }
 
 .service-card h3 {
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 1.25rem;
   color: #004a7f;
   margin-bottom: 0.75rem;
@@ -571,10 +581,14 @@ a.doctolib-link:hover {
 }
 
 .card h3 {
+  font-family: Georgia, "Times New Roman", serif;
   color: #004a7f;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+}
+h3 {
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 .card p, .card ul {

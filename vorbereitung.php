@@ -244,7 +244,7 @@
   <div class="hero__inner">
     <p class="hero__eyebrow">Vor Ihrem Besuch</p>
     <h1 class="hero__title">
-      Schreiben Sie uns – <span class="hero__title-accent">wir hören zu.</span>
+      Gut vorbereitet zu Ihrem <span class="hero__title-accent">Termin</span>
     </h1>
     <p class="hero__lead">
       Um Ihren Besuch in unserer Praxis optimal vorzubereiten und Zeit zu sparen, möchten wir Ihnen hier wichtige Informationen und hilfreiche Formulare zur Verfügung stellen. Laden Sie gerne die notwendigen Dokumente herunter, füllen Sie diese zuhause aus und bringen Sie diese zu Ihrem Termin mit.

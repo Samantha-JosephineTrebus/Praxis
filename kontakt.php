@@ -291,7 +291,7 @@
   <div class="hero__inner">
     <p class="hero__eyebrow">Kontakt</p>
     <h1 class="hero__title">
-      Schreiben Sie uns – <span class="hero__title-accent">wir hören zu.</span>
+      Wir kümmern uns um <span class="hero__title-accent">Ihr Anliegen</span>
     </h1>
     <p class="hero__lead">
       Haben Sie eine organisatorische Frage oder ein anderes Anliegen?
