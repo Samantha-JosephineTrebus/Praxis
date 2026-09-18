@@ -273,7 +273,7 @@
       </div>
 
       <div class="vorbereitung-card">
-        <h3>💊 Medikamentenliste</h3>
+        <h3>💊 Medikamentenplan</h3>
         <p>
           Eine übersichtliche Liste aller Ihrer aktuellen Medikamente. Füllen Sie diese aus, um unseren Ärzten einen schnellen Überblick zu geben.
         </p>
@@ -316,12 +316,12 @@
       </div>
 
       <div class="checklist-item">
-        <h3>Medikamentenpläne</h3>
+        <h3>Medikamentenplan</h3>
         <p>
           Falls vorhanden, bringen Sie bitte:
         </p>
         <ul>
-          <li>Aktuelle Medikamentenpläne von Ihrem Hausarzt</li>
+          <li>Aktueller Medikamentenplan von Ihrem Hausarzt</li>
           <li>Übersicht aller regelmäßig eingenommenen Medikamente</li>
           <li>Dosierungen und Einnahmezeitpunkte</li>
         </ul>
@@ -347,7 +347,7 @@
         </p>
         <ul>
           <li>Patientenfragebogen</li>
-          <li>Medikamentenliste</li>
+          <li>Medikamentenplan</li>
           <li>Allergiepass (falls zutreffend)</li>
           <li>Symptom- oder Schlaftagebuch</li>
         </ul>
