@@ -257,13 +257,13 @@ $note = getNote();
 
 /* Label (kleines "Unsere Praxis") */
 .intro-label {
- text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
   color: #004a7f;
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 3rem;
 }
-
 /* H2 */
 .intro-text h2 {
   margin-top: 0.75rem;
@@ -370,6 +370,7 @@ $note = getNote();
 .footer-contact {
   font-size: 0.9rem;
   color: #ffffff;
+  text-align: center;
 }
 
 .footer-item {
@@ -377,6 +378,7 @@ $note = getNote();
   gap: 0.6rem;
   margin-bottom: 1rem;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .footer-item i {
@@ -651,8 +653,8 @@ $note = getNote();
         </div>
         <div class="service-card">
             <div class="service-icon">
-        <i class="fa-solid fa-wind"></i>
-    </div>
+          <i class="fa-solid fa-lungs"></i>
+        </div>
           <h3>Atemtherapie & Rehabilitation</h3>
           <p>Therapien zur Stärkung und Wiederherstellung der Atemwege.</p>
         </div>
@@ -719,60 +721,7 @@ $note = getNote();
 </section>
   </main>
 
- <footer class="site-footer">
-  <div class="footer-top">
-
-    <!-- LINKS -->
-    <div class="footer-col">
-      <h3>Pneumologische Praxis am Schloss Charlottenburg</h3>
-
-      <p class="doctor-names">
-        Dr. med. Andrés de Roux &<br>
-        Timo Weiß
-      </p>
-    </div>
-
-    <!-- MITTE -->
-    <div class="footer-col footer-contact">
-      <div class="footer-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <span>Spandauer Damm 3<br>14059 Berlin-Charlottenburg</span>
-      </div>
-
-      <div class="footer-item">
-        <i class="fa-solid fa-phone"></i>
-        <a href="tel:+4930341611">030 / 341 61 18</a>
-      </div>
-    </div>
-
-    <!-- RECHTS NAV -->
-    <div class="footer-col">
-      <h4>Schnellzugriff</h4>
-      <ul class="footer-links">
-        <li><a href="index.php" class="active">Startseite</a></li>
-       <li>
-          <a 
-            href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >Onlinetermine</a>
-        </li>
-        <li><a href="leistung.php">Leistungen</a></li>
-        <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
-        <li><a href="aerzte.php">Ärzte</a></li>
-        <li><a href="kontakt.php">Kontakt</a></li>
-        <li><a href="finden.php">Anfahrt</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- BOTTOM BAR -->
-  <div class="footer-bottom">
-    <span>© 2026 Pneumologische Praxis am Schloss Charlottenburg</span>
-    <span><a href="impressum.php">Impressum</a> · <a href="datenschutz.php">Datenschutz</a></span>
-  </div>
-</footer>
+ <?php include 'includes/footer.php'; ?>
 
   <script>
     // Direktes Skript für den Menü-Toggle

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vor Ihrem Besuch – Praxis am Schloss Charlottenburg</title>
   <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     :root {
       --primary: #004a7f;          /* Petrol/Blau-Grün Akzent */
@@ -257,7 +258,10 @@
     <h2>Formulare & Dokumente zum Download</h2>
     <div class="vorbereitung-grid">
       <div class="vorbereitung-card">
-        <h3>📋 Patientenfragebogen</h3>
+        <div class="service-icon">
+       <i class="fa-solid fa-clipboard"></i>
+    </div>
+    <h3>Patientenfragebogen</h3>
         <p>
           Dieser Fragebogen hilft uns, Ihre medizinische Geschichte und aktuelle Symptome besser zu verstehen. Bitte füllen Sie diesen vor Ihrem Termin aus.
         </p>
@@ -265,7 +269,10 @@
       </div>
 
       <div class="vorbereitung-card">
-        <h3>📝 Allergiepass</h3>
+        <div class="service-icon">
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+        <h3>Allergiepass</h3>
         <p>
           Falls Sie bekannte Allergien haben, können Sie diese hier dokumentieren. Dies ist wichtig für unsere Ärzte bei der Behandlung.
         </p>
@@ -273,7 +280,10 @@
       </div>
 
       <div class="vorbereitung-card">
-        <h3>💊 Medikamentenplan</h3>
+        <div class="service-icon">
+          <i class="fa-solid fa-pills"></i>
+        </div>
+        <h3>Medikamentenplan</h3>
         <p>
           Eine übersichtliche Liste aller Ihrer aktuellen Medikamente. Füllen Sie diese aus, um unseren Ärzten einen schnellen Überblick zu geben.
         </p>
@@ -281,7 +291,10 @@
       </div>
 
       <div class="vorbereitung-card">
-        <h3>🫁 Symptom-Tagebuch</h3>
+        <div class="service-icon">
+          <i class="fa-solid fa-book-medical"></i>
+        </div>
+        <h3>Symptom-Tagebuch</h3>
         <p>
           Dokumentieren Sie Ihre Atemwegs-Symptome vor dem Besuch. Dies hilft uns, Ihre Beschwerden besser zu evaluieren.
         </p>
@@ -289,7 +302,10 @@
       </div>
 
       <div class="vorbereitung-card">
-        <h3>😴 Schlaftagebuch</h3>
+        <div class="service-icon">
+          <i class="fa-solid fa-bed"></i>
+        </div>
+        <h3>Schlaftagebuch</h3>
         <p>
           Wenn Sie an Schlafstörungen leiden, können Sie hier Ihr Schlafverhalten dokumentieren.
         </p>
@@ -311,7 +327,7 @@
       <div class="checklist-item">
         <h3>Ausweis</h3>
         <p>
-          Ein gültiger Ausweis (Personalausweis oder Reisepass) wird für unsere Patientenakten benötigt.
+          Ein gültiger Personalausweis wird für unsere Patientenakten benötigt.
         </p>
       </div>
 
@@ -368,9 +384,7 @@
     </div>
   </section>
 
-   <footer>
-    &copy; 2025 Praxis am Schloss Charlottenburg
-  </footer>
+   <?php include 'includes/footer.php'; ?>
 
   <script src="main.js"></script>
 </body>

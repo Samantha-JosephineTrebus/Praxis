@@ -54,7 +54,7 @@
   Copyright / Haftung</h3>
   <p>Die Nutzung von des Informationsangebotes erfolgt auf eigenes Risiko. Eine Haftung oder Gewährleistung für Inanspruchnahme unserer Dienste und Inhalte oder deren Verfügbarkeit wird nicht übernommen. Wir übernehmen ferner keine Verantwortung für die Inhalte von Webseiten, auf die wir verlinken Urheberrechtshinweise Alle auf dieser Website veröffentlichten Beiträge und Abbildungen sind urheberrechtlich geschützt. Jede vom Urheberrechtsgesetz nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung durch uns. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten oder anderen elektronischen Medien und Systemen. Fotokopien und Downloads von Web-Seiten dürfen nur für den persönlichen, privaten und nicht kommerziellen Gebrauch hergestellt werden.
 
-Konzeption und Programmierung: <a href="https://www.joe-studios.de" target="_blank" rel="noopener">www.joe-studios.de</a></p>
+Konzeption und Programmierung: <a href="https://samantha-josephinetrebus.github.io/Portfolio/" target="_blank" rel="noopener">www.samantha-josephinetrebus.de</a></p>
 </div>
 
 <div class="card">
@@ -183,9 +183,7 @@ Möchte eine betroffene Person dieses Berichtigungsrecht in Anspruch nehmen, kan
  </div>
 </div>
 </main>
-  <footer>
-    &copy; 2025 Praxis am Schloss Charlottenburg
-  </footer>
+  <?php include 'includes/footer.php'; ?>
   <script src="main.js"></script>
 </body>
 </html>

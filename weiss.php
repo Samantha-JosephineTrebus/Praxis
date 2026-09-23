@@ -397,9 +397,7 @@
     </div>
   </main>
 
-  <footer>
-    &copy; 2026 Praxis am Schloss Charlottenburg
-  </footer>
+  <?php include 'includes/footer.php'; ?>
   <script src="main.js"></script>
 </body>
 </html>
