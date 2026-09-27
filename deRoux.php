@@ -10,6 +10,7 @@ $deroux_data = getDerouxText();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. med. Andrés de Roux – Praxis am Schloss</title>
   <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     /* ===== KORREKTUR: Footer immer unten halten ===== */
     html, body {
@@ -275,24 +276,8 @@ $deroux_data = getDerouxText();
       padding-bottom: 1rem;
     }
 
-    .edit-btn {
-      font-size: 0.8rem;
-      background: #004a7f;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
+    .aktuelle-info .edit-btn {
       margin-top: 2.2rem;
-      font-weight: 600;
-      box-shadow: 0 3px 10px rgba(0, 74, 127, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .edit-btn:hover {
-      background: #0071c2;
-      transform: translateY(-1px);
-      box-shadow: 0 5px 15px rgba(0, 113, 194, 0.25);
     }
 
 /* ===== Responsive Anpassung ===== */
@@ -401,7 +386,7 @@ $deroux_data = getDerouxText();
           <p id="aktuelle-info-text"><?php echo nl2br(htmlspecialchars($deroux_data['text'])); ?></p>
           
           <?php if (isAdminLoggedIn()): ?>
-            <a href="admin.php#deroux-anpassen" class="edit-btn">Bearbeiten</a>
+            <a href="admin.php#deroux-anpassen" class="edit-btn"><i class="fa-solid fa-pen" aria-hidden="true"></i> Bearbeiten</a>
           <?php endif; ?>
         </div>
       

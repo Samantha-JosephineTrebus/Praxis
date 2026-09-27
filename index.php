@@ -4,6 +4,7 @@ require_once 'config.php';
 // Daten laden
 $hours = getHours();
 $note = getNote();
+$studies = getStudies();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -318,10 +319,12 @@ $note = getNote();
   font-weight: 600;
   color: #004a7f;
   text-decoration: none;
+      transition: color 0.2s ease, gap 0.2s ease;
 }
 
 .intro-link:hover {
-  text-decoration: underline;
+      color: #0071c2;
+      gap: 0.6rem;
 }
 
 .site-footer {
@@ -517,11 +520,11 @@ $note = getNote();
   <?php if (isLoggedIn()): ?>
     <section class="admin-dashboard-bar">
       <div class="admin-info">
-          <span>✅ Eingeloggt als <strong>Administrator</strong></span>
+          <span><i class="fa-solid fa-circle-check"></i> Eingeloggt als <strong>Administrator</strong></span>
       </div>
       <div class="admin-actions">
-          <a href="admin.php" class="admin-btn panel">⚙️ Admin-Panel</a>
-          <a href="logout.php" class="admin-btn logout">🚪 Logout</a>
+          <a href="admin.php" class="admin-btn panel"><i class="fa-solid fa-gear" aria-hidden="true"></i> Admin-Panel</a>
+          <a href="logout.php" class="admin-btn logout"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>
       </div>
     </section>
   <?php endif; ?>
@@ -536,6 +539,9 @@ $note = getNote();
           <div class="haftnotiz">
             <h3><?php echo htmlspecialchars($note['title']); ?></h3>
             <p><?php echo $note['text']; ?></p>
+            <?php if (isAdminLoggedIn()): ?>
+              <a class="admin-edit-link" href="admin.php#info-anpassen"><i class="fa-solid fa-pen" aria-hidden="true"></i> Bearbeiten</a>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -545,7 +551,7 @@ $note = getNote();
           <h1>Unsere Öffnungszeiten</h1>
           <?php if (isAdminLoggedIn()): ?>
             <div style="margin-bottom: 1rem;">
-              <a href="admin.php#oeffnungszeiten" style="color: #0071c2; text-decoration: none; font-weight: 600;">✏️ Bearbeiten</a>
+              <a class="admin-edit-link" href="admin.php#oeffnungszeiten"><i class="fa-solid fa-pen" aria-hidden="true"></i> Bearbeiten</a>
             </div>
           <?php endif; ?>
           <div class="hours-card">
@@ -711,7 +717,8 @@ $note = getNote();
       </div>
 
       <a href="aerzte.php" class="intro-link">
-        Ärzte kennenlernen →
+        <span>Ärzte kennenlernen</span>
+        <span aria-hidden="true">→</span>
       </a>
 
     </div>
@@ -719,6 +726,44 @@ $note = getNote();
   </div>
 
 </section>
+    <section id="studien" class="studies-section" aria-labelledby="studies-title">
+      <div class="studies-heading">
+        <h2 id="studies-title">Aktuelle Studien</h2>
+        <?php if (isAdminLoggedIn()): ?>
+          <a class="admin-edit-link" href="admin.php#studien-anpassen"><i class="fa-solid fa-pen" aria-hidden="true"></i> Studien verwalten</a>
+        <?php endif; ?>
+      </div>
+
+      <?php if (empty($studies)): ?>
+        <p class="studies-empty">Derzeit laufen keine Studien mit offener Teilnahme.</p>
+      <?php else: ?>
+        <div class="studies-grid">
+          <?php foreach ($studies as $study): ?>
+            <article class="study-card">
+              <h3><?php echo htmlspecialchars($study['title'] ?? ''); ?></h3>
+              <div class="study-details">
+                <div>
+                  <h4>Wer kann teilnehmen?</h4>
+                  <p><?php echo nl2br(htmlspecialchars($study['criteria'] ?? '')); ?></p>
+                </div>
+                <div>
+                  <h4>Was erhalten Sie?</h4>
+                  <p><?php echo nl2br(htmlspecialchars($study['compensation'] ?? '')); ?></p>
+                </div>
+                <div>
+                  <h4>Was wird durchgeführt?</h4>
+                  <p><?php echo nl2br(htmlspecialchars($study['procedures'] ?? '')); ?></p>
+                </div>
+              </div>
+              <p class="study-deadline">Teilnahme möglich bis <time datetime="<?php echo htmlspecialchars($study['expires'] ?? ''); ?>"><?php echo htmlspecialchars(date('d.m.Y', strtotime($study['expires'] ?? ''))); ?></time></p>
+              <?php if (!empty($study['pdf'])): ?>
+                <a class="study-pdf-link" href="study-download.php?id=<?php echo rawurlencode($study['id']); ?>"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Studieninformationen als PDF herunterladen</a>
+              <?php endif; ?>
+            </article>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+    </section>
   </main>
 
  <?php include 'includes/footer.php'; ?>

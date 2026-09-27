@@ -265,7 +265,7 @@
         <p>
           Dieser Fragebogen hilft uns, Ihre medizinische Geschichte und aktuelle Symptome besser zu verstehen. Bitte füllen Sie diesen vor Ihrem Termin aus.
         </p>
-        <button class="download-btn">⬇️ Herunterladen (PDF)</button>
+        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
       </div>
 
       <div class="vorbereitung-card">
@@ -276,7 +276,7 @@
         <p>
           Falls Sie bekannte Allergien haben, können Sie diese hier dokumentieren. Dies ist wichtig für unsere Ärzte bei der Behandlung.
         </p>
-        <button class="download-btn">⬇️ Herunterladen (PDF)</button>
+        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
       </div>
 
       <div class="vorbereitung-card">
@@ -287,7 +287,7 @@
         <p>
           Eine übersichtliche Liste aller Ihrer aktuellen Medikamente. Füllen Sie diese aus, um unseren Ärzten einen schnellen Überblick zu geben.
         </p>
-        <button class="download-btn">⬇️ Herunterladen (PDF)</button>
+        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
       </div>
 
       <div class="vorbereitung-card">
@@ -298,7 +298,7 @@
         <p>
           Dokumentieren Sie Ihre Atemwegs-Symptome vor dem Besuch. Dies hilft uns, Ihre Beschwerden besser zu evaluieren.
         </p>
-        <button class="download-btn">⬇️ Herunterladen (PDF)</button>
+        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
       </div>
 
       <div class="vorbereitung-card">
@@ -309,7 +309,7 @@
         <p>
           Wenn Sie an Schlafstörungen leiden, können Sie hier Ihr Schlafverhalten dokumentieren.
         </p>
-        <button class="download-btn">⬇️ Herunterladen (PDF)</button>
+        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
       </div>
     </div>
   </section>

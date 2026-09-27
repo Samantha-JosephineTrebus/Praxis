@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Dritte Teststudie <3",
+        "criteria": "gvdrg",
+        "compensation": "gvdg",
+        "procedures": "gaerg",
+        "expires": "2026-10-08",
+        "id": "e01c84b642eedeb7a7af91fc",
+        "pdf": true
+    },
+    {
+        "title": "vierte teststudie",
+        "criteria": "gwe",
+        "compensation": "gedwsgv",
+        "procedures": "wsegs",
+        "expires": "2026-10-17",
+        "id": "eb1d9c3a654669f9686f79bb"
+    },
+    {
+        "title": "Teststudie",
+        "criteria": "Sie haben Lust mal eine Studie zu testen",
+        "compensation": "nischt",
+        "procedures": "Sie müssen Ihren Namen eintragen.",
+        "expires": "2027-07-31",
+        "id": "dc46422e9c558bb6d320a88d"
+    },
+    {
+        "title": "Zweite Teststudie",
+        "criteria": "was geht",
+        "compensation": "nö",
+        "procedures": "nischt",
+        "expires": "2027-09-17",
+        "id": "3fb63915084879e38676ee6a"
+    }
+]

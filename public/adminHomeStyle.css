@@ -123,6 +123,14 @@ article {
   backdrop-filter: blur(8px);
 }
 
+article > p {
+  text-align: center;
+}
+
+main > article[id] {
+  scroll-margin-top: 140px;
+}
+
 /* ======== Form Styling ======== */
 form {
   display: flex;
@@ -140,6 +148,32 @@ form input, form textarea {
 
 form input:focus, form textarea:focus {
   border-color: #0071c2;
+}
+
+.admin-form {
+  gap: 0.2rem;
+}
+
+.admin-form > label {
+  margin-top: 1.3rem;
+  margin-bottom: 0;
+}
+
+.admin-form > label:first-of-type,
+.admin-form > h3 + label {
+  margin-top: 0;
+}
+
+.admin-form > h3 {
+  margin: 1.3rem 0 0;
+}
+
+.admin-form > h3:first-of-type {
+  margin-top: 0;
+}
+
+.admin-form > button {
+  margin-top: 0.75rem;
 }
 
 /* Buttons */

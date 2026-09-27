@@ -14,6 +14,8 @@ define('DATA_DIR', __DIR__ . '/data/');
 define('HOURS_FILE', DATA_DIR . 'hours.json');
 define('NOTE_FILE', DATA_DIR . 'note.json');
 define('DEROUX_FILE', DATA_DIR . 'deroux.json');
+define('STUDIES_FILE', DATA_DIR . 'studies.json');
+define('STUDY_FILES_DIR', DATA_DIR . 'study-files/');
 
 // Stelle sicher, dass data Ordner existiert
 if (!is_dir(DATA_DIR)) {
@@ -91,6 +93,168 @@ function getDerouxText() {
 function saveDerouxText($data) {
     return file_put_contents(DEROUX_FILE, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
+
+function getStudies($includeExpired = false) {
+    if (!file_exists(STUDIES_FILE)) {
+        return [];
+    }
+
+    $studies = json_decode(file_get_contents(STUDIES_FILE), true);
+    if (!is_array($studies)) {
+        return [];
+    }
+
+    if (!$includeExpired) {
+        $today = date('Y-m-d');
+        $studies = array_filter($studies, function ($study) use ($today) {
+            return isset($study['expires']) && $study['expires'] >= $today;
+        });
+    }
+
+    usort($studies, function ($first, $second) {
+        return strcmp($first['expires'] ?? '', $second['expires'] ?? '');
+    });
+
+    return array_values($studies);
+}
+
+function saveStudies($studies) {
+    $json = json_encode($studies, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    return $json !== false && file_put_contents(STUDIES_FILE, $json, LOCK_EX) !== false;
+}
+
+function addStudy($study, $uploadedPdf = null) {
+    $studies = getStudies(true);
+    $study['id'] = bin2hex(random_bytes(12));
+    $study['pdf'] = false;
+
+    if ($uploadedPdf !== null) {
+        if (!is_dir(STUDY_FILES_DIR) && !mkdir(STUDY_FILES_DIR, 0755, true)) {
+            return false;
+        }
+
+        if (!move_uploaded_file($uploadedPdf, STUDY_FILES_DIR . $study['id'] . '.pdf')) {
+            return false;
+        }
+
+        $study['pdf'] = true;
+    }
+
+    $studies[] = $study;
+    if (!saveStudies($studies)) {
+        if ($uploadedPdf !== null) {
+            @unlink(STUDY_FILES_DIR . $study['id'] . '.pdf');
+        }
+        return false;
+    }
+
+    return true;
+}
+
+function updateStudy($id, $changes, $uploadedPdf = null, $removePdf = false) {
+    if (!preg_match('/\A[a-f0-9]{24}\z/', $id)) {
+        return false;
+    }
+
+    $studies = getStudies(true);
+    $studyIndex = null;
+    foreach ($studies as $index => $study) {
+        if (($study['id'] ?? '') === $id) {
+            $studyIndex = $index;
+            break;
+        }
+    }
+
+    if ($studyIndex === null) {
+        return false;
+    }
+
+    $originalStudies = $studies;
+    $originalStudy = $studies[$studyIndex];
+    $pdfPath = STUDY_FILES_DIR . $id . '.pdf';
+    $stagedPdfPath = null;
+    $backupPdfPath = null;
+
+    if ($uploadedPdf !== null) {
+        if (!is_dir(STUDY_FILES_DIR) && !mkdir(STUDY_FILES_DIR, 0755, true)) {
+            return false;
+        }
+
+        $stagedPdfPath = STUDY_FILES_DIR . $id . '.upload-' . bin2hex(random_bytes(8)) . '.tmp';
+        if (!move_uploaded_file($uploadedPdf, $stagedPdfPath)) {
+            return false;
+        }
+    }
+
+    $studies[$studyIndex] = array_merge($originalStudy, $changes, [
+        'id' => $id,
+        'pdf' => $uploadedPdf !== null || (!$removePdf && !empty($originalStudy['pdf']))
+    ]);
+
+    if (!saveStudies($studies)) {
+        if ($stagedPdfPath !== null) {
+            @unlink($stagedPdfPath);
+        }
+        return false;
+    }
+
+    if ($uploadedPdf !== null) {
+        if (is_file($pdfPath)) {
+            $backupPdfPath = STUDY_FILES_DIR . $id . '.backup-' . bin2hex(random_bytes(8)) . '.tmp';
+            if (!rename($pdfPath, $backupPdfPath)) {
+                saveStudies($originalStudies);
+                @unlink($stagedPdfPath);
+                return false;
+            }
+        }
+
+        if (!rename($stagedPdfPath, $pdfPath)) {
+            if ($backupPdfPath !== null) {
+                @rename($backupPdfPath, $pdfPath);
+            }
+            saveStudies($originalStudies);
+            @unlink($stagedPdfPath);
+            return false;
+        }
+
+        if ($backupPdfPath !== null) {
+            @unlink($backupPdfPath);
+        }
+    } elseif ($removePdf && !empty($originalStudy['pdf']) && is_file($pdfPath) && !@unlink($pdfPath)) {
+        saveStudies($originalStudies);
+        return false;
+    }
+
+    return true;
+}
+
+function deleteStudy($id) {
+    $studies = getStudies(true);
+    $studyToDelete = null;
+    $remaining = array_values(array_filter($studies, function ($study) use ($id) {
+        return ($study['id'] ?? '') !== $id;
+    }));
+
+    foreach ($studies as $study) {
+        if (($study['id'] ?? '') === $id) {
+            $studyToDelete = $study;
+            break;
+        }
+    }
+
+    if ($studyToDelete === null || !saveStudies($remaining)) {
+        return false;
+    }
+
+    $pdfPath = STUDY_FILES_DIR . $id . '.pdf';
+    if (!empty($studyToDelete['pdf']) && is_file($pdfPath) && !@unlink($pdfPath)) {
+        saveStudies($studies);
+        return false;
+    }
+
+    return true;
+}
+
 // Allgemeine Funktion zum Laden beliebiger JSON-Dateien
 function getJSONData($fileKey) {
     // Definiere hier, wo die Dateien liegen

@@ -88,6 +88,22 @@
       transform: translateY(-2px);
     }
 
+    .study-overview-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
+      color: #004a7f;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease, gap 0.2s ease;
+    }
+
+    .study-overview-link:hover {
+      color: #0071c2;
+      gap: 0.6rem;
+    }
+
     /* Deko-Kreis */
     .leistung-card::before {
       content: "";
@@ -320,6 +336,7 @@
   <p>
     Unsere Praxis nimmt regelmäßig an klinischen Studien teil, um neue Therapien für Atemwegserkrankungen zu erforschen. 
     Patientinnen und Patienten profitieren dabei von modernsten Behandlungsmöglichkeiten und einer engmaschigen medizinischen Betreuung.
+    <br><a class="study-overview-link" href="index.php#studien"><span>Aktuelle Studien ansehen</span><span aria-hidden="true">→</span></a>
   </p>
 </div>
 
