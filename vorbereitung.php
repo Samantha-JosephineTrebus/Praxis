@@ -20,14 +20,14 @@
     * { box-sizing: border-box; }
     body {
       color: var(--foreground);
-      background: var(--bg);
+      background: #f5f7fb;
     }
 
   
     /* ==== Eigenes Design für Vorbereitung ==== */
     .vorbereitung-section {
       padding: 0;
-      background: #ffffff;
+      background: transparent;
     }
 
     .vorbereitung-section h2 {
@@ -44,7 +44,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       padding: 2rem 2rem 4rem 2rem;
-      background: #ffffff;
+      background: transparent;
     }
 
     .vorbereitung-card {
@@ -235,13 +235,12 @@
         <li><a href="vorbereitung.php" <?php if ($current === 'vorbereitung.php') echo 'class="active"'; ?>>Vor Ihrem Besuch</a></li>
         <li><a href="aerzte.php" <?php if ($current === 'aerzte.php') echo 'class="active"'; ?>>Ärzte</a></li>
         <li><a href="kontakt.php" <?php if ($current === 'kontakt.php') echo 'class="active"'; ?>>Kontakt</a></li>
-        <li><a href="finden.php" <?php if ($current === 'finden.php') echo 'class="active"'; ?>>Anfahrt</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-     <section class="hero">
+    <section class="hero page-intro-card">
   <div class="hero__inner">
     <p class="hero__eyebrow">Vor Ihrem Besuch</p>
     <h1 class="hero__title">

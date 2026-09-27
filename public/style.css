@@ -4,6 +4,29 @@ html, body {
   overflow-x: hidden;
 }
 
+html {
+  scrollbar-color: #004a7f #d2e4f3;
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #e8f0f7;
+}
+
+html::-webkit-scrollbar-thumb {
+  border: 2px solid #e8f0f7;
+  border-radius: 8px;
+  background: #004a7f;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #0071c2;
+}
+
 /* Shared site footer */
 .site-footer {
   margin-top: 4rem;
@@ -242,6 +265,61 @@ html, body {
  @media (min-width: 640px)  { .hero__inner { padding: 5rem 1.5rem; } }
 @media (min-width: 768px)  { .hero__inner { padding: 7rem 2rem; } }
 
+.hero.page-intro-card {
+  width: 100%;
+  left: auto;
+  right: auto;
+  margin: 2rem 0 2rem !important;
+  border: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+  box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
+}
+
+.hero.page-intro-card::before,
+.hero.page-intro-card::after {
+  display: none;
+}
+
+.hero.page-intro-card .hero__inner {
+  max-width: 64rem;
+  padding: 3rem 2rem !important;
+  text-align: center !important;
+}
+
+.hero.page-intro-card .hero__eyebrow {
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  color: #2e2e30;
+}
+
+.hero.page-intro-card .hero__title {
+  max-width: 52rem;
+  margin: 2rem auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #004a7f;
+}
+
+.hero.page-intro-card .hero__lead {
+  max-width: 48rem;
+  margin: 1rem auto 0;
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+  .hero.page-intro-card .hero__inner {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .hero.page-intro-card .hero__title {
+    font-size: 1.6rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -427,9 +505,9 @@ nav a.active {
 
 .praxis-logo {
   display: inline-grid;
-  grid-template-columns: 108px auto;
+  grid-template-columns: 96px auto;
   grid-template-rows: auto auto;
-  column-gap: 0.75rem;
+  column-gap: 0.65rem;
   align-items: center;
   line-height: 1.15;
   text-decoration: none;
@@ -440,15 +518,15 @@ nav a.active {
   content: "";
   grid-column: 1;
   grid-row: 1 / span 2;
-  width: 108px;
-  height: 58px;
+  width: 96px;
+  height: 52px;
   background: url("ChatGPT%20Image%2027.%20Sept.%202026,%2015_00_14.png") center / contain no-repeat;
 }
 
 .praxis-logo__title {
   grid-column: 2;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.6rem; /* leicht größer für Header */
+  font-size: 1.5rem;
   color: #ffffff;
   font-weight: 500;
 }
@@ -456,7 +534,7 @@ nav a.active {
 .praxis-logo__subtitle {
   grid-column: 2;
   margin-top: 2px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.75);
@@ -945,21 +1023,21 @@ footer {
   }
 
   .praxis-logo {
-    grid-template-columns: 78px auto;
+    grid-template-columns: 70px auto;
     column-gap: 0.5rem;
   }
 
   .praxis-logo::before {
-    width: 78px;
-    height: 48px;
+    width: 70px;
+    height: 44px;
   }
 
   .praxis-logo__title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .praxis-logo__subtitle {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
 
   nav ul {

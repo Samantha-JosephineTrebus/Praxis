@@ -29,7 +29,7 @@
         <li><a href="vorbereitung.php" class="<?php echo $footerPage === 'vorbereitung.php' ? 'active' : ''; ?>">Vor Ihrem Besuch</a></li>
         <li><a href="aerzte.php" class="<?php echo $footerPage === 'aerzte.php' ? 'active' : ''; ?>">Ärzte</a></li>
         <li><a href="kontakt.php" class="<?php echo $footerPage === 'kontakt.php' ? 'active' : ''; ?>">Kontakt</a></li>
-        <li><a href="finden.php" class="<?php echo $footerPage === 'finden.php' ? 'active' : ''; ?>">Anfahrt</a></li>
+        <li><a href="kontakt.php#anfahrt" class="<?php echo $footerPage === 'kontakt.php' ? 'active' : ''; ?>">Anfahrt</a></li>
       </ul>
     </div>
   </div>

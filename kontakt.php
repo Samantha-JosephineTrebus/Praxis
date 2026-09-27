@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt & Rezeptanfragen – Praxis am Schloss</title>
   <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
 
@@ -14,26 +15,67 @@
     --kontakt-primary: #004a7f;
     --kontakt-primary-light: rgba(0, 74, 127, 0.1);
     --kontakt-primary-soft: rgba(0, 74, 127, 0.05);
-    --kontakt-bg: #f8fafc;
+    --kontakt-bg: #f5f7fb;
     --kontakt-card: #ffffff;
     --kontakt-border: rgba(0, 74, 127, 0.15);
     --kontakt-text: #0f172a;
     --kontakt-muted: #475569;
-    --kontakt-input: #f1f5f9;
-    --kontakt-input-border: #cbd5e1;
-    --kontakt-radius: 1rem;
-    background: var(--kontakt-card);
-    padding: 3rem 1rem;
+    --kontakt-input: #f5f7fb;
+    --kontakt-input-border: #cde7ff;
+    --kontakt-radius: 12px;
+    background: transparent;
+    padding: 2.5rem 1rem 4rem;
   }
   @media (min-width: 640px) {
-    .kontakt-section { padding: 4rem 1.5rem; }
-  }
-  @media (min-width: 768px) {
-    .kontakt-section { padding: 6rem 1.5rem; }
+    .kontakt-section { padding-right: 1.5rem; padding-left: 1.5rem; }
   }
   .kontakt-container {
     max-width: 72rem;
     margin: 0 auto;
+  }
+  .kontakt-section-heading {
+    margin: 0 0 1.5rem;
+    color: var(--kontakt-primary);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .kontakt-article {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .kontakt-location-article {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin: 3rem 0 0 -50vw;
+    padding: 2rem 1.5rem 3rem;
+    border: 0;
+    border-radius: 0;
+    background: #ffffff;
+    box-shadow: none;
+    scroll-margin-top: 110px;
+  }
+  .kontakt-location-content {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+  .kontakt-location-heading {
+    margin-top: 0;
+  }
+  .kontakt-location-article .kontakt-section-heading {
+    margin-bottom: 1.5rem;
+  }
+  .kontakt-location {
+    margin: 0;
+  }
+  .kontakt-location-heading {
+    scroll-margin-top: 110px;
   }
   .kontakt-grid {
     display: grid;
@@ -56,15 +98,16 @@
     border: 1px solid var(--kontakt-border);
     border-radius: var(--kontakt-radius);
     padding: 1.25rem;
-    box-shadow: 0 1px 3px rgba(15, 118, 110, 0.08);
-    transition: box-shadow 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0, 74, 127, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .kontakt-card:hover {
-    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 74, 127, 0.12);
   }
   .kontakt-card-accent {
     background: var(--kontakt-primary-soft);
-    border-color: rgba(15, 118, 110, 0.2);
+    border-color: rgba(0, 74, 127, 0.2);
   }
   .kontakt-card-header {
     display: flex;
@@ -82,9 +125,10 @@
     background: var(--kontakt-primary-light);
     color: var(--kontakt-primary);
   }
-  .kontakt-icon svg {
+  .kontakt-icon i {
     width: 1.25rem;
     height: 1.25rem;
+    font-size: 1.25rem;
   }
   .kontakt-card h2 {
     font-family: 'Georgia', 'Times New Roman', serif;
@@ -105,30 +149,17 @@
   /* Formular */
   .kontakt-form-wrapper {
     position: relative;
-    overflow: hidden;
     background: var(--kontakt-card);
     border: 1px solid var(--kontakt-border);
     border-radius: var(--kontakt-radius);
     padding: 1.5rem;
-    box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
   }
   @media (min-width: 640px) {
     .kontakt-form-wrapper { padding: 2rem; }
   }
   @media (min-width: 768px) {
     .kontakt-form-wrapper { padding: 2.5rem; }
-  }
-  .kontakt-form-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -6rem;
-    right: -6rem;
-    width: 16rem;
-    height: 16rem;
-    border-radius: 9999px;
-    background: var(--kontakt-primary-light);
-    filter: blur(40px);
-    pointer-events: none;
   }
   .kontakt-success {
     position: relative;
@@ -165,6 +196,15 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
   }
   @media (min-width: 640px) {
     .kontakt-form { gap: 1.5rem; }
@@ -173,7 +213,7 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--kontakt-text);
+    color: var(--kontakt-primary);
   }
   .kontakt-field input,
   .kontakt-field textarea {
@@ -197,7 +237,7 @@
   .kontakt-field input:focus,
   .kontakt-field textarea:focus {
     border-color: var(--kontakt-primary);
-    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+    box-shadow: 0 0 0 3px rgba(0, 74, 127, 0.15);
   }
   .kontakt-error {
     margin-top: 0.375rem;
@@ -230,27 +270,94 @@
     justify-content: center;
     gap: 0.5rem;
     width: 100%;
-    padding: 0.875rem 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
+    padding: 0.9rem 1.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #ffffff;
-    background: var(--kontakt-primary);
+    background: linear-gradient(135deg, #004a7f, #0071c2);
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 1px 2px rgba(15, 118, 110, 0.2);
-    transition: opacity 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 74, 127, 0.25);
+    transition: all 0.3s ease;
   }
   @media (min-width: 640px) {
     .kontakt-submit { width: auto; }
   }
   .kontakt-submit:hover {
-    opacity: 0.9;
-    box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
+    background: linear-gradient(135deg, #005c9a, #0088e0);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 74, 127, 0.35);
   }
-  .kontakt-submit svg {
-    width: 1rem;
-    height: 1rem;
+
+  .kontakt-location {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    scroll-margin-top: 110px;
+  }
+  @media (min-width: 900px) {
+    .kontakt-location {
+      grid-template-columns: 2fr 3fr;
+      gap: 2rem;
+    }
+  }
+  .kontakt-location-card {
+    min-width: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--kontakt-border);
+    border-radius: var(--kontakt-radius);
+    background: var(--kontakt-card);
+    box-shadow: 0 8px 25px rgba(0, 74, 127, 0.08);
+  }
+  .kontakt-location-card h2 {
+    margin: 0 0 1rem;
+    color: var(--kontakt-primary);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem;
+  }
+  .kontakt-address {
+    margin: 0;
+    color: var(--kontakt-text);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .kontakt-transit-title {
+    margin: 1.25rem 0 0.5rem;
+    color: var(--kontakt-primary);
+    font-weight: 600;
+  }
+  .kontakt-transit-list {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--kontakt-muted);
+    line-height: 1.5;
+  }
+  .kontakt-transit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+  .kontakt-transit-list i {
+    flex: 0 0 1.15rem;
+    margin-top: 0.2rem;
+    color: var(--kontakt-primary);
+    text-align: center;
+  }
+  .kontakt-location-map {
+    padding: 0;
+    overflow: hidden;
+  }
+  .kontakt-location-map iframe {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+    height: 100%;
+    border: 0;
   }
 </style>
 
@@ -279,36 +386,34 @@
         <li><a href="vorbereitung.php" <?php if ($current === 'vorbereitung.php') echo 'class="active"'; ?>>Vor Ihrem Besuch</a></li>
         <li><a href="aerzte.php" <?php if ($current === 'aerzte.php') echo 'class="active"'; ?>>Ärzte</a></li>
         <li><a href="kontakt.php" <?php if ($current === 'kontakt.php') echo 'class="active"'; ?>>Kontakt</a></li>
-        <li><a href="finden.php" <?php if ($current === 'finden.php') echo 'class="active"'; ?>>Anfahrt</a></li>
       </ul>
     </nav>
   </header>
 
  <main class="container">
   
-  <!-- Dieser Bereich sorgt für den Hintergrund-Look wie in image_6023ba.png -->
-   <section class="hero">
+  <section class="hero page-intro-card">
   <div class="hero__inner">
-    <p class="hero__eyebrow">Kontakt</p>
+    <p class="hero__eyebrow">Kontakt & Anfahrt</p>
     <h1 class="hero__title">
-      Wir kümmern uns um <span class="hero__title-accent">Ihr Anliegen</span>
+      Alle Wege zu unserer Praxis
     </h1>
     <p class="hero__lead">
-      Haben Sie eine organisatorische Frage oder ein anderes Anliegen?
-      Nutzen Sie unser Formular, wir melden uns zeitnah bei Ihnen zurück.
+      Ob Fragen zu unserer Praxis oder zur Terminvereinbarung, wir helfen Ihnen gerne weiter. Informieren Sie sich über unsere Kontaktmöglichkeiten und erfahren Sie, wie Sie uns vor Ort erreichen. Alle wichtigen Informationen zu Ihrer Anfahrt und unserem Standort finden Sie auf dieser Seite.
     </p>
   </div>
 </section>
   <section class="kontakt-section">
   <div class="kontakt-container">
+    <article class="kontakt-article" aria-labelledby="kontakt-heading">
+    <h2 id="kontakt-heading" class="kontakt-section-heading">Kontakt</h2>
     <div class="kontakt-grid">
       <!-- Infospalte -->
       <aside class="kontakt-info">
         <div class="kontakt-card">
           <div class="kontakt-card-header">
             <span class="kontakt-icon" aria-hidden="true">
-              <!-- Clock -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <i class="fa-solid fa-clock"></i>
             </span>
             <h2>Antwortzeit</h2>
           </div>
@@ -320,8 +425,7 @@
         <div class="kontakt-card kontakt-card-accent">
           <div class="kontakt-card-header">
             <span class="kontakt-icon" aria-hidden="true">
-              <!-- ShieldAlert -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              <i class="fa-solid fa-circle-info"></i>
             </span>
             <h2>Wichtiger Hinweis</h2>
           </div>
@@ -354,12 +458,46 @@
             <p class="kontakt-hint">Ihre Angaben werden vertraulich behandelt.</p>
             <button type="submit" class="kontakt-submit">
               Nachricht senden
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
             </button>
           </div>
         </form>
       </div>
     </div>
+    </article>
+
+    <article id="anfahrt" class="kontakt-location-article" aria-labelledby="anfahrt-heading">
+      <div class="kontakt-location-content">
+        <h2 id="anfahrt-heading" class="kontakt-section-heading kontakt-location-heading">Anfahrt</h2>
+        <div class="kontakt-location">
+      <section class="kontakt-location-card" aria-labelledby="kontakt-location-title">
+        <h2 id="kontakt-location-title">Unsere Adresse</h2>
+        <p class="kontakt-address">
+          Pneumologische Praxis am Schloss Charlottenburg<br>
+          Spandauer Damm 3<br>
+          14059 Berlin<br>
+          (Schloss Charlottenburg / Luisenplatz)
+        </p>
+        <p class="kontakt-transit-title">So erreichen Sie uns</p>
+        <ul class="kontakt-transit-list">
+          <li><i class="fa-solid fa-bus-simple" aria-hidden="true"></i><span>Bus M45, 109 oder 309 bis Luisenplatz</span></li>
+          <li><i class="fa-solid fa-train-tram" aria-hidden="true"></i><span>S-Bahn S5 oder S7 bis Charlottenburg, ca. 10 Minuten zu Fuß</span></li>
+          <li><i class="fa-solid fa-train-subway" aria-hidden="true"></i><span>U-Bahn U7 bis Richard-Wagner-Platz, ca. 12 Minuten zu Fuß</span></li>
+        </ul>
+      </section>
+
+      <div class="kontakt-location-card kontakt-location-map">
+        <iframe
+          title="Karte zur Pneumologischen Praxis am Schloss Charlottenburg"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.7863180895724!2d13.296178077029818!3d52.51920603628782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851259a9f7a71%3A0x8278488b430ebc2e!2sPneumologische%20Praxis%20am%20Schloss%20Charlottenburg%20Dr.%20med.%20Andr%C3%A9s%20de%20Roux%20und%20Timo%20Wei%C3%9F!5e0!3m2!1sde!2sde!4v1761044269751!5m2!1sde!2sde"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 </main>

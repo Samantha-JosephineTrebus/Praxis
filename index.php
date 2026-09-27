@@ -510,7 +510,6 @@ $studies = getStudies();
         <li><a href="vorbereitung.php">Vor Ihrem Besuch</a></li>
         <li><a href="aerzte.php">Ärzte</a></li>
         <li><a href="kontakt.php">Kontakt</a></li>
-        <li><a href="finden.php">Anfahrt</a></li>
       </ul>
     </nav>
 </header>

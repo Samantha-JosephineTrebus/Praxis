@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ärzte – Praxis am Schloss</title>
   <link rel="stylesheet" href="public/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap">
   <style>
     /* ===== KORREKTUR: Footer immer unten halten ===== */
     html, body {
-      height: 100%;
       margin: 0;
     }
 
     body {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
@@ -23,6 +26,53 @@
 
     footer {
       flex-shrink: 0; /* Verhindert, dass der Footer zusammengedrückt wird */
+    }
+
+    .doctors-hero {
+      margin: 1rem 0 2rem;
+      padding: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+      box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
+    }
+
+    .doctors-hero__inner {
+      max-width: 64rem;
+      padding: 3rem 2rem !important;
+      text-align: center !important;
+    }
+
+    .doctors-hero__inner .hero__eyebrow {
+      font-size: 1rem;
+      letter-spacing: 0.16em;
+      color: #2e2e30;
+    }
+
+    .doctors-hero__inner .hero__title {
+      max-width: 52rem;
+      margin: 2rem auto 2rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #004a7f;
+    }
+
+    .doctors-hero__inner .hero__lead {
+      max-width: 48rem;
+      margin: 1rem auto 0;
+      font-size: 1.2rem;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 600px) {
+      .doctors-hero__inner {
+        padding: 2rem 1.25rem !important;
+      }
+
+      .doctors-hero__inner .hero__title {
+        font-size: 1.6rem;
+      }
     }
 
     /* ===== Neues kartenbasiertes Design mit Monogrammen ===== */
@@ -153,7 +203,7 @@
     }
   </style>
 </head>
-<body>
+  <body class="doctors-page">
   <header>
     <a href="login.php" class="login-trigger-area" title="Login"></a>
     <a href="/" class="logo praxis-logo">
@@ -176,17 +226,16 @@
         <li><a href="vorbereitung.php" <?php if ($current === 'vorbereitung.php') echo 'class="active"'; ?>>Vor Ihrem Besuch</a></li>
         <li><a href="aerzte.php" <?php if ($current === 'aerzte.php') echo 'class="active"'; ?>>Ärzte</a></li>
         <li><a href="kontakt.php" <?php if ($current === 'kontakt.php') echo 'class="active"'; ?>>Kontakt</a></li>
-        <li><a href="finden.php" <?php if ($current === 'finden.php') echo 'class="active"'; ?>>Anfahrt</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero">
-  <div class="hero__inner">
+    <section class="hero page-intro-card doctors-hero">
+  <div class="hero__inner doctors-hero__inner">
     <p class="hero__eyebrow">Unser Ärzteteam</p>
     <h1 class="hero__title">
-      Höchste  <span class="hero__title-accent">Fachkompetenz</span> für Ihre Lungengesundheit <span class="hero__title-accent"></span>
+      Höchste <span class="hero__title-accent">Fachkompetenz</span> für Ihre Lungengesundheit
     </h1>
     <p class="hero__lead">
       In unserer Praxis am Schloss verbinden wir langjährige klinische Erfahrung mit modernster Diagnostik. 
