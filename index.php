@@ -609,7 +609,7 @@ $studies = getStudies();
           <div class="doctor-card">
             <div class="doctor-avatar-placeholder">AR</div>
             <h3>Dr. med. Andres de Roux</h3>
-            <p>Spezialist für Pneumologie und Schlafmedizin, mit langjähriger Erfahrung.</p>
+            <p>Facharzt für Innere Medizin, Pneumologie, Infektiologie und Somnologie.</p>
             <div class="doctor-more-btn">
               Zum Profil 
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -621,7 +621,7 @@ $studies = getStudies();
           <div class="doctor-card">
             <div class="doctor-avatar-placeholder">TW</div>
             <h3>Timo Weiss</h3>
-            <p>Spezialist für Pneumologie, engagiert für individuelle Patientenbetreuung.</p>
+            <p>Facharzt für Innere Medizin, Pneumologie, Infektiologie und Medizinischer Gutachter.</p>
             <div class="doctor-more-btn">
               Zum Profil 
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
