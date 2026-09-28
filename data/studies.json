@@ -1,20 +1,21 @@
 [
     {
-        "title": "Dritte Teststudie <3",
-        "criteria": "gvdrg",
-        "compensation": "gvdg",
-        "procedures": "gaerg",
+        "title": "Schlaf und Atmung",
+        "criteria": "- Mindestalter: 18 Jahre\r\n- Interesse an einer Untersuchung der Schlafqualität\r\n- Bereitschaft zur Teilnahme an einem Beratungsgespräch",
+        "compensation": "Kostenlose Teilnahme an der fiktiven Untersuchung.",
+        "procedures": "Diese Teststudie beschäftigt sich mit dem Zusammenhang zwischen Schlafqualität und Atmung. Die Untersuchung umfasst einen Fragebogen und ein ärztliches Beratungsgespräch.",
         "expires": "2026-10-08",
         "id": "e01c84b642eedeb7a7af91fc",
         "pdf": true
     },
     {
-        "title": "vierte teststudie",
-        "criteria": "gwe",
-        "compensation": "gedwsgv",
-        "procedures": "wsegs",
+        "title": "Atemwegsinfektionen",
+        "criteria": "- Mindestalter: 18 Jahre\r\n- Wohnsitz in Berlin oder Umgebung\r\n- Bereitschaft zur Teilnahme an einer einmaligen Untersuchung",
+        "compensation": "Keine Aufwandsentschädigung vorgesehen (Testeintrag).",
+        "procedures": "Im Rahmen dieser fiktiven Studie werden Atemwegsbeschwerden und deren Verlauf untersucht. Die Teilnahme umfasst ein kurzes ärztliches Gespräch und einen Fragebogen.",
         "expires": "2026-10-17",
-        "id": "eb1d9c3a654669f9686f79bb"
+        "id": "eb1d9c3a654669f9686f79bb",
+        "pdf": false
     },
     {
         "title": "Teststudie",
@@ -25,11 +26,12 @@
         "id": "dc46422e9c558bb6d320a88d"
     },
     {
-        "title": "Zweite Teststudie",
-        "criteria": "was geht",
-        "compensation": "nö",
-        "procedures": "nischt",
+        "title": "Lebensqualität bei chronischen Atemwegserkrankungen",
+        "criteria": "- Mindestalter: 40 Jahre\r\n\r\n- Wohnsitz in Berlin oder Umgebung\r\n\r\n- Bestehende Diagnose einer chronischen Atemwegserkrankung\r\n\r\n- Bereitschaft zur Teilnahme an mehreren Untersuchungsterminen\r\n\r\n- Ausreichende Deutschkenntnisse zum Ausfüllen von Fragebögen",
+        "compensation": "Für die Demonstration wird eine beispielhafte Aufwandsentschädigung von 50 € nach vollständiger Teilnahme an allen vorgesehenen Terminen angegeben. Dieser Betrag ist rein fiktiv.",
+        "procedures": "Ziel dieser fiktiven Studie ist es, den Zusammenhang zwischen chronischen Atemwegserkrankungen und der Lebensqualität im Alltag zu untersuchen.\r\n\r\nDie Untersuchung ist beispielhaft in drei Phasen unterteilt:\r\n\r\n1. Erstuntersuchung\r\n\r\nZu Beginn erfolgt ein ausführliches ärztliches Gespräch. Dabei werden allgemeine Angaben zum Gesundheitszustand sowie bestehende Atemwegsbeschwerden erfasst. Ergänzend ist eine Lungenfunktionsmessung vorgesehen.\r\n\r\n2. Beobachtungsphase\r\n\r\nÜber einen Zeitraum von vier Wochen dokumentieren die Teilnehmenden ihre Beschwerden und ihre subjektiv empfundene Lebensqualität mithilfe eines standardisierten Fragebogens.\r\n\r\n3. Abschlussuntersuchung\r\n\r\nNach Abschluss der Beobachtungsphase findet ein weiteres ärztliches Gespräch statt. Die erhobenen Fragebögen werden ausgewertet und die Ergebnisse der fiktiven Studie zusammengefasst.\r\n\r\nDie beispielhafte Gesamtdauer der Teilnahme beträgt etwa fünf Wochen.",
         "expires": "2027-09-17",
-        "id": "3fb63915084879e38676ee6a"
+        "id": "3fb63915084879e38676ee6a",
+        "pdf": false
     }
 ]

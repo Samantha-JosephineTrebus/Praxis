@@ -376,6 +376,10 @@ $deroux_data = getDerouxText();
           <li><strong>Atemwegsinfektionen bei pulmonalen Grunderkrankungen:</strong> Pneumonie, chronische Atemwegsinfekte, Bronchiektasen, Tuberkulose, Lungeninfektionen durch atypische Mykobakterien</li>
           <li><strong>Impfprävention beim Erwachsenen / Senioren:</strong> Insbesondere Influenza, Pneumokokken, Pertussis</li>
           <li><strong>Schlafmedizinische Erkrankungen:</strong> Vor allem aus dem lungenfachärztlichen Bereich (Schnarchen, Tagesmüdigkeit, nächtliche Atemaussetzer), Einleitung und Überprüfung von nächtlichen Beatmungstherapien (CPAP, BIPAP, NIV)</li>
+        </ul>
+
+        <h4>Wissenschaftliches und berufliches Engagement</h4>
+        <ul>
           <li><strong>Publikationen:</strong> Wissenschaftliche Veröffentlichungen und Fachartikel von Dr. de Roux finden Sie auf <a href="https://pubmed.ncbi.nlm.nih.gov/?orig_db=PubMed&db=pubmed&cmd=Search&term=De+Roux+A[author]" target="_blank" rel="noopener noreferrer" class="doc-link">PubMed</a></li>
           <li><strong>Engagement:</strong> Dr. de Roux organisiert den Berliner <a href="https://pneumochatbb.de/" target="_blank" rel="noopener noreferrer" class="doc-link">Pneumo QZ</a> und fördert damit regelmäßig den fachlichen Austausch und die pneumologische Fortbildung in Berlin.</li>
         </ul>

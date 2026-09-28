@@ -248,7 +248,47 @@ $current = basename($_SERVER['PHP_SELF']);
       <label>Text:</label>
       <textarea name="note_text" rows="4" placeholder="Inhalt der Haftnotiz (HTML-Tags erlaubt)" required><?php echo htmlspecialchars($note['text']); ?></textarea>
       
-      <p style="font-size: 0.9rem; color: #666;">Tipp: Sie können HTML-Tags wie &lt;strong&gt;, &lt;em&gt;, &lt;u&gt; verwenden.</p>
+    
+<div style="font-size: 0.85rem; color: #666; line-height: 1.7; margin-top: 12px; padding: 14px; background: #f5f8fc; border-left: 3px solid #0875c9; border-radius: 5px;">
+    <strong style="color: #07558c; font-size: 0.95rem;">Formatierungshilfe</strong>
+    <p style="margin: 5px 0 10px;">
+        Mit den folgenden Tags können Sie Ihren Text formatieren:
+    </p>
+    <ul style="margin: 0; padding-left: 20px;">
+        <li style="margin-bottom: 5px;">
+            <code>&lt;strong&gt;Text&lt;/strong&gt;</code>
+            – <strong>Fettgedruckt</strong>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;em&gt;Text&lt;/em&gt;</code>
+            – <em>Kursiv</em>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;u&gt;Text&lt;/u&gt;</code>
+            – <u>Unterstrichen</u>
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;br&gt;</code>
+            – Neue Zeile beginnen
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;p&gt;Text&lt;/p&gt;</code>
+            – Neuen Absatz erstellen
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;ul&gt;&lt;li&gt;Text&lt;/li&gt;&lt;/ul&gt;</code>
+            – Aufzählung mit Stichpunkten
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;ol&gt;&lt;li&gt;Text&lt;/li&gt;&lt;/ol&gt;</code>
+            – Nummerierte Liste
+        </li>
+        <li style="margin-bottom: 5px;">
+            <code>&lt;a href="URL"&gt;Text&lt;/a&gt;</code>
+            – Verlinkung einfügen
+        </li>
+    </ul>
+</div>
       
       <button type="submit">Haftnotiz speichern</button>
       
