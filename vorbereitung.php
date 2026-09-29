@@ -214,7 +214,6 @@
 </head>
 <body>
   <header>
-    <a href="login.php" class="login-trigger-area" title="Login"></a>
     <a href="/" class="logo praxis-logo">
   <span class="praxis-logo__title">Pneumologische Praxis</span>
   <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
@@ -385,6 +384,6 @@
 
    <?php include 'includes/footer.php'; ?>
 
-  <script src="main.js"></script>
+  <script src="public/main.js"></script>
 </body>
 </html>

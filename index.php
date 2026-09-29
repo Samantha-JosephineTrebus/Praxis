@@ -132,17 +132,6 @@ $studies = getStudies();
       color: #0071c2;
       gap: 0.6rem;
     }
-/* Unsichtbarer Login-Bereich */
-.login-trigger-area {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50px; /* Trefferfläche von 50x50px oben rechts */
-    height: 50px;
-    z-index: 9999;
-    opacity: 0; /* Komplett unsichtbar */
-    cursor: default; /* Kein Cursor-Wechsel */
-}
 .admin-dashboard-bar {
     background: #ffffff;
     border-bottom: 2px solid #004a7f;
@@ -479,7 +468,6 @@ $studies = getStudies();
     @media (max-width: 768px) {
       header .logo {
         font-size: 1.4rem;
-        margin-bottom: 1rem;
       }
       header #main-nav {
         gap: 1rem;
@@ -489,7 +477,6 @@ $studies = getStudies();
 </head>
 <body>
  <header>
-   <a href="login.php" class="login-trigger-area" title="Login"></a>
    <a href="/" class="logo praxis-logo">
   <span class="praxis-logo__title">Pneumologische Praxis</span>
   <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
@@ -775,7 +762,7 @@ $studies = getStudies();
     if (menuToggle && navContainer) {
       menuToggle.addEventListener('click', function() {
         // Toggle der Klasse 'active' am nav-container
-        navContainer.classList.toggle('active');
+        navContainer.querySelector('ul').classList.toggle('show');
       });
     }
   </script>

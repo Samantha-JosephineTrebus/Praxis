@@ -397,6 +397,6 @@ $deroux_data = getDerouxText();
   </main>
 
   <?php include 'includes/footer.php'; ?>
-  <script src="main.js"></script>
+  <script src="public/main.js"></script>
 </body>
 </html>

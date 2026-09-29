@@ -183,6 +183,6 @@ Möchte eine betroffene Person dieses Berichtigungsrecht in Anspruch nehmen, kan
 </div>
 </main>
   <?php include 'includes/footer.php'; ?>
-  <script src="main.js"></script>
+  <script src="public/main.js"></script>
 </body>
 </html>

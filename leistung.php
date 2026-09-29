@@ -174,7 +174,6 @@
 </head>
 <body>
   <header>
-    <a href="login.php" class="login-trigger-area" title="Login"></a>
     <a href="/" class="logo praxis-logo">
   <span class="praxis-logo__title">Pneumologische Praxis</span>
   <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>

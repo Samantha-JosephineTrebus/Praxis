@@ -1,5 +1,8 @@
 <?php $footerPage = basename($_SERVER['PHP_SELF']); ?>
 <footer class="site-footer">
+  <?php if ($footerPage !== 'login.php'): ?>
+    <a href="login.php" class="login-trigger-area" title="Login" aria-label="Admin-Anmeldung"></a>
+  <?php endif; ?>
   <div class="footer-top">
     <div class="footer-col">
       <h3>Pneumologische Praxis am Schloss Charlottenburg</h3>
@@ -35,7 +38,11 @@
   </div>
 
   <div class="footer-bottom">
-    <span>&copy; 2026 Pneumologische Praxis am Schloss Charlottenburg</span>
+    <span>
+      &copy; 2026 Pneumologische Praxis am Schloss Charlottenburg |
+      Webdesign &amp; Programmierung:
+      <a class="footer-credit-link" href="https://samantha-josephinetrebus.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">Samantha-Josephine Trebus</a>
+    </span>
     <span><a href="impressum.php">Impressum</a> &middot; <a href="impressum.php">Datenschutz</a></span>
   </div>
 </footer>

@@ -161,12 +161,11 @@ $current = basename($_SERVER['PHP_SELF']);
 <body>
 
 <header>
-  <a href="login.php" class="login-trigger-area" title="Login"></a>
   <a href="/" class="logo praxis-logo">
     <span class="praxis-logo__title">Pneumologische Praxis</span>
     <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
   </a>
-  <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen">☰</button>
+  <button id="menu-toggle" class="menu-toggle" aria-label="Menü öffnen" aria-controls="nav-list" aria-expanded="false">☰</button>
   <nav>
     <ul id="nav-list">
       <li><a href="index.php">Startseite</a></li>
@@ -421,5 +420,21 @@ $current = basename($_SERVER['PHP_SELF']);
 </main>
 
   <?php include 'includes/footer.php'; ?>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const adminNav = document.getElementById('nav-list');
+
+  menuToggle.addEventListener('click', () => {
+    const isExpanded = adminNav.classList.toggle('show');
+    menuToggle.setAttribute('aria-expanded', String(isExpanded));
+  });
+
+  adminNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      adminNav.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
 </body>
 </html>

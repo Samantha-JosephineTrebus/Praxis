@@ -155,6 +155,23 @@
     padding: 1.5rem;
     box-shadow: 0 8px 25px rgba(0, 74, 127, 0.1);
   }
+  .kontakt-assistant-copy {
+    margin: 0;
+    max-width: 42rem;
+    color: var(--kontakt-muted);
+    line-height: 1.7;
+  }
+  .kontakt-phone-display {
+    margin: 1.25rem 0 0.75rem;
+  }
+  .kontakt-form-wrapper .kontakt-card-header h2 {
+    margin: 0;
+  }
+  @media (max-width: 767px) {
+    .kontakt-form-wrapper .kontakt-card-header {
+      align-items: flex-start;
+    }
+  }
   @media (min-width: 640px) {
     .kontakt-form-wrapper { padding: 2rem; }
   }
@@ -281,6 +298,9 @@
     box-shadow: 0 4px 15px rgba(0, 74, 127, 0.25);
     transition: all 0.3s ease;
   }
+  .kontakt-submit.kontakt-phone-display {
+    cursor: default;
+  }
   @media (min-width: 640px) {
     .kontakt-submit { width: auto; }
   }
@@ -288,6 +308,11 @@
     background: linear-gradient(135deg, #005c9a, #0088e0);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 74, 127, 0.35);
+  }
+  .kontakt-phone-display:hover {
+    background: linear-gradient(135deg, #004a7f, #0071c2);
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 74, 127, 0.25);
   }
 
   .kontakt-location {
@@ -365,7 +390,6 @@
 </head>
 <body>
  <header>
-    <a href="login.php" class="login-trigger-area" title="Login"></a>
     <a href="/" class="logo praxis-logo">
   <span class="praxis-logo__title">Pneumologische Praxis</span>
   <span class="praxis-logo__subtitle">am Schloss Charlottenburg</span>
@@ -435,33 +459,21 @@
           </p>
         </div>
       </aside>
-      <!-- Formularspalte -->
+      <!-- Doctolib assistant -->
       <div class="kontakt-form-wrapper">
-        <!-- Design-only contact form (no server-side logic) -->
-        <form method="POST" action="#" novalidate class="kontakt-form">
-          <div class="kontakt-field">
-            <label for="name">Name</label>
-            <input id="name" type="text" name="name" placeholder="Ihr vollständiger Name" required />
-          </div>
-
-          <div class="kontakt-field">
-            <label for="email">E-Mail</label>
-            <input id="email" type="email" name="email" placeholder="name@beispiel.de" required />
-          </div>
-
-          <div class="kontakt-field">
-            <label for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="6" placeholder="Wie können wir Ihnen helfen?" required></textarea>
-          </div>
-
-          <div class="kontakt-form-footer">
-            <p class="kontakt-hint">Ihre Angaben werden vertraulich behandelt.</p>
-            <button type="submit" class="kontakt-submit">
-              Nachricht senden
-              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
-            </button>
-          </div>
-        </form>
+        <div class="kontakt-card-header">
+          <span class="kontakt-icon" aria-hidden="true">
+            <i class="fa-solid fa-phone"></i>
+          </span>
+          <h2>Fragen oder Unterstützung?</h2>
+        </div>
+        <p class="kontakt-assistant-copy">
+          Sie erreichen den KI-Assistenten von Doctolib, indem Sie einfach in der Praxis anrufen. Er hilft Ihnen, Ihr Anliegen genauer zu beschreiben, und leitet Ihre Nachricht an unser Praxisteam weiter.
+        </p>
+        <div class="kontakt-submit kontakt-phone-display">
+          030 / 341 61 18
+        </div>
+        <p class="kontakt-hint">Der Assistent ersetzt keine medizinische Beratung.</p>
       </div>
     </div>
     </article>
@@ -503,6 +515,6 @@
 </main>
 
   <?php include 'includes/footer.php'; ?>
-  <script src="main.js"></script>
+  <script src="public/main.js"></script>
 </body>
 </html>

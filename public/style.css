@@ -29,6 +29,7 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* Shared site footer */
 .site-footer {
+  position: relative;
   margin-top: 4rem;
   border-top: 1px solid #e5e7eb;
   background: #004a7f;
@@ -115,6 +116,18 @@ html::-webkit-scrollbar-thumb:hover {
 .footer-item a:hover,
 .footer-bottom a:hover {
   color: #ecf5ff;
+}
+
+.footer-bottom .footer-credit-link {
+  color: #b3dbff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.footer-bottom .footer-credit-link:hover {
+  color: #ffffff;
 }
 
 .footer-links a.active {
@@ -413,17 +426,20 @@ form br {
 /* ===== Header & Navigation Basis ===== */
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
   background: #004a7f;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
-  padding: 1rem 2rem;
-  z-index: 999; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #ffffff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 16px;
+  z-index: 999;
+  box-shadow: 0 10px 28px rgba(18, 52, 79, 0.16);
+  backdrop-filter: blur(14px);
 }
 
 header .logo {
@@ -431,18 +447,18 @@ header .logo {
   font-weight: bold;
 }
 
-/* Invisible admin login trigger in header (clickable area top-right) */
+/* Invisible admin login trigger in the footer's lower-left corner */
 .login-trigger-area {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 50px;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 24px;
   opacity: 0;
   pointer-events: auto;
-  cursor: default; /* prevent pointer cursor on hover */
+  cursor: default;
   display: block;
-  z-index: 100000;
+  z-index: 1;
 }
 
 nav ul {
@@ -450,11 +466,13 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 nav li {
-  margin-right: 2rem;
+  margin: 0;
 }
 
 nav a {
@@ -464,7 +482,7 @@ nav a {
   position: relative;
   padding-bottom: 0.5rem ;
    font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -495,11 +513,14 @@ nav a.active {
 /* WICHTIG: Menu-Toggle standardmäßig auf großen Bildschirmen IMMER ausblenden */
 .menu-toggle {
   display: none;
-  background: none;
+  background: rgba(255, 255, 255, 0.14);
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 1.8rem;
   cursor: pointer;
+  border-radius: 10px;
+  padding: 0.35rem 0.65rem;
+  line-height: 1;
 }
 /* === PRAXIS LOGO DESIGN === */
 
@@ -537,13 +558,27 @@ nav a.active {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Hover-Effekt passend zu deinem Nav-Stil */
 .praxis-logo:hover .praxis-logo__title {
   transform: translateY(-2px);
   transition: transform 0.3s ease;
+}
+
+@media (min-width: 1121px) {
+  header {
+    padding: 1rem 2rem;
+  }
+
+  nav a {
+    font-size: 1.05rem;
+  }
+
+  .praxis-logo__title {
+    font-size: 1.6rem;
+  }
 }
 
 .container {
@@ -607,7 +642,7 @@ nav a.active {
 
 .hours-table td {
   padding: 0.4em 0.5em 0.4em 0;
-  vertical-align: middle;
+  vertical-align: top;
   font-size: 1.05em;
   color: #004a7f;
 }
@@ -619,7 +654,7 @@ nav a.active {
   padding-right: 0.2em;
   display: inline-flex;
   align-items: center;
-  transform: translateY(2px);
+  transform: translateY(3px);
 }
 
 .hours-day {
@@ -954,51 +989,68 @@ footer {
   }
 }
 
-/* 2. ALLGEMEINE TABLET GRÖSSE (max-width: 1024px) */
-/* Ab hier schaltet das Hauptmenü auf den Burger-Toggle um */
-@media (max-width: 1024px) {
+/* Switch to the compact menu before the full navigation runs out of room. */
+@media (max-width: 1120px) {
   nav ul {
     display: none;
     flex-direction: column;
+    align-items: stretch;
+    gap: 0;
     background: #004a7f;
-    width: 100%;
+    width: min(360px, calc(100vw - 32px));
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     right: 0;
     left: auto;
     z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(18, 52, 79, 0.18);
+    overflow: hidden;
   }
 
   nav ul.show {
     display: flex;
-    width: 50%;
   }
 
   .menu-toggle {
-    display: flex; /* JETZT SICHER: Sichtbar ab 1024px und kleiner */
-    justify-content: flex-end;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     margin-left: auto;
   }
 
   nav li {
     margin: 0;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    padding: 0.5rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0;
   }
 
-  /* Place invisible login trigger under header on tablets and smaller
-     fixed to top-left so it doesn't shift any page content. */
-  .login-trigger-area {
-    position: fixed;
-    top: 72px; /* sits just under the header */
-    left: 12px;
-    width: 44px;
-    height: 44px;
-    opacity: 0;
-    pointer-events: auto;
-    cursor: default;
-    z-index: 100001;
+  nav li:first-child {
+    border-top: 0;
   }
+
+  nav a {
+    display: block;
+    padding: 0.85rem 1rem;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  nav a.active::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0.55rem;
+    width: 3px;
+    height: 1.15rem;
+    border-radius: 2px;
+    background: #b3dbff;
+    transform: translateY(-50%);
+  }
+
 }
 
 /* 3. SMARTPHONES & HOCHFORMAT TABLETS (max-width: 768px) */
@@ -1020,6 +1072,7 @@ footer {
   
   header .logo {
     font-size: 1.3rem;
+    margin-bottom: 0;
   }
 
   .praxis-logo {
@@ -1041,18 +1094,21 @@ footer {
   }
 
   nav ul {
-    left: 0;
+    right: 0;
+    left: auto;
   }
   nav ul.show {
     width: 100%;
   }
 
-  /* Slightly adjust the hidden login target for smaller phones */
-  .login-trigger-area {
-    top: 64px;
-    left: 8px;
-    width: 40px;
-    height: 40px;
+  nav a {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 0.55rem 1rem;
+    font-size: 1.05rem;
+    line-height: 1.4;
   }
 
   /* Auf echten Handys: Zeiten brechen untereinander auf und zentrieren */
