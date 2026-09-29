@@ -7,6 +7,10 @@ body {
   line-height: 1.6;
 }
 
+html {
+  font-family: Arial, sans-serif;
+}
+
 /* ======== Header ======== */
 header {
   background: #004a7f;
@@ -253,4 +257,10 @@ form button:hover {
   #schedule-table th, #schedule-table td {
     padding: 0.5rem;
   }
+}
+
+/* Default font for all regular text, but not Font Awesome icons */
+body,
+body *:not(i):not(.fa):not(.fas):not(.far):not(.fab):not(.fa-solid):not(.fa-regular):not(.fa-brands):not(svg):not(path) {
+  font-family: Arial, sans-serif !important;
 }

@@ -14,6 +14,7 @@ define('DATA_DIR', __DIR__ . '/data/');
 define('HOURS_FILE', DATA_DIR . 'hours.json');
 define('NOTE_FILE', DATA_DIR . 'note.json');
 define('DEROUX_FILE', DATA_DIR . 'deroux.json');
+define('WEISS_FILE', DATA_DIR . 'weiss.json');
 define('STUDIES_FILE', DATA_DIR . 'studies.json');
 define('STUDY_FILES_DIR', DATA_DIR . 'study-files/');
 
@@ -81,6 +82,11 @@ $DEFAULT_DEROUX = [
     'text' => 'Spezialist für Pneumologie und Schlafmedizin, mit langjähriger Erfahrung.'
 ];
 
+// Standardtext für Timo Weiß (falls Datei nicht existiert)
+$DEFAULT_WEISS = [
+    'text' => 'Aktuelle Hinweise zur Terminvereinbarung oder zu wichtigen Praxisinformationen.'
+];
+
 // Text für Dr. de Roux laden
 function getDerouxText() {
     if (file_exists(DEROUX_FILE)) {
@@ -92,6 +98,19 @@ function getDerouxText() {
 // Text für Dr. de Roux speichern
 function saveDerouxText($data) {
     return file_put_contents(DEROUX_FILE, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+}
+
+// Text für Timo Weiß laden
+function getWeissText() {
+    if (file_exists(WEISS_FILE)) {
+        return json_decode(file_get_contents(WEISS_FILE), true);
+    }
+    return $GLOBALS['DEFAULT_WEISS'];
+}
+
+// Text für Timo Weiß speichern
+function saveWeissText($data) {
+    return file_put_contents(WEISS_FILE, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 }
 
 function getStudies($includeExpired = false) {
@@ -261,7 +280,8 @@ function getJSONData($fileKey) {
     $files = [
         'hours' => HOURS_FILE,
         'note' => NOTE_FILE,
-        'deroux_content' => DEROUX_FILE
+        'deroux_content' => DEROUX_FILE,
+        'weiss_content' => WEISS_FILE
     ];
 
     if (isset($files[$fileKey]) && file_exists($files[$fileKey])) {
@@ -275,7 +295,8 @@ function saveJSONData($fileKey, $data) {
     $files = [
         'hours' => HOURS_FILE,
         'note' => NOTE_FILE,
-        'deroux_content' => DEROUX_FILE
+        'deroux_content' => DEROUX_FILE,
+        'weiss_content' => WEISS_FILE
     ];
 
     if (isset($files[$fileKey])) {

@@ -1,3 +1,7 @@
+<?php
+require_once 'config.php';
+$weiss_data = getWeissText();
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -5,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Timo Weiß – Praxis am Schloss</title>
   <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     /* ===== KORREKTUR: Footer immer unten halten ===== */
     html, body {
@@ -246,6 +251,101 @@
       font-size: 1.4rem;
     }
 
+    .aktuelle-info {
+      color: #002a4d;
+      background: linear-gradient(135deg, #cde7ff 0%, #b3dbff 100%);
+      border-left: 6px solid #004a7f;
+      box-shadow: 0 8px 20px rgba(0, 74, 127, 0.15);
+      padding: 1.2rem 1.5rem;
+      border-radius: 10px;
+      max-width: 420px;
+      position: relative;
+      transform: rotate(-1deg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .aktuelle-info:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 74, 127, 0.25);
+    }
+
+    .aktuelle-info::after {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 42%;
+      width: 40px;
+      height: 20px;
+      background: rgba(0, 74, 127, 0.2);
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+      border-radius: 2px;
+    }
+
+    .aktuelle-info h4 {
+      margin-top: 0 !important;
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+      color: #004a7f;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem !important;
+    }
+
+    .aktuelle-info p {
+      margin-bottom: 0;
+      font-size: 1rem;
+      color: #222;
+      line-height: 1.6;
+      padding-bottom: 1rem;
+    }
+
+    .aktuelle-info .edit-btn {
+      margin-top: 2.2rem;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .content-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .content-wrapper .doctor-info-body {
+        flex: 2;
+        padding: 0;
+      }
+
+      .aktuelle-info {
+        flex: 1;
+        margin-top: 0 !important;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .content-wrapper {
+        padding: 1.5rem;
+        flex-direction: column-reverse;
+      }
+
+      .content-wrapper .doctor-info-body {
+        padding: 1.5rem;
+      }
+
+      .aktuelle-info {
+        align-self: center;
+        margin: 0 auto;
+        max-width: 92%;
+      }
+    }
+
     /* Mobile Responsive Optimierung */
     @media (max-width: 768px) {
       .doctor-info-body {
@@ -309,6 +409,7 @@
       </div>
       
       <!-- Inhaltsbereich -->
+      <div class="content-wrapper">
       <div class="doctor-info-body">
         <div class="gutachter-badge">
           Medizinischer Gutachter (Ärztekammer Berlin)
@@ -392,6 +493,15 @@
           <li>Misch D, Blum T, Boch C, Weiß T, Crolow C, Griff S, Mairinger T, Bauer TT, Kollmeier J. Value of thyroid transcription factor (TTF)-1 for diagnosis and prognosis of patients with locally advanced or metastatic small cell lung cancer. <em>Diagn Pathol.</em> 2015 Apr 2;10:21.</li>
           <li>Otto-Knapp R, Bös L, Schönfeld N, Wagner S, Starzacher AK, Weiß T, Vesenbeckh S, Glaser-Paschke G, Mauch H. Resistenzen gegen Zweitlinienmedikamente bei Migranten mit multiresistenter Tuberkulose in Region Berlin. <em>Pneumologie</em> 2014, 68:496-500.</li>
         </ul>
+      </div>
+      <div id="aktuelle-info-container" class="aktuelle-info">
+        <h4>Aktuelles</h4>
+        <p id="aktuelle-info-text"><?php echo nl2br(htmlspecialchars($weiss_data['text'])); ?></p>
+
+        <?php if (isAdminLoggedIn()): ?>
+          <a href="admin.php#weiss-anpassen" class="edit-btn"><i class="fa-solid fa-pen" aria-hidden="true"></i> Bearbeiten</a>
+        <?php endif; ?>
+      </div>
       </div>
     </div>
   </main>

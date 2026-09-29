@@ -255,14 +255,6 @@
 </div>
 
 <div class="leistung-card">
-  <h3>Spiroergometrie</h3>
-  <button class="read-more-btn">Mehr lesen</button>
-  <p>
-    Bei der Spiroergometrie wird während einer körperlichen Belastung (z. B. Fahrradfahren oder Gehen auf dem Laufband) die Atemgasanalyse durchgeführt, also die Aufnahme von Sauerstoff und die Abgabe von Kohlendioxid gemessen. Diese Untersuchung hilft, die körperliche Leistungsfähigkeit sowie das Zusammenspiel von Herz, Lunge und Stoffwechsel genau zu beurteilen.
-  </p>
-</div>
-
-<div class="leistung-card">
   <h3>Funktionstestung der Atempumpe (Pimax)</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
@@ -290,7 +282,7 @@
 </div>
 
 <div class="leistung-card">
-  <h3>Onera Schlaflabor für zu Hause</h3>
+  <h3>Polysomnografie für zu Hause (nur PKV oder Selbstzahlung)</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
    Diese erweiterte Schlafuntersuchung erfolgt bequem in der häuslichen Umgebung und erfasst zusätzlich zu Atmung und Sauerstoffsättigung auch weitere Parameter wie Schlafphasen. Sie ermöglicht eine genauere Beurteilung von Schlafstörungen.
@@ -320,7 +312,7 @@
     <h2>Spezialleistungen & Zusatzangebote</h2>
     <div class="leistung-grid">
 <div class="leistung-card">
-  <h3>Kurse / Schulungen (DMP-Programm)</h3>
+  <h3>Kurse / Schulungen auch für Fremdpraxen (DMP-Programm)</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
     Im Rahmen der Disease-Management-Programme (DMP) bieten wir strukturierte Schulungen für Patienten mit Asthma oder COPD an. 
@@ -329,12 +321,11 @@
 </div>
 
 <div class="leistung-card">
-  <h3>Teilnahme an Studien (COPD, Asthma, Lungeninfektionen)</h3>
+  <h3>Teilnahme an Studien (COPD, Asthma, Bronchiektasen)</h3>
   <button class="read-more-btn">Mehr lesen</button>
   <p>
     Unsere Praxis nimmt regelmäßig an klinischen Studien teil, um neue Therapien für Atemwegserkrankungen zu erforschen. 
     Patientinnen und Patienten profitieren dabei von modernsten Behandlungsmöglichkeiten und einer engmaschigen medizinischen Betreuung.
-    <br><a class="study-overview-link" href="index.php#studien"><span>Aktuelle Studien ansehen</span><span aria-hidden="true">→</span></a>
   </p>
 </div>
 

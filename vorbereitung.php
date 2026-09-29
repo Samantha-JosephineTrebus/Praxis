@@ -316,7 +316,7 @@
     <h2>Was Sie zum Termin mitbringen sollten</h2>
     <div class="checklist-grid">
       <div class="checklist-item">
-        <h3>Versichertenkarte</h3>
+        <h3>Versichertenkarte & Überweisungsschein</h3>
         <p>
           Bitte bringen Sie Ihre aktuelle Versichertenkarte mit. Diese benötigen wir für die Abrechnung Ihrer Behandlung.
         </p>

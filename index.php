@@ -4,7 +4,6 @@ require_once 'config.php';
 // Daten laden
 $hours = getHours();
 $note = getNote();
-$studies = getStudies();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -575,6 +574,10 @@ $studies = getStudies();
             }
             ?>
             </table>
+            <p class="hours-info-note">
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+              <span>Bitte beachten Sie: Die Öffnungszeiten können in Ausnahmefällen abweichen. Achten Sie deshalb auch auf die <strong>aktuellen Informationen links</strong>.</span>
+            </p>
             <p><a 
                     href="https://www.doctolib.de/praxis/berlin/pneumologische-praxis-am-schloss-charlottenburg-dr-med-andres-de-roux-und-timo-weiss/booking/patient-insurance-sector?specialityId=1143&telehealth=false&placeId=practice-44058&profile_skipped=true&bookingFunnelSource=external_referral" 
                     target="_blank" 
@@ -607,7 +610,7 @@ $studies = getStudies();
         <a href="weiss.php" class="doctor-card-link">
           <div class="doctor-card">
             <div class="doctor-avatar-placeholder">TW</div>
-            <h3>Timo Weiss</h3>
+            <h3>Timo Weiß</h3>
             <p>Facharzt für Innere Medizin, Pneumologie, Infektiologie und Medizinischer Gutachter.</p>
             <div class="doctor-more-btn">
               Zum Profil 
@@ -691,11 +694,6 @@ $studies = getStudies();
       <div class="intro-stats">
 
         <div class="stat-card">
-          <div class="stat-number">25+</div>
-          <div class="stat-label">Jahre Erfahrung</div>
-        </div>
-
-        <div class="stat-card">
           <div class="stat-number">2</div>
           <div class="stat-label">Fachärzte für Sie</div>
         </div>
@@ -712,44 +710,6 @@ $studies = getStudies();
   </div>
 
 </section>
-    <section id="studien" class="studies-section" aria-labelledby="studies-title">
-      <div class="studies-heading">
-        <h2 id="studies-title">Aktuelle Studien</h2>
-        <?php if (isAdminLoggedIn()): ?>
-          <a class="admin-edit-link" href="admin.php#studien-anpassen"><i class="fa-solid fa-pen" aria-hidden="true"></i> Studien verwalten</a>
-        <?php endif; ?>
-      </div>
-
-      <?php if (empty($studies)): ?>
-        <p class="studies-empty">Derzeit laufen keine Studien mit offener Teilnahme.</p>
-      <?php else: ?>
-        <div class="studies-grid">
-          <?php foreach ($studies as $study): ?>
-            <article class="study-card">
-              <h3><?php echo htmlspecialchars($study['title'] ?? ''); ?></h3>
-              <div class="study-details">
-                <div>
-                  <h4>Wer kann teilnehmen?</h4>
-                  <p><?php echo nl2br(htmlspecialchars($study['criteria'] ?? '')); ?></p>
-                </div>
-                <div>
-                  <h4>Was erhalten Sie?</h4>
-                  <p><?php echo nl2br(htmlspecialchars($study['compensation'] ?? '')); ?></p>
-                </div>
-                <div>
-                  <h4>Was wird durchgeführt?</h4>
-                  <p><?php echo nl2br(htmlspecialchars($study['procedures'] ?? '')); ?></p>
-                </div>
-              </div>
-              <p class="study-deadline">Teilnahme möglich bis <time datetime="<?php echo htmlspecialchars($study['expires'] ?? ''); ?>"><?php echo htmlspecialchars(date('d.m.Y', strtotime($study['expires'] ?? ''))); ?></time></p>
-              <?php if (!empty($study['pdf'])): ?>
-                <a class="study-pdf-link" href="study-download.php?id=<?php echo rawurlencode($study['id']); ?>"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Studieninformationen als PDF herunterladen</a>
-              <?php endif; ?>
-            </article>
-          <?php endforeach; ?>
-        </div>
-      <?php endif; ?>
-    </section>
   </main>
 
  <?php include 'includes/footer.php'; ?>
