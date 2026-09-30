@@ -95,9 +95,24 @@ $note = getNote();
       transition: transform 0.3s ease;
     }
 
+    .doctor-avatar {
+      width: 85px;
+      height: 85px;
+      object-fit: cover;
+      border: 2px solid #004a7f;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 74, 127, 0.05);
+      transition: transform 0.3s ease;
+    }
+
     .doctor-card-link:hover .doctor-avatar-placeholder {
       transform: scale(1.05);
       background: #ffffff;
+    }
+
+    .doctor-card-link:hover .doctor-avatar {
+      transform: scale(1.05);
     }
 
     .doctor-card h3 {
@@ -597,7 +612,7 @@ $note = getNote();
         
         <a href="deroux.php" class="doctor-card-link">
           <div class="doctor-card">
-            <div class="doctor-avatar-placeholder">AR</div>
+            <img class="doctor-avatar" src="public/unnamed.jpg" alt="Dr. med. Andres de Roux">
             <h3>Dr. med. Andres de Roux</h3>
             <p>Facharzt für Innere Medizin, Pneumologie, Infektiologie und Somnologie.</p>
             <div class="doctor-more-btn">
@@ -609,7 +624,7 @@ $note = getNote();
 
         <a href="weiss.php" class="doctor-card-link">
           <div class="doctor-card">
-            <div class="doctor-avatar-placeholder">TW</div>
+            <img class="doctor-avatar" src="public/TimoWeiß.jpg" alt="Timo Weiß">
             <h3>Timo Weiß</h3>
             <p>Facharzt für Innere Medizin, Pneumologie, Infektiologie und Medizinischer Gutachter.</p>
             <div class="doctor-more-btn">

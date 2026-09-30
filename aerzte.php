@@ -132,10 +132,25 @@
       transition: all 0.3s ease;
     }
 
+    .doctor-profile-image {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      border: 3px solid #004a7f;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 74, 127, 0.1);
+      transition: all 0.3s ease;
+    }
+
     .doctor-card:hover .doctor-initials-wrapper {
       transform: scale(1.08);
       background: #004a7f;
       color: #ffffff;
+      box-shadow: 0 6px 20px rgba(0, 74, 127, 0.2);
+    }
+
+    .doctor-card:hover .doctor-profile-image {
+      transform: scale(1.08);
       box-shadow: 0 6px 20px rgba(0, 74, 127, 0.2);
     }
 
@@ -248,7 +263,7 @@
     <div class="doctors-grid">
       <div class="doctor-card" onclick="window.location.href='weiss.php'">
         <div class="doctor-card-header">
-          <div class="doctor-initials-wrapper">TW</div>
+          <img class="doctor-profile-image" src="public/TimoWeiß.jpg" alt="Timo Weiß">
         </div>
         <div class="doctor-card-content">
           <div class="doctor-title">Facharzt für Pneumologie</div>
@@ -260,7 +275,7 @@
 
       <div class="doctor-card" onclick="window.location.href='deRoux.php'">
         <div class="doctor-card-header">
-          <div class="doctor-initials-wrapper">AR</div>
+          <img class="doctor-profile-image" src="public/unnamed.jpg" alt="Dr. med. Andrés de Roux">
         </div>
         <div class="doctor-card-content">
           <div class="doctor-title">Facharzt für Pneumologie</div>
