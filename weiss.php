@@ -34,6 +34,7 @@ $weiss_data = getWeissText();
 
     /* ===== Moderner, animierter Zurück-Button ===== */
     .back-link-wrapper {
+      margin-top: 1rem;
       margin-bottom: 2rem;
     }
 
@@ -108,6 +109,15 @@ $weiss_data = getWeissText();
       font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .doctor-profile-image {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
       margin-bottom: 1.5rem;
     }
 
@@ -403,7 +413,7 @@ $weiss_data = getWeissText();
     <div class="doctor-detail-container">
       <!-- Premium Header-Bereich -->
       <div class="doctor-profile-header">
-        <div class="doctor-large-initials">TW</div>
+        <img class="doctor-profile-image" src="public/TimoWeiß.jpg" alt="Timo Weiß">
         <h2>Timo Weiß</h2>
         <div class="doctor-subtitle">Facharzt für Innere Medizin und Pneumologie, Infektiologie</div>
       </div>

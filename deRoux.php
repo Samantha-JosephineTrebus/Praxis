@@ -38,6 +38,7 @@ $deroux_data = getDerouxText();
       color: #0071c2;
       text-decoration: none;
       font-weight: 600;
+      margin-top: 1rem;
       margin-bottom: 2rem;
       transition: color 0.3s ease, transform 0.3s ease;
     }
@@ -84,6 +85,15 @@ $deroux_data = getDerouxText();
       font-size: 2rem;
       font-weight: 700;
       letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .doctor-profile-image {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.14);
       margin-bottom: 0.5rem;
     }
 
@@ -363,7 +373,7 @@ $deroux_data = getDerouxText();
     
     <div class="doctor-detail-container">
       <div class="doctor-profile-header">
-        <div class="doctor-large-initials">AR</div>
+        <img class="doctor-profile-image" src="public/unnamed.jpg" alt="Dr. med. Andrés de Roux">
         <h2>Dr. med. Andrés de Roux</h2>
         <div class="doctor-subtitle">Facharzt für Innere Medizin, Schwerpunkt Pneumologie</div>
       </div>
