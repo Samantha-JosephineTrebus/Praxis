@@ -624,24 +624,30 @@ nav a.active {
 
 .hours-info-note {
   display: flex;
-  align-items: flex-start;
-  gap: 0.45rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
   max-width: 450px;
-  margin: 0.85rem 0 0;
+  margin: 0 0 0;
   color: #a51f2b;
   font-size: 0.82rem;
   line-height: 1.45;
-  text-align: left;
+  text-align: center;
 }
 
 .hours-info-note i {
-  flex: 0 0 auto;
-  margin-top: 0.15rem;
-  font-size: 0.95rem;
+  font-size: 20px;
+  margin-bottom: 0.5rem;
 }
 
 .hours-info-note strong {
   color: #861923;
+}
+
+@media (min-width: 1151px) {
+  .hours-info-note span {
+    max-width: 380px;
+  }
 }
 
 .intro-section .hours-card {

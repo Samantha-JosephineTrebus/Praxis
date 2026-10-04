@@ -590,7 +590,7 @@ $note = getNote();
             ?>
             </table>
             <p class="hours-info-note">
-              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+              <i class="fa-solid fa-circle-info"></i>
               <span>Bitte beachten Sie: Die Öffnungszeiten können in Ausnahmefällen abweichen. Achten Sie deshalb auch auf die <strong>aktuellen Informationen links</strong>.</span>
             </p>
             <p><a 
