@@ -1,27 +1,31 @@
 <?php
-session_start();
+require_once 'config.php';
 
-// 1. Alle Session-Variablen löschen
-$_SESSION = array();
-
-// 2. Cookie des Browsers löschen
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', time() - 86400,
-        $params["path"], $params["domain"],
-        $params["secure"], $params["httponly"]
-    );
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    exit;
 }
 
-// 3. Session vernichten
+if (!verifyCsrfToken($_POST['csrf_token'] ?? null)) {
+    http_response_code(403);
+    exit;
+}
+
+$_SESSION = [];
+
+if (ini_get('session.use_cookies')) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', [
+        'expires' => time() - 42000,
+        'path' => $params['path'],
+        'domain' => $params['domain'],
+        'secure' => $params['secure'],
+        'httponly' => $params['httponly'],
+        'samesite' => $params['samesite'] ?? 'Lax'
+    ]);
+}
+
 session_destroy();
-
-// 4. Cache verhindern (wichtig für Browser, die die alte Seite anzeigen wollen)
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-
-// 5. Umleitung
-header("Location: index.php");
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Location: index.php');
 exit;
-?>

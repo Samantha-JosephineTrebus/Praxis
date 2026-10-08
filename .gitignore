@@ -20,3 +20,4 @@ npm-debug.log*
 # Nicht versionieren
 .env
 .env.local
+auth.local.php

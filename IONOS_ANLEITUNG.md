@@ -13,21 +13,30 @@ Diese Website wurde zu **PHP** umgebaut und ist nun kompatibel mit IONOS Hosting
 
 ## Schritt 1: Dateien hochladen
 
-1. Verbinde dich per **FTP** oder **SFTP** mit deinem IONOS Hosting
+1. Verbinde dich per **SFTP** mit deinem IONOS Hosting; unverschlüsseltes FTP nicht verwenden.
 2. Lade alle Dateien in den **Root-Verzeichnis** (oder `/public_html`) hoch:
-   - `config.php`
+   - `config.php` und die selbst angelegte `auth.local.php`
    - `index.php`
    - `login.php`
    - `admin.php`
    - `logout.php`
    - `mitarbeiter.php`
-   - `.htaccess`
+   - `.htaccess` (beim FTP-Programm gegebenenfalls Anzeige versteckter Dateien aktivieren)
    - `public/` (alle HTML, CSS, JS, Bilder)
    - `data/` (Ordner mit `hours.json` und `note.json`)
 
+## HTTPS-Zertifikat aktivieren
+
+1. Im IONOS-Konto unter **Domains & SSL** ein SSL/TLS-Zertifikat der Domain zuweisen und aktivieren.
+2. Erst wenn das Zertifikat als aktiv angezeigt wird, die HTTPS-Umleitung für die Domain einschalten.
+3. `https://deine-domain.de` öffnen und sicherstellen, dass der Browser keine Zertifikatswarnung zeigt und HTTP auf HTTPS umleitet.
+4. Die Login-Seite über `https://` öffnen und den Login testen. Falls der Login trotz gültigem Zertifikat HTTPS nicht erkennt, nicht auf HTTP ausweichen, sondern die IONOS-PHP/HTTPS-Konfiguration prüfen.
+
+Auf einer öffentlichen Domain verarbeitet die Anmeldung Passwörter ausschließlich über HTTPS. Ohne aktives Zertifikat ist dort kein Login möglich. HTTP-Login ist nur für `localhost` bei lokaler Entwicklung freigeschaltet. HTTPS verschlüsselt die Verbindung, ersetzt aber nicht die übrigen Sicherheitsmaßnahmen.
+
 ## Schritt 2: Berechtigungen setzen
 
-Der `/data` Ordner muss **Schreibberechtigung** haben:
+Der `/data` Ordner muss für den PHP-Prozess beschreibbar sein. Verwende die engsten Berechtigungen, die IONOS benötigt; setze niemals `777`:
 
 **Via FTP:**
 1. Rechtsklick auf `/data` Ordner → Berechtigungen
@@ -43,9 +52,7 @@ chmod 755 data/
 1. Öffne deine Website in Browser: `https://deine-domain.de`
 2. Du solltest die Startseite sehen
 3. Klick auf "🔐 Anmelden"
-4. Login als **Admin**:
-   - Benutzername: `admin`
-   - Passwort: `1234`
+4. Mit den in `auth.local.php` eingerichteten Admin-Zugangsdaten anmelden
 5. Du solltest zum Admin-Panel weitergeleitet werden
 
 ## Schritt 4: Öffnungszeiten bearbeiten
@@ -56,16 +63,6 @@ chmod 755 data/
 4. Die Änderungen werden sofort auf der Startseite angezeigt!
 
 ---
-
-## Login-Daten
-
-**Admin:**
-- Benutzername: `admin`
-- Passwort: `1234`
-
-**Mitarbeiter:**
-- Benutzername: `mitarbeiter`
-- Passwort: `abcd`
 
 ---
 
@@ -105,12 +102,28 @@ chmod 755 data/
 
 ## Weitere Anpassungen
 
-### Passwort ändern
-Bearbeite `config.php`:
+### Zugangsdaten einrichten oder ändern
+
+1. Kopiere `auth.local.php.example` lokal nach `auth.local.php`.
+2. Erzeuge für jedes Konto einen eigenen Passwort-Hash mit PHP CLI. Der Befehl fragt das Passwort ein, statt es in der Kommandozeile zu speichern:
+
 ```php
-define('ADMIN_PASSWORD', 'dein-neues-passwort');
-define('STAFF_PASSWORD', 'mitarbeiter-passwort');
+php -r "echo password_hash(readline('Passwort: '), PASSWORD_DEFAULT), PHP_EOL;"
 ```
+
+3. Trage Benutzernamen und die erzeugten Hashes in `auth.local.php` ein:
+
+```php
+<?php
+return [
+   'admin_username' => 'EIGENER_ADMIN_NAME',
+   'admin_password_hash' => 'ADMIN_HASH_HIER_EINFUEGEN',
+   'staff_username' => 'EIGENER_MITARBEITER_NAME',
+   'staff_password_hash' => 'MITARBEITER_HASH_HIER_EINFUEGEN'
+];
+```
+
+Verwende lange, einzigartige Passwörter. Die Datei `auth.local.php` wird von Git ignoriert und durch `.htaccess` gegen direkten Abruf gesperrt. Lade sie per SFTP auf IONOS hoch und sichere sie getrennt. Ohne diese Datei bleibt der Login auf öffentlichen Domains deaktiviert; der lokale Entwicklungszugang funktioniert nur über eine echte Loopback-Verbindung.
 
 ### Weitere Seiten zu PHP konvertieren
 Alle `*.html` Dateien können optional auch zu `.php` konvertiert werden für mehr Flexibilität.

@@ -1,6 +1,11 @@
 <?php
 require_once 'config.php';
 
+if (!$requestUsesHttps && !$requestIsLocalhost) {
+  http_response_code(403);
+  exit('Bitte öffnen Sie die Anmeldung über HTTPS.');
+}
+
 // Wenn bereits eingeloggt, zur Admin-Seite
 if (isLoggedIn()) {
     header('Location: index.php');
@@ -11,21 +16,31 @@ $error = '';
 
 // Login-Verarbeitung
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+  $username = is_string($_POST['username'] ?? null) ? $_POST['username'] : '';
+  $password = is_string($_POST['password'] ?? null) ? $_POST['password'] : '';
 
-    if ($username === ADMIN_USERNAME && $password === ADMIN_PASSWORD) {
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['role'] = 'admin';
-        $_SESSION['username'] = $username;
-        header('Location: admin.php');
-        exit;
-    } elseif ($username === STAFF_USERNAME && $password === STAFF_PASSWORD) {
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['role'] = 'staff';
-        $_SESSION['username'] = $username;
-        header('Location: index.php');
-        exit;
+  if (!$requestUsesHttps && !$requestIsLocalhost) {
+    http_response_code(400);
+    $error = 'Die Anmeldung ist nur über eine HTTPS-Verbindung möglich.';
+  } elseif (!verifyCsrfToken($_POST['csrf_token'] ?? null)) {
+    http_response_code(403);
+    $error = 'Sitzung abgelaufen. Bitte laden Sie die Seite neu.';
+  } elseif (verifyLoginCredentials($username, $password, 'admin_username', 'admin_password_hash')) {
+    session_regenerate_id(true);
+    unset($_SESSION['csrf_token']);
+    $_SESSION['loggedIn'] = true;
+    $_SESSION['role'] = 'admin';
+    $_SESSION['username'] = $username;
+    header('Location: admin.php');
+    exit;
+  } elseif (verifyLoginCredentials($username, $password, 'staff_username', 'staff_password_hash')) {
+    session_regenerate_id(true);
+    unset($_SESSION['csrf_token']);
+    $_SESSION['loggedIn'] = true;
+    $_SESSION['role'] = 'staff';
+    $_SESSION['username'] = $username;
+    header('Location: index.php');
+    exit;
     } else {
         $error = '❌ Falsche Anmeldedaten. Bitte versuchen Sie es erneut.';
     }
@@ -107,10 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <h2>🔐 Anmelden</h2>
       
       <?php if ($error): ?>
-        <div class="error-msg"><?php echo $error; ?></div>
+        <div class="error-msg"><?php echo htmlspecialchars($error, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></div>
       <?php endif; ?>
       
       <form method="POST" action="login.php">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
         <input 
           type="text" 
           name="username" 

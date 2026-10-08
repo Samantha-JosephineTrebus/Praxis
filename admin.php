@@ -48,6 +48,11 @@ function isValidStudyDate($date, $mustBeCurrent = false) {
 
 // Handle POST actions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (!verifyCsrfToken($_POST['csrf_token'] ?? null)) {
+    http_response_code(403);
+    exit('Sitzung abgelaufen. Bitte laden Sie die Seite neu.');
+  }
+
   $action = $_POST['action'] ?? '';
   if ($action === 'save_hours') {
     $hours_input = [
@@ -128,7 +133,12 @@ $current = basename($_SERVER['PHP_SELF']);
       <li><a href="#info-anpassen">Aktuelle Informationen</a></li>
       <li><a href="#deroux-anpassen">Dr. de Roux</a></li>
       <li><a href="#weiss-anpassen">Timo Weiß</a></li>
-      <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
+      <li>
+        <form class="logout-form" method="POST" action="logout.php">
+          <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
+          <button type="submit" style="color: #ff6b6b; background: none; border: 0; cursor: pointer; font: inherit;">Logout</button>
+        </form>
+      </li>
     </ul>
   </nav>
 </header>
@@ -145,6 +155,7 @@ $current = basename($_SERVER['PHP_SELF']);
     
     <form class="admin-form" method="POST" action="admin.php">
       <input type="hidden" name="action" value="save_hours">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
       
       <h3>Montag</h3>
       <label>Morgens:</label>
@@ -195,18 +206,19 @@ $current = basename($_SERVER['PHP_SELF']);
     
     <form class="admin-form" method="POST" action="admin.php">
       <input type="hidden" name="action" value="save_note">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
       
       <label>Titel:</label>
       <input type="text" name="note_title" value="<?php echo htmlspecialchars($note['title']); ?>" placeholder="Titel der Haftnotiz" required>
       
       <label>Text:</label>
-      <textarea name="note_text" rows="4" placeholder="Inhalt der Haftnotiz (HTML-Tags erlaubt)" required><?php echo htmlspecialchars($note['text']); ?></textarea>
+      <textarea name="note_text" rows="4" placeholder="Inhalt der Haftnotiz" required><?php echo htmlspecialchars($note['text'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?></textarea>
       
     
 <div style="font-size: 0.85rem; color: #666; line-height: 1.7; margin-top: 12px; padding: 14px; background: #f5f8fc; border-left: 3px solid #0875c9; border-radius: 5px;">
     <strong style="color: #07558c; font-size: 0.95rem;">Formatierungshilfe</strong>
     <p style="margin: 5px 0 10px;">
-        Mit den folgenden Tags können Sie Ihren Text formatieren:
+        Erlaubte Formatierungstags ohne Attribute:
     </p>
     <ul style="margin: 0; padding-left: 20px;">
         <li style="margin-bottom: 5px;">
@@ -237,10 +249,6 @@ $current = basename($_SERVER['PHP_SELF']);
             <code>&lt;ol&gt;&lt;li&gt;Text&lt;/li&gt;&lt;/ol&gt;</code>
             – Nummerierte Liste
         </li>
-        <li style="margin-bottom: 5px;">
-            <code>&lt;a href="URL"&gt;Text&lt;/a&gt;</code>
-            – Verlinkung einfügen
-        </li>
     </ul>
 </div>
       
@@ -260,6 +268,7 @@ $current = basename($_SERVER['PHP_SELF']);
     
     <form class="admin-form" method="POST" action="admin.php#deroux-anpassen">
       <input type="hidden" name="action" value="save_deroux_text">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
       
       <label>Profiltext:</label>
       <textarea name="deroux_text" rows="8" required><?php echo htmlspecialchars($current_deroux_text); ?></textarea>
@@ -280,6 +289,7 @@ $current = basename($_SERVER['PHP_SELF']);
 
     <form class="admin-form" method="POST" action="admin.php#weiss-anpassen">
       <input type="hidden" name="action" value="save_weiss_text">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
 
       <label>Profiltext:</label>
       <textarea name="weiss_text" rows="8" required><?php echo htmlspecialchars($current_weiss_text); ?></textarea>

@@ -1,0 +1,7 @@
+<?php
+return [
+    'admin_username' => '',
+    'admin_password_hash' => '',
+    'staff_username' => '',
+    'staff_password_hash' => ''
+];

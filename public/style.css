@@ -411,6 +411,31 @@ form br {
   display: none;
 }
 
+form.logout-form {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+form.logout-form button {
+  margin: 0;
+  box-shadow: none;
+}
+
+form.logout-form button:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .service-icon {
   width: 52px;
   height: 52px;

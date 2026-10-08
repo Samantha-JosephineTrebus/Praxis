@@ -1,13 +1,39 @@
 <?php
-// Konfiguration & Session-Management
+// Session-Management
+$requestUsesHttps = !empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off';
+$requestHost = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+$requestHost = preg_replace('/:\d+\z/', '', $requestHost);
+$requestHost = trim($requestHost, '[]');
+$requestAddress = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+$requestIsLocalhost = in_array($requestHost, ['localhost', '127.0.0.1', '::1'], true)
+    && in_array($requestAddress, ['127.0.0.1', '::1'], true);
+ini_set('session.use_strict_mode', '1');
+ini_set('session.use_only_cookies', '1');
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'secure' => $requestUsesHttps,
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
 session_start();
 
-// Sicherheits-Einstellungen
-define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', '1234');
-define('STAFF_USERNAME', 'mitarbeiter');
-define('STAFF_PASSWORD', 'abcd');
-define('SECRET_KEY', 'geheimer_schluessel_praxis');
+// Credentials are kept outside the tracked source tree; missing configuration fails closed.
+$AUTH_CONFIG = [];
+$authConfigPath = __DIR__ . '/auth.local.php';
+if (is_file($authConfigPath)) {
+    $localAuthConfig = require $authConfigPath;
+    if (is_array($localAuthConfig)) {
+        $AUTH_CONFIG = $localAuthConfig;
+    }
+}
+
+if ($requestIsLocalhost && !is_file($authConfigPath)) {
+    $AUTH_CONFIG = [
+        'admin_username' => 'admin',
+        'admin_password_hash' => '$2y$12$lurmEWqf6X0NVzevi9ZPaOb3YGsNkmiV5ccUdwyn69SX7tdEVluXK'
+    ];
+}
 
 // Datenpfade
 define('DATA_DIR', __DIR__ . '/data/');
@@ -69,12 +95,51 @@ function saveNote($note) {
 
 // Prüfe ob Admin eingeloggt ist
 function isAdminLoggedIn() {
-    return isset($_SESSION['loggedIn']) && $_SESSION['role'] === 'admin';
+    return isLoggedIn() && ($_SESSION['role'] ?? null) === 'admin';
 }
 
 // Prüfe ob jemand eingeloggt ist
 function isLoggedIn() {
     return isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true;
+}
+
+function verifyLoginCredentials($username, $password, $usernameKey, $hashKey) {
+    $configuredUsername = $GLOBALS['AUTH_CONFIG'][$usernameKey] ?? '';
+    $passwordHash = $GLOBALS['AUTH_CONFIG'][$hashKey] ?? '';
+
+    return is_string($configuredUsername)
+        && $configuredUsername !== ''
+        && is_string($passwordHash)
+        && $passwordHash !== ''
+        && hash_equals($configuredUsername, $username)
+        && password_verify($password, $passwordHash);
+}
+
+function csrfToken() {
+    if (empty($_SESSION['csrf_token']) || !is_string($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+
+    return $_SESSION['csrf_token'];
+}
+
+function verifyCsrfToken($token) {
+    return is_string($token)
+        && isset($_SESSION['csrf_token'])
+        && is_string($_SESSION['csrf_token'])
+        && hash_equals($_SESSION['csrf_token'], $token);
+}
+
+function renderSafeNoteText($text) {
+    $escapedText = htmlspecialchars((string) $text, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+
+    return preg_replace_callback(
+        '/&lt;(\/?)(strong|em|u|br|p|ul|ol|li)&gt;/i',
+        function ($matches) {
+            return '<' . $matches[1] . strtolower($matches[2]) . '>';
+        },
+        $escapedText
+    );
 }
 
 // Standardtext für Dr. de Roux (falls Datei nicht existiert)

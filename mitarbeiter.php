@@ -30,7 +30,12 @@ $note = getNote();
   <nav>
     <ul id="nav-list">
         <li><a href="index.php">← Zurück zur Startseite</a></li>
-        <li><a href="logout.php" style="color: #ff6b6b;">Logout</a></li>
+        <li>
+          <form class="logout-form" method="POST" action="logout.php">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
+            <button type="submit" style="color: #ff6b6b; background: none; border: 0; cursor: pointer; font: inherit;">Logout</button>
+          </form>
+        </li>
     </ul>
   </nav>
 </header>
@@ -61,7 +66,7 @@ $note = getNote();
   <!-- HAFTNOTIZ ANZEIGE -->
   <article>
     <h2><?php echo htmlspecialchars($note['title']); ?></h2>
-    <p><?php echo $note['text']; ?></p>
+    <p><?php echo renderSafeNoteText($note['text'] ?? ''); ?></p>
     
     <?php if (isAdminLoggedIn()): ?>
       <p style="margin-top: 1rem;">

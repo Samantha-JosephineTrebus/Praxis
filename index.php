@@ -524,7 +524,10 @@ $note = getNote();
       </div>
       <div class="admin-actions">
           <a href="admin.php" class="admin-btn panel"><i class="fa-solid fa-gear" aria-hidden="true"></i> Admin-Panel</a>
-          <a href="logout.php" class="admin-btn logout"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</a>
+          <form class="logout-form" method="POST" action="logout.php">
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrfToken(), ENT_QUOTES, 'UTF-8'); ?>">
+            <button type="submit" class="admin-btn logout" style="border: 0; cursor: pointer; font: inherit;"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Logout</button>
+          </form>
       </div>
     </section>
   <?php endif; ?>
@@ -538,7 +541,7 @@ $note = getNote();
 
           <div class="haftnotiz">
             <h3><?php echo htmlspecialchars($note['title']); ?></h3>
-            <p><?php echo $note['text']; ?></p>
+            <p><?php echo renderSafeNoteText($note['text'] ?? ''); ?></p>
             <?php if (isAdminLoggedIn()): ?>
               <a class="admin-edit-link" href="admin.php#info-anpassen"><i class="fa-solid fa-pen" aria-hidden="true"></i> Bearbeiten</a>
             <?php endif; ?>
