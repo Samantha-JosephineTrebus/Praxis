@@ -17,7 +17,7 @@ $note = getNote();
     /* ===== Custom Styles für die Ärzte-Sektion im Glass-Look mit Custom-Hintergrund ===== */
     .doctors {
       margin: 4rem 0;
-      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('public/praxis.jpg') no-repeat center center;
+      background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('DSCF2465.png') no-repeat center center;
       background-size: cover;
       background-attachment: scroll;
       padding: 4rem 2rem;
@@ -692,7 +692,7 @@ $note = getNote();
   <div class="intro-grid">
 
     <div class="intro-image">
-      <img src="public/praxis.jpg" alt="Schloss Charlottenburg">
+      <img src="DSCF2516.png" alt="Schloss Charlottenburg">
     </div>
 
     <div class="intro-text">
