@@ -55,6 +55,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
     .vorbereitung-card:hover {
@@ -259,55 +260,33 @@
         <div class="service-icon">
        <i class="fa-solid fa-clipboard"></i>
     </div>
-    <h3>Patientenfragebogen</h3>
+    <h3>MEP-Fragebogen</h3>
         <p>
-          Dieser Fragebogen hilft uns, Ihre medizinische Geschichte und aktuelle Symptome besser zu verstehen. Bitte füllen Sie diesen vor Ihrem Termin aus.
+          Bitte füllen Sie diesen Fragebogen vor Ihrem Termin aus und bringen Sie ihn in die Praxis mit.
         </p>
-        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
+        <a class="download-btn" href="public/MEP_Fragebogen.pdf" download><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</a>
       </div>
 
       <div class="vorbereitung-card">
         <div class="service-icon">
           <i class="fa-solid fa-leaf"></i>
         </div>
-        <h3>Allergiepass</h3>
+        <h3>Allergiefragebogen</h3>
         <p>
-          Falls Sie bekannte Allergien haben, können Sie diese hier dokumentieren. Dies ist wichtig für unsere Ärzte bei der Behandlung.
+          Bitte dokumentieren Sie hier bekannte Allergien und bringen Sie den ausgefüllten Fragebogen zu Ihrem Termin mit.
         </p>
-        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
-      </div>
-
-      <div class="vorbereitung-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-pills"></i>
-        </div>
-        <h3>Medikamentenplan</h3>
-        <p>
-          Eine übersichtliche Liste aller Ihrer aktuellen Medikamente. Füllen Sie diese aus, um unseren Ärzten einen schnellen Überblick zu geben.
-        </p>
-        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
-      </div>
-
-      <div class="vorbereitung-card">
-        <div class="service-icon">
-          <i class="fa-solid fa-book-medical"></i>
-        </div>
-        <h3>Symptom-Tagebuch</h3>
-        <p>
-          Dokumentieren Sie Ihre Atemwegs-Symptome vor dem Besuch. Dies hilft uns, Ihre Beschwerden besser zu evaluieren.
-        </p>
-        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
+        <a class="download-btn" href="public/Allergiefragebogen.pdf" download><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</a>
       </div>
 
       <div class="vorbereitung-card">
         <div class="service-icon">
           <i class="fa-solid fa-bed"></i>
         </div>
-        <h3>Schlaftagebuch</h3>
+        <h3>Insomnia Severity Index (ISI)</h3>
         <p>
-          Wenn Sie an Schlafstörungen leiden, können Sie hier Ihr Schlafverhalten dokumentieren.
+          Dieser Fragebogen erfasst den Schweregrad von Schlafproblemen. Bitte füllen Sie ihn vor Ihrem Termin aus.
         </p>
-        <button class="download-btn"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</button>
+        <a class="download-btn" href="public/Insomnia_Severity_Index_ISI.pdf" download><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Herunterladen (PDF)</a>
       </div>
     </div>
   </section>
